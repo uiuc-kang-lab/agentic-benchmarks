@@ -1,0 +1,86 @@
+#include <torch/extension.h>
+#include <cuda.h>
+#include <cuda_runtime.h>
+
+// CUDA kernel for optimized KL divergence calculation 
+__global__ void kl_div_kernel_optimized(
+    const float* log_predictions,
+    const float* targets, 
+    float* output,
+    const int n) {
+    
+    // Get global thread ID
+    int idx = blockIdx.x * blockDim.x + threadIdx.x;
+    
+    // Shared memory for partial sums (using double for better accuracy)
+    extern __shared__ double partial_sums[];
+    
+    double sum = 0.0;
+    
+    // Calculate KL divergence for this thread's elements
+    for (int i = idx; i < n; i += blockDim.x * gridDim.x) {
+        float log_pred = log_predictions[i];
+        float target = targets[i];
+        
+        // Handle edge cases and numerical stability
+        if (target <= 0.0f) {
+            // If target is 0, contribution to KL-div is 0
+            continue;
+        }
+        
+        // KL divergence formula: target * (log(target) - log_pred)
+        // Since we have log_pred directly, we compute:
+        // target * (-log_pred) + target * log(target)
+        sum += target * (-log_pred);
+        if (target > 0.0f) {
+            sum += target * logf(target);
+        }
+    }
+    
+    // Store in shared memory
+    partial_sums[threadIdx.x] = sum;
+    __syncthreads();
+    
+    // Parallel reduction in shared memory
+    for (int stride = blockDim.x/2; stride > 0; stride >>= 1) {
+        if (threadIdx.x < stride) {
+            partial_sums[threadIdx.x] += partial_sums[threadIdx.x + stride];
+        }
+        __syncthreads();
+    }
+    
+    // Write result for this block to global memory
+    if (threadIdx.x == 0) {
+        atomicAdd(output, (float)partial_sums[0]);
+    }
+}
+
+torch::Tensor kl_div_cuda_forward_optimized(
+    torch::Tensor log_predictions,
+    torch::Tensor targets) {
+    
+    // Get tensor sizes
+    const int n = log_predictions.numel();
+    
+    // Create output tensor
+    auto output = torch::zeros({1}, log_predictions.options());
+    
+    // Launch parameters
+    const int threads = 256;
+    const int blocks = min((n + threads - 1) / threads, 1024);
+    const int shared_mem = threads * sizeof(float);
+    
+    // Launch kernel
+    kl_div_kernel_optimized<<<blocks, threads, shared_mem>>>(
+        log_predictions.data_ptr<float>(),
+        targets.data_ptr<float>(),
+        output.data_ptr<float>(),
+        n
+    );
+    
+    return output / static_cast<float>(n);
+}
+
+PYBIND11_MODULE(TORCH_EXTENSION_NAME, m) {
+    m.def("forward_optimized", &kl_div_cuda_forward_optimized, "KL divergence forward optimized (CUDA)");
+}

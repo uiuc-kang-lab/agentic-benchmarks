@@ -1,0 +1,180 @@
+#include <torch/extension.h>
+#include <cuda.h>
+#include <cuda_runtime.h>
+
+// Device inline functions for min and max
+__device__ inline int d_min(int a, int b) { return a < b ? a : b; }
+__device__ inline int d_max(int a, int b) { return a > b ? a : b; }
+
+// CUDA kernel for ConvTranspose2d with refactored loop bounds to minimize warp divergence
+__global__ void convTranspose2dKernelUniform(
+    const float* __restrict__ input,
+    const float* __restrict__ weight,
+    const float* __restrict__ bias,  // may be nullptr
+    float* __restrict__ output,
+    int batch,
+    int in_channels,
+    int out_channels,
+    int height_in,
+    int width_in,
+    int kernel_size,
+    int stride,
+    int padding,
+    int height_out,
+    int width_out,
+    int groups,
+    bool bias_present
+) {
+    int idx = blockIdx.x * blockDim.x + threadIdx.x;
+    int total = batch * out_channels * height_out * width_out;
+    if (idx >= total) return;
+
+    // Decode linear index to (b, out_ch, h, w)
+    int w = idx % width_out;
+    int tmp = idx / width_out;
+    int h = tmp % height_out;
+    tmp /= height_out;
+    int out_ch = tmp % out_channels;
+    int b = tmp / out_channels;
+
+    float out_val = 0.0f;
+
+    // Compute group parameters
+    int out_channels_per_group = out_channels / groups;
+    int in_channels_per_group = in_channels / groups;
+    int group = out_ch / out_channels_per_group;
+    int out_ch_mod = out_ch % out_channels_per_group;
+
+    // Precompute offset values
+    int h_temp = h + padding;
+    int w_temp = w + padding;
+
+    // Compute starting residues for valid kernel positions
+    int p0 = h_temp % stride;
+    int q0 = w_temp % stride;
+
+    // Compute valid range for p such that (h_temp - p) is divisible by stride and i_in is in [0, height_in)
+    int p_min = d_max(p0, h_temp - (height_in - 1) * stride);
+    int p_max = d_min(kernel_size - 1, h_temp);
+    // Adjust p_min to ensure congruence: p % stride == p0
+    int p_start = p_min;
+    int mod = p_start % stride;
+    if(mod != p0) {
+        p_start += ((stride + p0 - mod) % stride);
+    }
+
+    // Compute valid range for q in a similar manner
+    int q_min = d_max(q0, w_temp - (width_in - 1) * stride);
+    int q_max = d_min(kernel_size - 1, w_temp);
+    int q_start = q_min;
+    int modq = q_start % stride;
+    if(modq != q0) {
+        q_start += ((stride + q0 - modq) % stride);
+    }
+
+    // Loop over input channels within the corresponding group
+    int in_ch_start = group * in_channels_per_group;
+    int in_ch_end = in_ch_start + in_channels_per_group;
+    
+    // Pre-compute base indices to reduce multiply operations
+    int b_offset = b * in_channels;
+    int out_ch_offset = out_ch_mod * kernel_size;
+    
+    for (int in_ch = in_ch_start; in_ch < in_ch_end; in_ch++) {
+        // Pre-compute channel-dependent indices
+        int in_ch_offset = (b_offset + in_ch) * height_in;
+        int weight_ch_offset = (in_ch * out_channels_per_group + out_ch_mod) * kernel_size;
+        
+        // Loop over valid p values with a fixed step equal to stride
+        for (int p = p_start; p <= p_max; p += stride) {
+            // Compute input row index; loop bounds ensure this is valid
+            int i_in = (h_temp - p) / stride;
+            int row_offset = in_ch_offset + i_in;
+            int weight_p_offset = weight_ch_offset + p;
+            
+            // Loop over valid q values
+            for (int q = q_start; q <= q_max; q += stride) {
+                int j_in = (w_temp - q) / stride;
+                int input_idx = row_offset * width_in + j_in;
+                int weight_idx = weight_p_offset * kernel_size + q;
+                out_val += input[input_idx] * weight[weight_idx];
+            }
+        }
+    }
+    if (bias_present) {
+        out_val += bias[out_ch];
+    }
+    int output_idx = ((b * out_channels + out_ch) * height_out + h) * width_out + w;
+    output[output_idx] = out_val;
+}
+
+// Host forward function
+torch::Tensor conv_transpose2d_forward(
+    torch::Tensor x,
+    torch::Tensor weight,
+    torch::optional<torch::Tensor> bias,
+    int64_t stride,
+    int64_t padding,
+    int64_t output_padding,
+    int64_t groups
+) {
+    TORCH_CHECK(x.is_cuda(), "Input tensor must be on CUDA");
+    TORCH_CHECK(weight.is_cuda(), "Weight tensor must be on CUDA");
+    TORCH_CHECK(x.is_contiguous(), "Input tensor must be contiguous");
+    TORCH_CHECK(weight.is_contiguous(), "Weight tensor must be contiguous");
+
+    bool bias_present = false;
+    torch::Tensor bias_tensor;
+    if (bias.has_value()) {
+        bias_tensor = bias.value();
+        TORCH_CHECK(bias_tensor.is_cuda(), "Bias tensor must be on CUDA");
+        TORCH_CHECK(bias_tensor.is_contiguous(), "Bias tensor must be contiguous");
+        bias_present = true;
+    }
+
+    int batch = x.size(0);
+    int in_channels = x.size(1);
+    int height_in = x.size(2);
+    int width_in = x.size(3);
+
+    // Weight shape: [in_channels, out_channels/groups, kernel_size, kernel_size]
+    int kernel_size = weight.size(2);
+    int out_channels = weight.size(1) * groups; // Expand out channels based on groups
+
+    int height_out = (height_in - 1) * stride - 2 * padding + kernel_size + output_padding;
+    int width_out  = (width_in - 1) * stride - 2 * padding + kernel_size + output_padding;
+
+    auto options = torch::TensorOptions().dtype(x.dtype()).device(x.device());
+    torch::Tensor output = torch::zeros({batch, out_channels, height_out, width_out}, options);
+
+    int total_threads = batch * out_channels * height_out * width_out;
+    int block_size = 256;
+    int grid_size = (total_threads + block_size - 1) / block_size;
+
+    convTranspose2dKernelUniform<<<grid_size, block_size>>>(
+        x.data_ptr<float>(),
+        weight.data_ptr<float>(),
+        bias_present ? bias_tensor.data_ptr<float>() : nullptr,
+        output.data_ptr<float>(),
+        batch,
+        in_channels,
+        out_channels,
+        height_in,
+        width_in,
+        kernel_size,
+        stride,
+        padding,
+        height_out,
+        width_out,
+        groups,
+        bias_present
+    );
+
+    cudaError_t err = cudaGetLastError();
+    TORCH_CHECK(err == cudaSuccess, "CUDA kernel failed: ", cudaGetErrorString(err));
+    return output;
+}
+
+PYBIND11_MODULE(TORCH_EXTENSION_NAME, m) {
+    m.def("forward", &conv_transpose2d_forward, "ConvTranspose2d forward with uniform control flow (CUDA)");
+}

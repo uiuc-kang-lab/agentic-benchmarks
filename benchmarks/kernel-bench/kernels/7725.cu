@@ -1,0 +1,209 @@
+#include <torch/extension.h>
+#include <ATen/ATen.h>
+#include <ATen/cudnn/Handles.h>
+#include <ATen/cudnn/Descriptors.h>
+#include <cudnn.h>
+#include <vector>
+
+cudnnDataType_t getCudnnDataType(at::ScalarType type) {
+    switch (type) {
+        case at::ScalarType::Float:
+            return CUDNN_DATA_FLOAT;
+        case at::ScalarType::Double:
+            return CUDNN_DATA_DOUBLE;
+        case at::ScalarType::Half:
+            return CUDNN_DATA_HALF;
+        default:
+            TORCH_CHECK(false, "Unsupported data type for cuDNN");
+    }
+}
+
+at::Tensor forward(
+    const at::Tensor& input,
+    const at::Tensor& weight,
+    const c10::optional<at::Tensor>& bias_opt,
+    int64_t stride,
+    int64_t padding,
+    int64_t dilation,
+    int64_t groups
+) {
+    auto bias = bias_opt.value_or(at::Tensor());
+    TORCH_CHECK(input.is_cuda(), "Input must be a CUDA tensor");
+    TORCH_CHECK(weight.is_cuda(), "Weight must be a CUDA tensor");
+    TORCH_CHECK(!bias.defined() || bias.is_cuda(), "Bias must be a CUDA tensor");
+
+    const int num_streams = 4; // Number of parallel streams
+    std::vector<cudaStream_t> streams(num_streams);
+    std::vector<cudnnHandle_t> cudnn_handles(num_streams);
+    
+    // Create streams and cudnn handles
+    for (int i = 0; i < num_streams; i++) {
+        cudaStreamCreate(&streams[i]);
+        cudnnCreate(&cudnn_handles[i]);
+        cudnnSetStream(cudnn_handles[i], streams[i]);
+    }
+
+    // Get dimensions
+    int64_t batch_size = input.size(0);
+    int64_t in_channels = input.size(1);
+    int64_t in_depth = input.size(2);
+    int64_t in_height = input.size(3);
+    int64_t in_width = input.size(4);
+    
+    int64_t out_channels = weight.size(0);
+    int64_t kernel_d = weight.size(2);
+    int64_t kernel_h = weight.size(3);
+    int64_t kernel_w = weight.size(4);
+
+    // Calculate output dimensions
+    int64_t out_depth = (in_depth + 2 * padding - dilation * (kernel_d - 1) - 1) / stride + 1;
+    int64_t out_height = (in_height + 2 * padding - dilation * (kernel_h - 1) - 1) / stride + 1;
+    int64_t out_width = (in_width + 2 * padding - dilation * (kernel_w - 1) - 1) / stride + 1;
+
+    auto output = at::empty({batch_size, out_channels, out_depth, out_height, out_width}, input.options());
+
+    // Calculate chunk size for batch dimension
+    int64_t chunk_size = (batch_size + num_streams - 1) / num_streams;
+
+    std::vector<cudnnTensorDescriptor_t> input_descs(num_streams);
+    std::vector<cudnnTensorDescriptor_t> output_descs(num_streams);
+    std::vector<cudnnFilterDescriptor_t> weight_descs(num_streams);
+    std::vector<cudnnConvolutionDescriptor_t> conv_descs(num_streams);
+    std::vector<cudnnTensorDescriptor_t> bias_descs(num_streams);
+
+    // Initialize descriptors for each stream
+    for (int i = 0; i < num_streams; i++) {
+        cudnnCreateTensorDescriptor(&input_descs[i]);
+        cudnnCreateTensorDescriptor(&output_descs[i]);
+        cudnnCreateFilterDescriptor(&weight_descs[i]);
+        cudnnCreateConvolutionDescriptor(&conv_descs[i]);
+        if (bias.defined()) {
+            cudnnCreateTensorDescriptor(&bias_descs[i]);
+        }
+    }
+
+    cudnnDataType_t cudnn_dtype = getCudnnDataType(input.scalar_type());
+
+    // Process chunks in parallel streams
+    for (int64_t chunk_idx = 0; chunk_idx < batch_size; chunk_idx += chunk_size) {
+        int stream_idx = (chunk_idx / chunk_size) % num_streams;
+        int64_t current_chunk_size = std::min(chunk_size, batch_size - chunk_idx);
+
+        // Set descriptors for current chunk
+        int input_dims[5] = {(int)current_chunk_size, (int)in_channels, (int)in_depth, (int)in_height, (int)in_width};
+        int input_strides[5] = {(int)(in_channels * in_depth * in_height * in_width),
+                               (int)(in_depth * in_height * in_width),
+                               (int)(in_height * in_width),
+                               (int)in_width,
+                               1};
+        cudnnSetTensorNdDescriptor(input_descs[stream_idx], cudnn_dtype, 5, input_dims, input_strides);
+
+        int output_dims[5] = {(int)current_chunk_size, (int)out_channels, (int)out_depth, (int)out_height, (int)out_width};
+        int output_strides[5] = {(int)(out_channels * out_depth * out_height * out_width),
+                                (int)(out_depth * out_height * out_width),
+                                (int)(out_height * out_width),
+                                (int)out_width,
+                                1};
+        cudnnSetTensorNdDescriptor(output_descs[stream_idx], cudnn_dtype, 5, output_dims, output_strides);
+
+        int filter_dims[5] = {(int)out_channels, (int)(in_channels / groups), (int)kernel_d, (int)kernel_h, (int)kernel_w};
+        cudnnSetFilterNdDescriptor(weight_descs[stream_idx], cudnn_dtype, CUDNN_TENSOR_NCHW, 5, filter_dims);
+
+        int padA[3] = {(int)padding, (int)padding, (int)padding};
+        int dilationA[3] = {(int)dilation, (int)dilation, (int)dilation};
+        int strideA[3] = {(int)stride, (int)stride, (int)stride};
+        cudnnSetConvolutionNdDescriptor(conv_descs[stream_idx], 3, padA, strideA, dilationA,
+                                      CUDNN_CROSS_CORRELATION, cudnn_dtype);
+        cudnnSetConvolutionGroupCount(conv_descs[stream_idx], groups);
+
+        // Get input and output chunks
+        auto input_chunk = input.narrow(0, chunk_idx, current_chunk_size);
+        auto output_chunk = output.narrow(0, chunk_idx, current_chunk_size);
+
+        // Find best algorithm
+        cudnnConvolutionFwdAlgoPerf_t algo_perf;
+        int algo_count;
+        cudnnFindConvolutionForwardAlgorithm(
+            cudnn_handles[stream_idx],
+            input_descs[stream_idx],
+            weight_descs[stream_idx],
+            conv_descs[stream_idx],
+            output_descs[stream_idx],
+            1,
+            &algo_count,
+            &algo_perf
+        );
+
+        // Allocate workspace
+        size_t workspace_size = 0;
+        cudnnGetConvolutionForwardWorkspaceSize(
+            cudnn_handles[stream_idx],
+            input_descs[stream_idx],
+            weight_descs[stream_idx],
+            conv_descs[stream_idx],
+            output_descs[stream_idx],
+            algo_perf.algo,
+            &workspace_size
+        );
+
+        auto workspace = at::empty({static_cast<int64_t>(workspace_size)}, input.options().dtype(at::kByte));
+
+        // Execute convolution
+        float alpha = 1.0f, beta = 0.0f;
+        cudnnConvolutionForward(
+            cudnn_handles[stream_idx],
+            &alpha,
+            input_descs[stream_idx],
+            input_chunk.data_ptr(),
+            weight_descs[stream_idx],
+            weight.data_ptr(),
+            conv_descs[stream_idx],
+            algo_perf.algo,
+            workspace.data_ptr(),
+            workspace_size,
+            &beta,
+            output_descs[stream_idx],
+            output_chunk.data_ptr()
+        );
+
+        // Add bias if present
+        if (bias.defined()) {
+            int bias_dims[5] = {1, (int)out_channels, 1, 1, 1};
+            int bias_strides[5] = {(int)out_channels, 1, 1, 1, 1};
+            cudnnSetTensorNdDescriptor(bias_descs[stream_idx], cudnn_dtype, 5, bias_dims, bias_strides);
+            cudnnAddTensor(
+                cudnn_handles[stream_idx],
+                &alpha,
+                bias_descs[stream_idx],
+                bias.data_ptr(),
+                &alpha,
+                output_descs[stream_idx],
+                output_chunk.data_ptr()
+            );
+        }
+    }
+
+    // Synchronize all streams
+    for (int i = 0; i < num_streams; i++) {
+        cudaStreamSynchronize(streams[i]);
+    }
+
+    // Cleanup
+    for (int i = 0; i < num_streams; i++) {
+        cudnnDestroyTensorDescriptor(input_descs[i]);
+        cudnnDestroyTensorDescriptor(output_descs[i]);
+        cudnnDestroyFilterDescriptor(weight_descs[i]);
+        cudnnDestroyConvolutionDescriptor(conv_descs[i]);
+        if (bias.defined()) {
+            cudnnDestroyTensorDescriptor(bias_descs[i]);
+        }
+        cudnnDestroy(cudnn_handles[i]);
+        cudaStreamDestroy(streams[i]);
+    }
+
+    return output;
+}
+
+PYBIND11_MODULE(TORCH_EXTENSION_NAME, m) {
+    m.def("forward", &forward, "3D convolution forward using cuDNN with streams (CUDA)");
+}

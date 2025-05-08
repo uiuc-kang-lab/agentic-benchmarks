@@ -1,0 +1,86 @@
+#include <torch/extension.h>
+#include <cuda.h>
+#include <cuda_runtime.h>
+
+template <typename scalar_t>
+__global__ void matmul_transpose_shared_minsync_kernel(
+    const scalar_t* __restrict__ A,
+    const scalar_t* __restrict__ B,
+    scalar_t* __restrict__ C,
+    const int M,
+    const int N,
+    const int K) {
+    
+    const int TILE_SIZE = 32;
+    __shared__ scalar_t A_shared[TILE_SIZE][TILE_SIZE + 1];
+    __shared__ scalar_t B_shared[TILE_SIZE][TILE_SIZE + 1];
+    
+    const int row = blockIdx.x * blockDim.x + threadIdx.x;
+    const int col = blockIdx.y * blockDim.y + threadIdx.y;
+    const int tx = threadIdx.x;
+    const int ty = threadIdx.y;
+    
+    scalar_t sum = 0;
+    
+    #pragma unroll 4
+    for (int tile = 0; tile < (K + TILE_SIZE - 1) / TILE_SIZE; ++tile) {
+        // Load tile data into shared memory
+        if (row < M && (tile * TILE_SIZE + ty) < K) {
+            A_shared[ty][tx] = A[(tile * TILE_SIZE + ty) * N + row];
+        } else {
+            A_shared[ty][tx] = 0;
+        }
+        
+        if (col < N && (tile * TILE_SIZE + tx) < K) {
+            B_shared[tx][ty] = B[col * K + tile * TILE_SIZE + tx];
+        } else {
+            B_shared[tx][ty] = 0;
+        }
+        
+        // Single sync point after shared memory loads
+        __syncthreads();
+        
+        // Compute dot product for this tile
+        if (row < M && col < N) {
+            #pragma unroll
+            for (int k = 0; k < TILE_SIZE && (tile * TILE_SIZE + k) < K; ++k) {
+                sum += A_shared[k][tx] * B_shared[k][ty];
+            }
+        }
+        
+        // No sync needed here since next iteration will sync after loads
+    }
+    
+    // Write final result
+    if (row < M && col < N) {
+        C[row * N + col] = sum;
+    }
+}
+
+torch::Tensor matmul_transpose_cuda(torch::Tensor A, torch::Tensor B) {
+    const int K = A.size(0);
+    const int M = A.size(1);
+    const int N = B.size(0);
+    
+    auto C = torch::empty({M, N}, A.options());
+    
+    const int BLOCK_SIZE = 32;
+    dim3 threads(BLOCK_SIZE, BLOCK_SIZE);
+    dim3 blocks((M + BLOCK_SIZE - 1) / BLOCK_SIZE,
+                (N + BLOCK_SIZE - 1) / BLOCK_SIZE);
+    
+    AT_DISPATCH_FLOATING_TYPES(A.type(), "matmul_transpose_shared_minsync_kernel", ([&] {
+        matmul_transpose_shared_minsync_kernel<scalar_t><<<blocks, threads>>>(
+            A.data_ptr<scalar_t>(),
+            B.data_ptr<scalar_t>(),
+            C.data_ptr<scalar_t>(),
+            M, N, K
+        );
+    }));
+    
+    return C;
+}
+
+PYBIND11_MODULE(TORCH_EXTENSION_NAME, m) {
+    m.def("forward", &matmul_transpose_cuda, "Matrix multiplication with transpose using minimal synchronization");
+}

@@ -1,0 +1,81 @@
+#include <torch/extension.h>
+#include <cuda.h>
+#include <cuda_runtime.h>
+#include <vector>
+
+__constant__ int d_params[8];  // [batch_size, channels, input_h, input_w, output_h, output_w, kernel_size, stride]
+
+template <typename scalar_t>
+__global__ void max_pool2d_kernel(
+    const scalar_t* input,
+    scalar_t* output,
+    const int padding,
+    const int dilation
+) {
+    const int output_idx = blockIdx.x * blockDim.x + threadIdx.x;
+    if (output_idx >= d_params[0] * d_params[1] * d_params[4] * d_params[5]) return;
+
+    const int ow = output_idx % d_params[5];
+    const int oh = (output_idx / d_params[5]) % d_params[4];
+    const int c = (output_idx / (d_params[5] * d_params[4])) % d_params[1];
+    const int b = output_idx / (d_params[5] * d_params[4] * d_params[1]);
+
+    scalar_t max_val = -std::numeric_limits<scalar_t>::infinity();
+
+    for (int kh = 0; kh < d_params[6]; kh++) {
+        for (int kw = 0; kw < d_params[6]; kw++) {
+            const int ih = oh * d_params[7] - padding + kh * dilation;
+            const int iw = ow * d_params[7] - padding + kw * dilation;
+
+            if (ih >= 0 && ih < d_params[2] && iw >= 0 && iw < d_params[3]) {
+                const int input_idx = b * (d_params[1] * d_params[2] * d_params[3]) +
+                                    c * (d_params[2] * d_params[3]) +
+                                    ih * d_params[3] +
+                                    iw;
+                max_val = max(max_val, input[input_idx]);
+            }
+        }
+    }
+
+    output[output_idx] = max_val;
+}
+
+torch::Tensor max_pool2d_cuda_forward(
+    torch::Tensor input,
+    int kernel_size,
+    int stride,
+    int padding,
+    int dilation
+) {
+    const auto batch_size = input.size(0);
+    const auto channels = input.size(1);
+    const auto input_height = input.size(2);
+    const auto input_width = input.size(3);
+
+    const auto output_height = ((input_height + 2 * padding - dilation * (kernel_size - 1) - 1) / stride) + 1;
+    const auto output_width = ((input_width + 2 * padding - dilation * (kernel_size - 1) - 1) / stride) + 1;
+
+    auto output = torch::empty({batch_size, channels, output_height, output_width}, input.options());
+
+    int h_params[8] = {batch_size, channels, input_height, input_width,
+                       output_height, output_width, kernel_size, stride};
+    cudaMemcpyToSymbol(d_params, h_params, sizeof(int) * 8);
+
+    const int threads = 256;
+    const int blocks = (batch_size * channels * output_height * output_width + threads - 1) / threads;
+
+    AT_DISPATCH_FLOATING_TYPES(input.type(), "max_pool2d_cuda_forward", ([&] {
+        max_pool2d_kernel<scalar_t><<<blocks, threads>>>(
+            input.data_ptr<scalar_t>(),
+            output.data_ptr<scalar_t>(),
+            padding,
+            dilation
+        );
+    }));
+
+    return output;
+}
+
+PYBIND11_MODULE(TORCH_EXTENSION_NAME, m) {
+    m.def("forward", &max_pool2d_cuda_forward, "Max Pool 2D forward (CUDA)");
+}

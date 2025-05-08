@@ -1,0 +1,139 @@
+#include <torch/extension.h>
+#include <cuda.h>
+#include <cuda_runtime.h>
+#include <type_traits>
+
+// Define an inline device function for exponentiation, specialized for float and double.
+
+template <typename T>
+__device__ inline T myExp(T x);
+
+template <>
+__device__ inline float myExp<float>(float x) {
+    return expf(x);
+}
+
+template <>
+__device__ inline double myExp<double>(double x) {
+    return exp(x);
+}
+
+// Union to facilitate vectorized load and store operations
+// VecT: vector type (e.g., float4 or double2), VecSize: number of scalar elements in VecT
+
+template <typename scalar_t, typename VecT, int VecSize>
+union VecUnion {
+  VecT vec;
+  scalar_t arr[VecSize];
+};
+
+// Vectorized kernel processing multiple elements per thread using 128-bit loads/stores
+// It uses __ldg() to optimize read-only global memory accesses.
+
+// Shared memory to hold intermediate results for the block
+extern __shared__ float shared_data[];
+
+template <typename scalar_t, typename VecT, int VecSize>
+__global__ void sigmoid_vectorized_kernel(const scalar_t* __restrict__ input,
+                                            scalar_t* __restrict__ output,
+                                            int64_t vec_count) {
+    int idx = blockIdx.x * blockDim.x + threadIdx.x;
+    int stride = blockDim.x * gridDim.x;
+    int lane = threadIdx.x % warpSize;
+    int warp_id = threadIdx.x / warpSize;
+
+    for (int i = idx; i < vec_count; i += stride) {
+        VecUnion<scalar_t, VecT, VecSize> in_union;
+        VecUnion<scalar_t, VecT, VecSize> out_union;
+        // Load a 128-bit chunk from global memory (assumed to be aligned), using __ldg for read-only access
+        in_union.vec = __ldg(reinterpret_cast<const VecT*>(input) + i);
+
+        #pragma unroll
+        for (int j = 0; j < VecSize; j++) {
+            scalar_t val = in_union.arr[j];
+            scalar_t exp_val = myExp(-val);
+            out_union.arr[j] = static_cast<scalar_t>(1) / (static_cast<scalar_t>(1) + exp_val);
+        }
+
+        // Store the computed vector back to global memory (assumed aligned)
+        reinterpret_cast<VecT*>(output)[i] = out_union.vec;
+
+        // Use shared memory to reduce within the block
+        shared_data[threadIdx.x] = out_union.arr[0]; // Example for first element
+        __syncthreads();
+
+        // Perform reduction within the warp
+        for (int offset = warpSize / 2; offset > 0; offset /= 2) {
+            shared_data[threadIdx.x] += __shfl_down_sync(0xffffffff, shared_data[threadIdx.x], offset);
+        }
+
+        // Write the result of reduction to the output (example, adjust as needed)
+        if (lane == 0) {
+            output[blockIdx.x * blockDim.x + warp_id] = shared_data[0];
+        }
+    }
+}
+
+// Scalar kernel for processing tail elements that don't fit in a full vectorized load/store
+
+template <typename scalar_t>
+__global__ void sigmoid_scalar_kernel(const scalar_t* __restrict__ input,
+                                        scalar_t* __restrict__ output,
+                                        int64_t start,
+                                        int64_t size) {
+    int idx = blockIdx.x * blockDim.x + threadIdx.x + start;
+    if (idx < size) {
+        scalar_t val = __ldg(&input[idx]);
+        scalar_t exp_val = myExp(-val);
+        output[idx] = static_cast<scalar_t>(1) / (static_cast<scalar_t>(1) + exp_val);
+    }
+}
+
+// The forward function prepares the output tensor and launches the appropriate kernels
+// It handles vectorized processing for 128-bit aligned data and falls back to a scalar kernel for tail elements.
+
+torch::Tensor forward(torch::Tensor input) {
+    auto output = torch::empty_like(input);
+    const int64_t size = input.numel();
+    const int threads = 256;
+
+    AT_DISPATCH_FLOATING_TYPES(input.scalar_type(), "sigmoid_vectorized_kernel", ([&] {
+        const auto* input_data = input.data_ptr<scalar_t>();
+        auto* output_data = output.data_ptr<scalar_t>();
+
+        // Determine the vectorization factor and vector type based on the scalar type
+        int vecSize = 1;
+        int64_t vec_elements = 0;
+        int blocks = 0;
+
+        if (std::is_same<scalar_t, float>::value) {
+            vecSize = 4; // 128-bit: 4 x float
+            vec_elements = size / vecSize; // number of full vectorized groups
+            blocks = (vec_elements + threads - 1) / threads;
+            if (vec_elements > 0) {
+                sigmoid_vectorized_kernel<scalar_t, float4, 4><<<blocks, threads, threads * sizeof(float)>>>(input_data, output_data, vec_elements);
+            }
+        } else if (std::is_same<scalar_t, double>::value) {
+            vecSize = 2; // 128-bit: 2 x double
+            vec_elements = size / vecSize;
+            blocks = (vec_elements + threads - 1) / threads;
+            if (vec_elements > 0) {
+                sigmoid_vectorized_kernel<scalar_t, double2, 2><<<blocks, threads, threads * sizeof(float)>>>(input_data, output_data, vec_elements);
+            }
+        }
+        
+        // Process any remaining tail elements not covered by vectorized loads/stores
+        int64_t vec_aligned_size = vec_elements * vecSize;
+        int64_t tail = size - vec_aligned_size;
+        if (tail > 0) {
+            int tail_blocks = (tail + threads - 1) / threads;
+            sigmoid_scalar_kernel<scalar_t><<<tail_blocks, threads>>>(input_data, output_data, vec_aligned_size, size);
+        }
+    }));
+    
+    return output;
+}
+
+PYBIND11_MODULE(TORCH_EXTENSION_NAME, m) {
+  m.def("forward", &forward, "Optimized Sigmoid forward (CUDA) with vectorized load/store and shared memory");
+}

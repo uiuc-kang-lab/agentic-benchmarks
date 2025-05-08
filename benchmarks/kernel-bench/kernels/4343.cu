@@ -1,0 +1,180 @@
+#include <torch/extension.h>
+#include <cuda.h>
+#include <cuda_runtime.h>
+
+#define CHECK_CUDA(x) TORCH_CHECK(x.is_cuda(), #x " must be a CUDA tensor")
+#define CHECK_CONTIGUOUS(x) TORCH_CHECK(x.is_contiguous(), #x " must be contiguous")
+
+// Declare constant memory for weight and bias
+__constant__ float const_weight[1024];
+__constant__ float const_bias[1024];
+
+// Compute the sums and sum of squares within a warp
+__device__ void compute_sums(const float* input, int base, int W, int lane, float& local_sum, float& local_sum_sq) {
+    for (int w = lane; w < W; w += 32) {
+        int idx = base + w;
+        float val = input[idx];
+        local_sum += val;
+        local_sum_sq += val * val;
+    }
+}
+
+// Reduce within the warp using shuffle instructions
+__device__ void warp_reduce(float& sum, float& sum_sq) {
+    for (int offset = 16; offset > 0; offset /= 2) {
+        sum += __shfl_down_sync(0xffffffff, sum, offset);
+        sum_sq += __shfl_down_sync(0xffffffff, sum_sq, offset);
+    }
+}
+
+// Reduce results across warps using shared memory
+__device__ void final_reduce(float* warp_sums, float* warp_sum_sq_arr, int num_warps, float& mean, float& var, int total_elements) {
+    float total_sum = 0.f;
+    float total_sum_sq = 0.f;
+    for (int i = 0; i < num_warps; i++) {
+        total_sum += warp_sums[i];
+        total_sum_sq += warp_sum_sq_arr[i];
+    }
+    mean = total_sum / total_elements;
+    var = total_sum_sq / total_elements - mean * mean;
+}
+
+// Kernel to perform BatchNorm with coalesced memory access
+__global__ void batch_norm_constant_kernel(
+    const float* __restrict__ input,
+    float* __restrict__ running_mean,
+    float* __restrict__ running_var,
+    bool training,
+    float momentum,
+    float eps,
+    float* __restrict__ output,
+    int N,
+    int C,
+    int H,
+    int W) {
+
+    int c = blockIdx.x;
+    if (c >= C) return;
+
+    int num_rows = N * H;
+    int total_elements = num_rows * W;
+
+    int tid = threadIdx.x;
+    int lane = tid % 32;
+    int warp_id = tid / 32;
+    int num_warps = blockDim.x / 32;
+
+    float local_sum = 0.f;
+    float local_sum_sq = 0.f;
+
+    for (int row = warp_id; row < num_rows; row += num_warps) {
+        int n = row / H;
+        int h = row % H;
+        int base = n * C * H * W + c * H * W + h * W;
+
+        compute_sums(input, base, W, lane, local_sum, local_sum_sq);
+    }
+
+    warp_reduce(local_sum, local_sum_sq);
+
+    extern __shared__ float shared_mem[];
+    float* warp_sums = shared_mem;
+    float* warp_sum_sq_arr = &shared_mem[num_warps];
+
+    if (lane == 0) {
+        warp_sums[warp_id] = local_sum;
+        warp_sum_sq_arr[warp_id] = local_sum_sq;
+    }
+    __syncthreads();
+
+    float mean, var;
+    if (tid == 0) {
+        final_reduce(warp_sums, warp_sum_sq_arr, num_warps, mean, var, total_elements);
+
+        if (training) {
+            running_mean[c] = (1.f - momentum) * running_mean[c] + momentum * mean;
+            running_var[c] = (1.f - momentum) * running_var[c] + momentum * var;
+        } else {
+            mean = running_mean[c];
+            var = running_var[c];
+        }
+        warp_sums[0] = mean;
+        warp_sums[1] = var;
+    }
+    __syncthreads();
+
+    mean = warp_sums[0];
+    var = warp_sums[1];
+    float inv_std = rsqrtf(var + eps);
+
+    float w_val = const_weight[c];
+    float b_val = const_bias[c];
+
+    for (int row = warp_id; row < num_rows; row += num_warps) {
+        int n = row / H;
+        int h = row % H;
+        int base = n * C * H * W + c * H * W + h * W;
+
+        for (int col = lane; col < W; col += 32) {
+            int idx = base + col;
+            float val = input[idx];
+            output[idx] = (val - mean) * inv_std * w_val + b_val;
+        }
+    }
+}
+
+// Kernel launcher
+torch::Tensor forward_cuda(
+    torch::Tensor input,
+    torch::Tensor weight,
+    torch::Tensor bias,
+    torch::Tensor running_mean,
+    torch::Tensor running_var,
+    bool training,
+    float momentum,
+    float eps) {
+
+    CHECK_CUDA(input);
+    CHECK_CUDA(weight);
+    CHECK_CUDA(bias);
+    CHECK_CUDA(running_mean);
+    CHECK_CUDA(running_var);
+
+    CHECK_CONTIGUOUS(input);
+    CHECK_CONTIGUOUS(weight);
+    CHECK_CONTIGUOUS(bias);
+    CHECK_CONTIGUOUS(running_mean);
+    CHECK_CONTIGUOUS(running_var);
+
+    const int N = input.size(0);
+    const int C = input.size(1);
+    const int H = input.size(2);
+    const int W = input.size(3);
+
+    auto output = torch::empty_like(input);
+
+    // Copy weight and bias to constant memory
+    cudaMemcpyToSymbol(const_weight, weight.data_ptr<float>(), C * sizeof(float));
+    cudaMemcpyToSymbol(const_bias, bias.data_ptr<float>(), C * sizeof(float));
+
+    const int threads = 256;
+    int num_warps = threads / 32;
+    size_t shared_mem_bytes = 2 * num_warps * sizeof(float);
+
+    batch_norm_constant_kernel<<<C, threads, shared_mem_bytes>>>(
+        input.data_ptr<float>(),
+        running_mean.data_ptr<float>(),
+        running_var.data_ptr<float>(),
+        training,
+        momentum,
+        eps,
+        output.data_ptr<float>(),
+        N, C, H, W
+    );
+
+    return output;
+}
+
+PYBIND11_MODULE(TORCH_EXTENSION_NAME, m) {
+    m.def("forward", &forward_cuda, "Constant Memory BatchNorm forward (CUDA)");
+}

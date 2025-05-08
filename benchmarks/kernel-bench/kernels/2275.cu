@@ -1,0 +1,102 @@
+#include <torch/extension.h>
+#include <cuda.h>
+#include <cuda_runtime.h>
+#include <stdexcept>
+
+// Define tile size for shared memory tiling
+#define TILE_SIZE 16
+
+// CUDA kernel for computing C = A.T * B using shared memory tiling with loop unrolling.
+// A: shape (K, M), B: shape (K, N), C: shape (M, N).
+// Note: A.T(i,k) = A(k,i), so we load A in a transposed manner from global memory.
+__global__ void matMulUnrolledSharedKernel(const float* __restrict__ A,
+                                            const float* __restrict__ B,
+                                            float* __restrict__ C,
+                                            int K, int M, int N) {
+    // Compute the row (i) and column (j) index in the output matrix C
+    int row = blockIdx.x * TILE_SIZE + threadIdx.y;  // corresponds to i in C (and A's column index)
+    int col = blockIdx.y * TILE_SIZE + threadIdx.x;  // corresponds to j in C (and B's column index)
+
+    float sum = 0.0f;
+
+    // Allocate shared memory for tiles of A and B
+    __shared__ float tileA[TILE_SIZE][TILE_SIZE];
+    __shared__ float tileB[TILE_SIZE][TILE_SIZE];
+
+    // Loop over the tiles of the k-dimension
+    int numTiles = (K + TILE_SIZE - 1) / TILE_SIZE;
+    for (int t = 0; t < numTiles; t++) {
+        // Compute global index for A and load from global memory into shared memory tile.
+        int aIndex = t * TILE_SIZE + threadIdx.x;
+        if (row < M && aIndex < K) {
+            tileA[threadIdx.y][threadIdx.x] = A[aIndex * M + row];
+        } else {
+            tileA[threadIdx.y][threadIdx.x] = 0.0f;
+        }
+
+        // Load tile for B directly from global memory.
+        int bIndex = t * TILE_SIZE + threadIdx.y;
+        if (bIndex < K && col < N) {
+            tileB[threadIdx.y][threadIdx.x] = B[bIndex * N + col];
+        } else {
+            tileB[threadIdx.y][threadIdx.x] = 0.0f;
+        }
+
+        __syncthreads();
+
+        // Perform the multiplication for the tile with loop unrolling and use fast math intrinsics
+        #pragma unroll
+        for (int k_inner = 0; k_inner < TILE_SIZE; k_inner += 4) {
+            sum = __fmaf_rn(tileA[threadIdx.y][k_inner], tileB[k_inner][threadIdx.x], sum);
+            sum = __fmaf_rn(tileA[threadIdx.y][k_inner + 1], tileB[k_inner + 1][threadIdx.x], sum);
+            sum = __fmaf_rn(tileA[threadIdx.y][k_inner + 2], tileB[k_inner + 2][threadIdx.x], sum);
+            sum = __fmaf_rn(tileA[threadIdx.y][k_inner + 3], tileB[k_inner + 3][threadIdx.x], sum);
+        }
+
+        __syncthreads();
+    }
+
+    // Write the computed value to C if within valid indices
+    if (row < M && col < N) {
+        C[row * N + col] = sum;
+    }
+}
+
+// The forward function exposed via PyBind11.
+torch::Tensor forward(torch::Tensor A, torch::Tensor B) {
+    TORCH_CHECK(A.is_cuda(), "Input A must be a CUDA tensor");
+    TORCH_CHECK(B.is_cuda(), "Input B must be a CUDA tensor");
+    TORCH_CHECK(A.dtype() == torch::kFloat32, "Input A must be float32");
+    TORCH_CHECK(B.dtype() == torch::kFloat32, "Input B must be float32");
+
+    // Dimensions: A is (K, M) and B is (K, N).
+    int K = A.size(0);
+    int M = A.size(1);
+    TORCH_CHECK(B.size(0) == K, "Dimension mismatch: A and B must have the same first dimension (K)");
+    int N = B.size(1);
+
+    // Allocate output tensor C of shape (M, N).
+    auto C = torch::zeros({M, N}, torch::device(A.device()).dtype(A.dtype()));
+
+    // Define thread block and grid sizes using tiling.
+    dim3 blockDim(TILE_SIZE, TILE_SIZE);
+    dim3 gridDim((M + TILE_SIZE - 1) / TILE_SIZE, (N + TILE_SIZE - 1) / TILE_SIZE);
+
+    // Get raw pointers to tensor data.
+    const float* A_ptr = A.data_ptr<float>();
+    const float* B_ptr = B.data_ptr<float>();
+    float* C_ptr = C.data_ptr<float>();
+
+    // Launch the shared memory tiled CUDA kernel with loop unrolling.
+    matMulUnrolledSharedKernel<<<gridDim, blockDim>>>(A_ptr, B_ptr, C_ptr, K, M, N);
+    cudaError_t err = cudaGetLastError();
+    if (err != cudaSuccess) {
+        throw std::runtime_error(cudaGetErrorString(err));
+    }
+
+    return C;
+}
+
+PYBIND11_MODULE(TORCH_EXTENSION_NAME, m) {
+    m.def("forward", &forward, "Compute C = A.T * B (CUDA) using shared memory tiling with loop unrolling");
+}

@@ -1,0 +1,154 @@
+#include <torch/extension.h>
+#include <cuda.h>
+#include <cuda_runtime.h>
+#include <pybind11/pybind11.h>
+#include <vector>
+
+namespace py = pybind11;
+
+// Declare constant memory for weights (maximum 64KB)
+__constant__ float c_weight[16384]; // 64KB / 4 bytes = 16384 floats
+
+// Kernel with manual loop unrolling for inner loops
+// Merges the kH and kW loops into one and unrolls them using #pragma unroll
+
+template <int BLOCK_SIZE = 256>
+__global__ void conv_transpose2d_forward_kernel(
+    const float* __restrict__ input,
+    const float* __restrict__ bias,
+    float* __restrict__ output,
+    const int N,
+    const int C_in,
+    const int H_in,
+    const int W_in,
+    const int C_out,
+    const int H_out,
+    const int W_out,
+    const int kH,
+    const int kW,
+    const int sH,
+    const int sW,
+    const int pH,
+    const int pW
+) {
+    const int tid = threadIdx.x;
+    const int bid = blockIdx.x;
+    const int index = bid * BLOCK_SIZE + tid;
+    if (index >= N * C_out * H_out * W_out) return;
+
+    // Decode output indices
+    const int ow = index % W_out;
+    const int oh = (index / W_out) % H_out;
+    const int oc = (index / (W_out * H_out)) % C_out;
+    const int n  = index / (W_out * H_out * C_out);
+
+    float sum = 0.0f;
+
+    // Unroll loop over input channels
+    #pragma unroll
+    for (int ic = 0; ic < C_in; ++ic) {
+        // Merge kernel height and width loops into a single loop
+        #pragma unroll
+        for (int k = 0; k < kH * kW; ++k) {
+            int kh = k / kW;
+            int kw = k % kW;
+            
+            int i_val = oh + pH - kh;
+            int j_val = ow + pW - kw;
+            
+            if ((i_val % sH) == 0 && (j_val % sW) == 0) {
+                int i_in = i_val / sH;
+                int j_in = j_val / sW;
+                if (i_in >= 0 && i_in < H_in && j_in >= 0 && j_in < W_in) {
+                    int input_index = ((n * C_in + ic) * H_in + i_in) * W_in + j_in;
+                    int weight_index = ((ic * C_out + oc) * kH + kh) * kW + kw;
+                    sum += input[input_index] * c_weight[weight_index];
+                }
+            }
+        }
+    }
+
+    if (bias != nullptr) {
+        sum += bias[oc];
+    }
+
+    output[index] = sum;
+}
+
+// Hybrid conv_transpose2d forward function with constant memory and manual loop unrolling
+
+torch::Tensor conv_transpose2d_forward(
+    torch::Tensor x,
+    torch::Tensor weight,
+    py::object bias_obj,
+    std::vector<int64_t> stride,
+    std::vector<int64_t> padding
+) {
+    // Check if weight size fits in constant memory
+    int weight_numel = weight.numel();
+    int weight_size = weight_numel * sizeof(float);
+    const int max_const_size = 64 * 1024; // 64KB
+    if (weight_size > max_const_size) {
+        c10::optional<torch::Tensor> bias = c10::nullopt;
+        if (!bias_obj.is_none()) {
+            bias = bias_obj.cast<torch::Tensor>();
+        }
+        return at::conv_transpose2d(x, weight, bias, stride, padding);
+    }
+    
+    // Copy weight data to constant memory
+    cudaMemcpyToSymbol(c_weight, weight.data_ptr<float>(), weight_size);
+
+    torch::Tensor bias;
+    const float* bias_ptr = nullptr;
+    if (!bias_obj.is_none()) {
+        bias = bias_obj.cast<torch::Tensor>();
+        bias_ptr = bias.data_ptr<float>();
+    }
+
+    const int N = x.size(0);
+    const int C_in = x.size(1);
+    const int H_in = x.size(2);
+    const int W_in = x.size(3);
+    
+    const int kH = weight.size(2);
+    const int kW = weight.size(3);
+    const int C_out = weight.size(1);
+
+    const int sH = stride[0];
+    const int sW = stride[1];
+    const int pH = padding[0];
+    const int pW = padding[1];
+
+    // Compute output dimensions for conv_transpose2d
+    int H_out = (H_in - 1) * sH - 2 * pH + kH;
+    int W_out = (W_in - 1) * sW - 2 * pW + kW;
+
+    auto output = torch::zeros({N, C_out, H_out, W_out}, x.options());
+
+    const int total_elements = N * C_out * H_out * W_out;
+    constexpr int BLOCK_SIZE = 256;
+    int num_blocks = (total_elements + BLOCK_SIZE - 1) / BLOCK_SIZE;
+
+    conv_transpose2d_forward_kernel<BLOCK_SIZE><<<num_blocks, BLOCK_SIZE>>>(
+        x.data_ptr<float>(),
+        bias_ptr,
+        output.data_ptr<float>(),
+        N, C_in, H_in, W_in,
+        C_out, H_out, W_out,
+        kH, kW,
+        sH, sW,
+        pH, pW
+    );
+
+    return output;
+}
+
+PYBIND11_MODULE(TORCH_EXTENSION_NAME, m) {
+    m.def("forward", &conv_transpose2d_forward, "Conv Transpose 2D forward with manual loop unrolling",
+          py::arg("x"),
+          py::arg("weight"),
+          py::arg("bias") = py::none(),
+          py::arg("stride"),
+          py::arg("padding"));
+}
