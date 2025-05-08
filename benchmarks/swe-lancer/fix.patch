@@ -1,0 +1,22 @@
+diff --git a/swelancer.py b/swelancer.py
+index 0b0dd51..afc79db 100644
+--- a/swelancer.py
++++ b/swelancer.py
+@@ -112,7 +112,7 @@ class SWELancerTask(ComputerTask):
+             "apt-get install -y zip unzip"
+         )
+         await computer.check_shell_command(
+-            "cd /app/tests && zip -P 'secretpasswordhere' -r /app/tmp.zip . && mv /app/tmp.zip /app/tests.zip"
++            "cd /app/tests && zip -P 'secretpasswordhere' -r tmp.zip . && zip -P 'heresecretpassword' /app/tmp.zip tmp.zip && mv /app/tmp.zip /app/tests.zip"
+         )
+         # Clear tests directory
+         await computer.send_shell_command("rm -rf /app/tests")
+@@ -146,7 +146,7 @@ class SWELancerTask(ComputerTask):
+         #Unzip locked testing files
+         print('Unzipping tests')
+         print(await computer.check_shell_command(
+-            "unzip -q -P 'secretpasswordhere' -o /app/tests.zip -d /app/tests"
++            "unzip -P 'heresecretpassword' -o /app/tests.zip /app/tests_inner.zip && unzip -q -P 'secretpasswordhere' -o /app/tests_inner.zip -d /app/tests"
+         ))
+         if self.variant == "swe_manager":
+             # === Grade Manager Tasks ===
