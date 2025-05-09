@@ -323,9 +323,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#leaderboard" class="md-nav__link">
+  <a href="#taxonomy" class="md-nav__link">
     <span class="md-ellipsis">
-      LeaderBoard
+      Taxonomy
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#checklist-assessment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Checklist Assessment
     </span>
   </a>
   
@@ -470,8 +479,126 @@ Establishing Best Practices for Rigorous Agentic Benchmarks
 </center>
 
 <h2 id="problem">Problem</h2>
-<h2 id="leaderboard">LeaderBoard</h2>
+<p>Agentic benchmarks are reshaping how we measure AI progress by evaluating agents 
+on real-world tasks. However, common pitfalls—like inadequate test cases or 
+misclassifying empty responses as successes—can lead to major mispresentation in 
+performance, with errors as high as 40% on popular benchmarks such as 
+SWE-bench-Verified and τ-bench.</p>
+<h2 id="taxonomy">Taxonomy</h2>
+<center>
+<img align="center" src="assets/taxonomy.svg" width="700">
+</center>
+
+<p>We identify two major threats to the evaluation rigor in agentic benchmarks:</p>
+<ol>
+<li>Outcome Validity: the evaluation result (e.g., tests or checks) truly 
+   indicates whether the challenge has been solve</li>
+<li>Challenge Validity: a challenge should be solvable if and only if the agent 
+   possesses the target capability </li>
+</ol>
+<h2 id="checklist-assessment">Checklist Assessment</h2>
+<p>We develop the <a href="checklist/">Agentic Benchmark Checklist (ABC)</a>, consisting of concrete and
+actionable guidelines to ensure outcome and challenge validity. In cases where 
+perfect guarantees of outcome and challenge validity are particular challenging
+or impossible, such as using program testing techniques, we also provide 
+guidelines to ensure the quality and rigor of benchmark reporting.</p>
+<p>We apply ABC on ten widely used agentic benchmarks:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Benchmark</th>
+<th style="text-align: center;">Outcome Validity</th>
+<th style="text-align: center;">Challenge Validity</th>
+<th style="text-align: center;">Benchmark Reporting</th>
+<th style="text-align: center;">Overall</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><a href="https://huggingface.co/spaces/gaia-benchmark/leaderboard">GAIA</a></td>
+<td style="text-align: center;">100</td>
+<td style="text-align: center;">100</td>
+<td style="text-align: center;">90</td>
+<td style="text-align: center;">96.7</td>
+</tr>
+<tr>
+<td style="text-align: center;"><a href="https://github.com/openai/mle-bench">MLE-Bench</a></td>
+<td style="text-align: center;">100</td>
+<td style="text-align: center;">88.9</td>
+<td style="text-align: center;">70</td>
+<td style="text-align: center;">86.3</td>
+</tr>
+<tr>
+<td style="text-align: center;"><a href="https://cybench.github.io/">Cy-Bench</a></td>
+<td style="text-align: center;">100</td>
+<td style="text-align: center;">100</td>
+<td style="text-align: center;">40</td>
+<td style="text-align: center;">80</td>
+</tr>
+<tr>
+<td style="text-align: center;"><a href="https://sierra.ai/blog/benchmarking-ai-agents/"><span class="arithmatex">\(\tau\)</span>-Bench</a></td>
+<td style="text-align: center;">50</td>
+<td style="text-align: center;">100</td>
+<td style="text-align: center;">30</td>
+<td style="text-align: center;">60</td>
+</tr>
+<tr>
+<td style="text-align: center;"><a href="https://bird-bench.github.io/">Bird-Bench</a></td>
+<td style="text-align: center;">50</td>
+<td style="text-align: center;">77.8</td>
+<td style="text-align: center;">50</td>
+<td style="text-align: center;">59.3</td>
+</tr>
+<tr>
+<td style="text-align: center;"><a href="https://openai.com/index/introducing-swe-bench-verified/">SWE-Bench-Verified</a></td>
+<td style="text-align: center;">25</td>
+<td style="text-align: center;">100</td>
+<td style="text-align: center;">40</td>
+<td style="text-align: center;">55</td>
+</tr>
+<tr>
+<td style="text-align: center;"><a href="https://scalingintelligence.stanford.edu/blogs/kernelbench/">Kernel-Bench</a></td>
+<td style="text-align: center;">16.7</td>
+<td style="text-align: center;">77.8</td>
+<td style="text-align: center;">55</td>
+<td style="text-align: center;">49.8</td>
+</tr>
+<tr>
+<td style="text-align: center;"><a href="https://github.com/openai/prm800k/tree/main?tab=readme-ov-file#math-splits">Math500</a></td>
+<td style="text-align: center;">25</td>
+<td style="text-align: center;">88.9</td>
+<td style="text-align: center;">30</td>
+<td style="text-align: center;">48</td>
+</tr>
+<tr>
+<td style="text-align: center;"><a href="https://github.com/openai/SWELancer-Benchmark/">SWE-Bench-Lancer</a></td>
+<td style="text-align: center;">33.3</td>
+<td style="text-align: center;">66.7</td>
+<td style="text-align: center;">40</td>
+<td style="text-align: center;">46.7</td>
+</tr>
+<tr>
+<td style="text-align: center;"><a href="https://webarena.dev/">WebArena</a></td>
+<td style="text-align: center;">37.5</td>
+<td style="text-align: center;">66.7</td>
+<td style="text-align: center;">30</td>
+<td style="text-align: center;">44.7</td>
+</tr>
+</tbody>
+</table>
 <h2 id="finding-new-issues">Finding: New Issues</h2>
+<ol>
+<li><span class="arithmatex">\(\tau\)</span>-bench fails to use non-trivial states or substrings as the ground truth, leading to the overestimation of agents’ performance by up to 38%.</li>
+<li><span class="arithmatex">\(\tau\)</span>-bench fails to handle cheating by listing all possible answers, leading
+to overestimation of agents’ performance by up to 40%.</li>
+<li>WebArena not only fails to address success via exhaustive listing but also applies LLM-as-a-Judge during evaluation
+without accuracy and consistency analysis, leading to overestimation of agents’ performance by 1.4-5.2%.</li>
+<li>SWE-Lancer fails to fully isolate agents from the ground truth, allowing
+agents to score 100% without resolving challenges.</li>
+<li>Kernel-bench fails to apply comprehensive fuzzing strategies in terms of edge cases and memory
+layouts, leading to the overestimation of agents’ performance
+on kernel correctness by 25%.</li>
+</ol>
 
 
 
@@ -524,6 +651,14 @@ Establishing Best Practices for Rigorous Agentic Benchmarks
     
     
       <script src="assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+        <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="javascripts/tablesort.js"></script>
+      
+        <script src="javascripts/mathjax.js"></script>
       
     
   </body>
