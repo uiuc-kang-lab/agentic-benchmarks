@@ -1,0 +1,10 @@
+/* Center header content (including logo/title) */
+.md-header__inner {
+    justify-content: center !important;
+}
+
+/* (Optional) Remove padding/margin to better center the logo/title itself */
+.md-header__title {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
