@@ -1,0 +1,2353 @@
+[
+  {
+    "task_id": 0,
+    "eval": "Quest Lumaflex\u2122 Band",
+    "question": "What is the top-1 best-selling product in 2022",
+    "anno": "Not match",
+    "agent_answer": "Quest Lumaflex Band, Sprite Yoga Strap 6 foot, Sprite Stasis Ball 65 cm"
+  },
+  {
+    "task_id": 1,
+    "eval": "Sprite",
+    "question": "What is the top-1 best-selling brand in Quarter 1 2022",
+    "anno": "Match",
+    "agent_answer": "Sprite"
+  },
+  {
+    "task_id": 2,
+    "eval": "Yoga ball",
+    "question": "What is the top-1 best-selling product type in Quarter 1 2022",
+    "anno": "Not match",
+    "agent_answer": "Sprite Yoga Strap 6 foot"
+  },
+  {
+    "task_id": 3,
+    "eval": "Quest Lumaflex\u2122 Band, Sprite Stasis Ball 65 cm",
+    "question": "What are the top-2 best-selling product in 2022",
+    "anno": "Not match",
+    "agent_answer": "Sprite Stasis Ball 65 cm, Sprite Yoga Strap 6 foot"
+  },
+  {
+    "task_id": 4,
+    "eval": "Impulse Duffle, Overnight Duffle, Hawkeye Yoga Short-32-Blue",
+    "question": "What are the top-3 best-selling product in Jan 2023",
+    "anno": "Not match",
+    "agent_answer": "Sprite Yoga Strap 6 foot, Quest Lumaflex Band, Sprite Stasis Ball 65 cm"
+  },
+  {
+    "task_id": 5,
+    "eval": "Duffle",
+    "question": "What is the top-1 best-selling product type in Jan 2023",
+    "anno": "Not match",
+    "agent_answer": "Sprite Yoga Strap 6 foot"
+  },
+  {
+    "task_id": 6,
+    "eval": "Sprite Yoga Strap 6 foot, Overnight Duffle, Ida Workout Parachute Pant-29-Purple, Hawkeye Yoga Short-32-Blue, Sprite Stasis Ball 65 cm",
+    "question": "What are the top-5 best-selling product in 2023",
+    "anno": "Not match",
+    "agent_answer": "Sprite Stasis Ball 65 cm, Sprite Yoga Strap 6 foot, Quest Lumaflex Band, Sprite Stasis Ball 55 cm, Overnight Duffle"
+  },
+  {
+    "task_id": 7,
+    "eval": "Pittsburgh International Airport People Movers, Airport Boulevard, Findlay Township, Allegheny County, Pennsylvania, 15231, United States",
+    "question": "Tell me the full address of all international airports that are within a driving distance of 50 km to Carnegie Mellon University",
+    "anno": "Not match",
+    "agent_answer": "Pittsburgh International Airport, Southern Beltway, Findlay Township, Allegheny County, 15231, United States - 33 km"
+  },
+  {
+    "task_id": 8,
+    "eval": "There is no airport within 5 km of Carnegie Mellon University",
+    "question": "Tell me the full address of all international airports that are within a driving distance of 5 km to Carnegie Mellon University",
+    "anno": "Match",
+    "agent_answer": "No international airports within a driving distance of 5 km to Carnegie Mellon University. The closest found, Pittsburgh International Airport, is approximately 33 km away."
+  },
+  {
+    "task_id": 9,
+    "eval": "Pittsburgh International Airport People Movers, Airport Boulevard, Findlay Township, Allegheny County, Pennsylvania, 15231, United States",
+    "question": "Tell me the full address of all international airports that are within a driving distance of 30 km to Carnegie Art Museum",
+    "anno": "Not match",
+    "agent_answer": "Unable to access Google Maps and find the required information within the 20-step interaction budget."
+  },
+  {
+    "task_id": 10,
+    "eval": "Niagara Falls International Airport, 2035, Niagara Falls Boulevard, City of Niagara Falls, Town of Wheatfield, Niagara County, New York, 14304, United States Buffalo-Niagara International Airport, South Youngs Road, Town of Cheektowaga, Erie County, New York, 14221, United States",
+    "question": "Tell me the full address of all US international airports that are within a driving distance of 60 km to Niagara Falls",
+    "anno": "Not match",
+    "agent_answer": "N/A"
+  },
+  {
+    "task_id": 11,
+    "eval": "6",
+    "question": "Tell me the the number of reviews that our store received by far that mention term \"disappointed\"",
+    "anno": "Not match",
+    "agent_answer": "0"
+  },
+  {
+    "task_id": 12,
+    "eval": "2",
+    "question": "Tell me the the number of reviews that our store received by far that mention term \"satisfied\"",
+    "anno": "Not match",
+    "agent_answer": "0"
+  },
+  {
+    "task_id": 13,
+    "eval": "2",
+    "question": "Tell me the the number of reviews that our store received by far that mention term \"decent\"",
+    "anno": "Not match",
+    "agent_answer": "0"
+  },
+  {
+    "task_id": 14,
+    "eval": "0",
+    "question": "Tell me the the number of reviews that our store received by far that mention term \"not useful\"",
+    "anno": "Match",
+    "agent_answer": "0"
+  },
+  {
+    "task_id": 15,
+    "eval": "2",
+    "question": "Tell me the the number of reviews that our store received by far that mention term \"best\"",
+    "anno": "Not match",
+    "agent_answer": "351"
+  },
+  {
+    "task_id": 16,
+    "eval": "Driving: 2min. Walking: 16min.",
+    "question": "Compare the time for walking and driving route from 5000 Fifth Avenue, Pittsburgh to UPMC family health center",
+    "anno": "Match",
+    "agent_answer": "Walking: 16 minutes, Driving: 2 minutes"
+  },
+  {
+    "task_id": 17,
+    "eval": "driving: 13min, walking: 1h 35min.",
+    "question": "Compare the time for walking and driving route from AMC Waterfront to Carnegie Mellon University",
+    "anno": "Match",
+    "agent_answer": "Driving: 7.8 km, 13 minutes; Walking: 7.1 km, 1:35 hours."
+  },
+  {
+    "task_id": 18,
+    "eval": "driving: 15min, walking: 1h 47min.",
+    "question": "Compare the time for walking and driving route from AMC Waterfront to Univ of Pittsburgh",
+    "anno": "Match",
+    "agent_answer": "Driving: 8.9 km, 15 minutes; Walking: 8.0 km, 1 hour and 47 minutes."
+  },
+  {
+    "task_id": 19,
+    "eval": "driving: 12min, walking: 1h 44min.",
+    "question": "Compare the time for walking and driving route from Carnegie Science Center to Carnegie Mellon University",
+    "anno": "Match",
+    "agent_answer": "Driving: 12 minutes, Walking: 1 hour 44 minutes"
+  },
+  {
+    "task_id": 20,
+    "eval": "driving: 13min, walking: 1h 45min.",
+    "question": "Compare the difference in time for walking and driving route from Randyland to Carnegie Mellon University",
+    "anno": "Match",
+    "agent_answer": "Walking: 1 hour 45 minutes; Driving: 13 minutes"
+  },
+  {
+    "task_id": 21,
+    "eval": "Joseph Brzezinski, Catso, Dibbins, Anglebert Dinkherhump, Michelle Davis",
+    "question": "List out reviewers, if exist, who mention about ear cups being small",
+    "anno": "Not match",
+    "agent_answer": "Reviewers mentioning small ear cups: Catso, Dibbins"
+  },
+  {
+    "task_id": 22,
+    "eval": "N/A",
+    "question": "List out reviewers, if exist, who mention about under water photo",
+    "anno": "Match",
+    "agent_answer": "No reviewers mention underwater photography in their reviews."
+  },
+  {
+    "task_id": 23,
+    "eval": "Rachel, T. Gannon, ",
+    "question": "List out reviewers, if exist, who mention about good fingerprint resistant",
+    "anno": "Match",
+    "agent_answer": "Rachel: \"It is super clear and fingerprint resistant.\"; T. Gannon: \"Seems much better than the one replaced, it does seem to resist fingerprints and stay cleaner.\""
+  },
+  {
+    "task_id": 24,
+    "eval": "N/A",
+    "question": "List out reviewers, if exist, who mention about price being unfair",
+    "anno": "Match",
+    "agent_answer": "No reviewers mentioned that the price is unfair."
+  },
+  {
+    "task_id": 25,
+    "eval": "GoldfishGoldfish, Roxanne Brandon Coffey",
+    "question": "List out reviewers, if exist, who mention about average print quality",
+    "anno": "Not match",
+    "agent_answer": "\"J. B. Shirey II\""
+  },
+  {
+    "task_id": 26,
+    "eval": "Bob in Vegas, RemyRRemyR",
+    "question": "List out reviewers, if exist, who mention about complain of the customer service",
+    "anno": "Not match",
+    "agent_answer": "List of reviewers complaining about customer service: Bob in Vegas, Roxanne Brandon Coffey"
+  },
+  {
+    "task_id": 27,
+    "eval": "0",
+    "question": "Tell me the count of comments that have received more downvotes than upvotes for the user who made the latest post on the Showerthoughts forum.",
+    "anno": "Not match",
+    "agent_answer": "[44373"
+  },
+  {
+    "task_id": 28,
+    "eval": "0",
+    "question": "Tell me the count of comments that have received more downvotes than upvotes for the user who made the latest post on the Worcester forum.",
+    "anno": "Not match",
+    "agent_answer": "Count of comments where downvotes exceed upvotes for user MarvelsGrantMan136 is 0."
+  },
+  {
+    "task_id": 29,
+    "eval": "1",
+    "question": "Tell me the count of comments that have received more downvotes than upvotes for the user who made the latest post on the DIY forum.",
+    "anno": "Not match",
+    "agent_answer": "Count manually and provide the result"
+  },
+  {
+    "task_id": 30,
+    "eval": "0",
+    "question": "Tell me the count of comments that have received more downvotes than upvotes for the user who made the latest post on the space forum.",
+    "anno": "Not match",
+    "agent_answer": "N/A"
+  },
+  {
+    "task_id": 31,
+    "eval": "0",
+    "question": "Tell me the count of comments that have received more downvotes than upvotes for the user who made the latest post on the photoshopbattles forum.",
+    "anno": "Not match",
+    "agent_answer": "N/A"
+  },
+  {
+    "task_id": 32,
+    "eval": "DoubleTree by Hilton Hotel Pittsburgh Airport Distance: 2.0km",
+    "question": "I will arrive Pittsburgh Airport soon. Provide the name of a Hilton hotel in the vicinity, if available. Then, tell me the the walking distance to the nearest supermarket own by a local company from the hotel.",
+    "anno": "Not match",
+    "agent_answer": " [16] [Search for a Hilton hotel near Pittsburgh Airport using a more specialized hotel booking or travel website like Booking.com or Hotels.com."
+  },
+  {
+    "task_id": 33,
+    "eval": "DoubleTree by Hilton Hotel Pittsburgh Airport Distance: 1.4km",
+    "question": "I will arrive Pittsburgh Airport soon. Provide the name of a Hilton hotel in the vicinity, if available. Then, tell me the the shortest walking distance to a supermarket from the hotel.",
+    "anno": "Not match",
+    "agent_answer": "No Hilton hotel found near Pittsburgh Airport on OpenStreetMap."
+  },
+  {
+    "task_id": 34,
+    "eval": "Hyatt Regency Pittsburgh International Airport\n3:30",
+    "question": "I will arrive Pittsburgh Airport soon. Provide the name of a Hyatt hotel in the vicinity, if available. Then, tell me the the shortest walking time to a supermarket from the hotel.",
+    "anno": "Not match",
+    "agent_answer": "No Hyatt hotel found near Pittsburgh Airport using the available search methods."
+  },
+  {
+    "task_id": 35,
+    "eval": "Hyatt Regency Pittsburgh International Airport Time: 15min",
+    "question": "I will arrive Pittsburgh Airport soon. Provide the name of a Hyatt hotel in the vicinity, if available. Then, tell me the the minimal driving time to a supermarket from the hotel.",
+    "anno": "Not match",
+    "agent_answer": ""
+  },
+  {
+    "task_id": 36,
+    "eval": "Yes",
+    "question": "Check if the social security administration in pittsburgh can be reached in one hour by car from Carnegie Mellon University",
+    "anno": "Match",
+    "agent_answer": "Yes, the Social Security Administration in Pittsburgh can be reached in 8 minutes by car from Carnegie Mellon University."
+  },
+  {
+    "task_id": 37,
+    "eval": "Yes",
+    "question": "Check if the police station in pittsburgh can be reached in one hour by car from gates building at CMU",
+    "anno": "Not match",
+    "agent_answer": "0:01"
+  },
+  {
+    "task_id": 38,
+    "eval": "Yes",
+    "question": "Check if the duquesne university in pittsburgh can be reached in one hour by car from pittsburgh airport",
+    "anno": "Match",
+    "agent_answer": "Yes, Duquesne University in Pittsburgh can be reached in one hour by car from Pittsburgh airport."
+  },
+  {
+    "task_id": 39,
+    "eval": "Yes",
+    "question": "Check if the walmart in pittsburgh can be reached in one hour by car from 5600 fifth avenue",
+    "anno": "Not match",
+    "agent_answer": "26 minutes"
+  },
+  {
+    "task_id": 40,
+    "eval": "Yes",
+    "question": "Check if the amc theatre in pittsburgh can be reached in one hour by car from hobart street",
+    "anno": "Not match",
+    "agent_answer": ""
+  },
+  {
+    "task_id": 41,
+    "eval": "hollister",
+    "question": "List the top 1 search terms in my store",
+    "anno": "Match",
+    "agent_answer": "hollister"
+  },
+  {
+    "task_id": 42,
+    "eval": "hollister, Joust Bag",
+    "question": "List the top 2 search terms in my store",
+    "anno": "Match",
+    "agent_answer": "hollister, Joust Bag"
+  },
+  {
+    "task_id": 43,
+    "eval": "hollister, Joust Bag, Antonia Race Tank",
+    "question": "List the top 3 search terms in my store",
+    "anno": "Match",
+    "agent_answer": "hollister - 19 uses, Joust Bag - 4 uses, Antonia Racer Tank - 2 uses"
+  },
+  {
+    "task_id": 47,
+    "eval": "0 order, $0 total spend",
+    "question": "Today is 6/12/2023. Tell me how many fulfilled orders I have over the past month, and the total amount of money I spent.",
+    "anno": "Match",
+    "agent_answer": "Fulfilled Orders: 0, Total Amount: $0"
+  },
+  {
+    "task_id": 48,
+    "eval": "0 order, $0 total spend",
+    "question": "Today is 6/12/2023. Tell me how many fulfilled orders I have over the past three days, and the total amount of money I spent.",
+    "anno": "Match",
+    "agent_answer": "No orders from the past three days (6/9/2023 to 6/12/2023) are available in the order history."
+  },
+  {
+    "task_id": 49,
+    "eval": "3 orders, $845.49 total spend",
+    "question": "Today is 6/12/2023. Tell me how many fulfilled orders I have over the past four month, and the total amount of money I spent.",
+    "anno": "Not match",
+    "agent_answer": "3 completed orders totaling $845.49"
+  },
+  {
+    "task_id": 50,
+    "eval": "24 orders, $6560.69 total spend",
+    "question": "Today is 6/12/2023. Tell me how many fulfilled orders I have over the past year, and the total amount of money I spent.",
+    "anno": "Not match",
+    "agent_answer": "N/A"
+  },
+  {
+    "task_id": 51,
+    "eval": "12 orders, $1603.69 total spend",
+    "question": "Today is 6/12/2023. Tell me how many fulfilled orders I have over the past six month, and the total amount of money I spent.",
+    "anno": "Not match",
+    "agent_answer": "Data collection complete. No orders from the past six months (12/6/2022 to 6/12/2023) were displayed."
+  },
+  {
+    "task_id": 52,
+    "eval": "7 min",
+    "question": "How long does it take to walk from Carnegie Mellon University to starbucks on Craig Street?",
+    "anno": "Match",
+    "agent_answer": "7 minutes"
+  },
+  {
+    "task_id": 53,
+    "eval": "18 min",
+    "question": "How long does it take to walk from Univ of Pittsburgh to starbucks on Craig Street?",
+    "anno": "Match",
+    "agent_answer": "18 minutes"
+  },
+  {
+    "task_id": 54,
+    "eval": "25 min",
+    "question": "How long does it take to walk from Carnegie Mellon University to Univ of Pittsburgh?",
+    "anno": "Match",
+    "agent_answer": "25 minutes"
+  },
+  {
+    "task_id": 55,
+    "eval": "30 min",
+    "question": "How long does it take to walk from the starbuck near CMU to Chatham university?",
+    "anno": "Not match",
+    "agent_answer": "Unable to locate Starbucks near CMU on OpenStreetMap for walking directions to Chatham University."
+  },
+  {
+    "task_id": 56,
+    "eval": "11 min",
+    "question": "How long does it take to walk from Carnegie Museum of Art to a library at CMU?",
+    "anno": "Not match",
+    "agent_answer": "[0] [Repeated failures to locate the library at CMU using various names and terms suggest a need to reconsider the approach or consult a different map or direction service."
+  },
+  {
+    "task_id": 57,
+    "eval": "El Gallo de Oro, Back Bar Grill, Grano, Beefsteak, Nourish, Schatz Dining Room, Au Bon Pain",
+    "question": "Tell me the closest restaurant(s) to university center at Carnegie Mellon University",
+    "anno": "Not match",
+    "agent_answer": "t\u00e4k\u014d t\u00f4rt\u00e4, 122, Bakery Square Boulevard, Pittsburgh; Alta Via Pizzeria, 6425, Penn Avenue, Pittsburgh"
+  },
+  {
+    "task_id": 58,
+    "eval": "De Fer Coffee & Tea",
+    "question": "Tell me the closest cafe(s) to CMU Hunt library",
+    "anno": "Match",
+    "agent_answer": "Cappy's Cafe, Jitters Cafe & Ice Cream, La Prima Espresso (two locations), Rothberg's Roasters II, De Fer Coffee & Tea, Starbucks (two locations), Caf\u00e9 Phipps, sidecar"
+  },
+  {
+    "task_id": 59,
+    "eval": "The exchange",
+    "question": "Tell me the closest restaurant(s) to CMU Hunt library",
+    "anno": "Not match",
+    "agent_answer": "Carnegie Mellon Caf\u00e9, Rooted, Tahini, Schatz Dining Room, Taste of India, Cucina, Fresh52, Grano, Nourish, Innovation Kitchen"
+  },
+  {
+    "task_id": 60,
+    "eval": "The exchange",
+    "question": "Tell me the closest restaurant(s) to CMU Posner Hall",
+    "anno": "Not match",
+    "agent_answer": "Carnegie Mellon Caf\u00e9, Rooted, Tahini, Schatz Dining Room, Taste of India, Cucina, Fresh52, Grano, Nourish, Innovation Kitchen"
+  },
+  {
+    "task_id": 61,
+    "eval": "La Prima Espresso",
+    "question": "Tell me the closest restaurant(s) to CMU Sorrells Library",
+    "anno": "Not match",
+    "agent_answer": "Carnegie Mellon Caf\u00e9 is the closest restaurant to CMU Sorrells Library located at coordinates 40.4424191, -79.9397388."
+  },
+  {
+    "task_id": 62,
+    "eval": "Jane Smith",
+    "question": "Which customer has completed the most number of orders in the entire history?",
+    "anno": "Not match",
+    "agent_answer": "[9474"
+  },
+  {
+    "task_id": 63,
+    "eval": "Adam Garcia, Michael Nguyen, Sarah Miller",
+    "question": "Which customer(s) has completed the second most number of orders in the entire history?",
+    "anno": "Not match",
+    "agent_answer": "Matt Baker, Jane Doe"
+  },
+  {
+    "task_id": 64,
+    "eval": "Lisa Kim, Lisa Green, Julia Williams, Brian Smith, Alexander Thomas",
+    "question": "Which customer has placed 2 orders in the entire history?",
+    "anno": "Not match",
+    "agent_answer": "Ava Brown"
+  },
+  {
+    "task_id": 65,
+    "eval": "Jane Doe",
+    "question": "Which customer has completed the fifth most number of orders in the entire history?",
+    "anno": "Match",
+    "agent_answer": "Jane Doe"
+  },
+  {
+    "task_id": 66,
+    "eval": "__REDDIT__/f/books/59396/apple-books-has-a-free-audiobook-of-a-christmas-carol, __REDDIT__/f/books/17445/i-just-finished-reading-the-hobbit-to-my-6-year-old-daughter",
+    "question": "Among the top 10 post in \"books\" forum, show me the post URLs that recommand a single book",
+    "anno": "Not match",
+    "agent_answer": "URL of the post \"All Systems Red by Martha Wells\""
+  },
+  {
+    "task_id": 67,
+    "eval": "A Christmas Carol, The Hobbit",
+    "question": "Among the top 10 post in \"books\" forum, show me the book names from posts that recommand a single book",
+    "anno": "Match",
+    "agent_answer": "The Bell Jar, All Systems Red, The Hobbit, Things Fall Apart, Fahrenheit 451, A Christmas Carol, The Haunting of Hill House"
+  },
+  {
+    "task_id": 68,
+    "eval": "A Christmas Carol by Levar Burton: , The Hobbit by J. R. R. Tolkien",
+    "question": "Among the top 10 post in \"books\" forum, show me the author name and the book name from posts that recommand a single book",
+    "anno": "Not match",
+    "agent_answer": "\"Author: Martha Wells, Book: All Systems Red\""
+  },
+  {
+    "task_id": 69,
+    "eval": "bookshop.org",
+    "question": "Among the top 10 post in \"books\" forum, is there any post talks about supporting local book stores? If so, tell me the organizations involved",
+    "anno": "Match",
+    "agent_answer": "The post \"Friendly reminder bookshop.org exists\" discusses supporting local bookstores by mentioning Bookshop.org, which allows customers to support local bookstores by allocating a portion of their book purchases to the store of their choice. Additional comments suggest other organizations and methods for supporting local bookstores, including Libro.fm for audiobooks."
+  },
+  {
+    "task_id": 70,
+    "eval": "15213",
+    "question": "What is the zip code of Carnegie Mellon University?",
+    "anno": "Match",
+    "agent_answer": "15213"
+  },
+  {
+    "task_id": 71,
+    "eval": "15232",
+    "question": "What is the zip code of Chatham University?",
+    "anno": "Not match",
+    "agent_answer": "15232, 15208"
+  },
+  {
+    "task_id": 72,
+    "eval": "06516",
+    "question": "What is the zip code of Yale University?",
+    "anno": "Not match",
+    "agent_answer": "06510"
+  },
+  {
+    "task_id": 73,
+    "eval": "10027",
+    "question": "What is the zip code of Columbia University?",
+    "anno": "Match",
+    "agent_answer": "10027"
+  },
+  {
+    "task_id": 74,
+    "eval": "Carnegie Mellon University, starbucks on forbes ave, apple store shadyside",
+    "question": "Given the following locations, ['Carnegie Mellon University', 'apple store shadyside', 'starbucks on craig street'], what would be the optimal route to travel through them all in order to minimize total travel time? Please note the journey begins at the first place listed.",
+    "anno": "Not match",
+    "agent_answer": "Total route: Start at Carnegie Mellon University, travel to apple store shadyside (1.5km, 0:03), then proceed to Starbucks on Craig Street (529m, 0:01). Total estimated travel time: 4 minutes."
+  },
+  {
+    "task_id": 75,
+    "eval": "Massachusetts Institute of Technology, Harvard University, Boston Logan International Airport",
+    "question": "Given the following locations, ['Massachusetts Institute of Technology', 'Harvard University', 'Boston Logan International Airport'], what would be the optimal route to travel through them all in order to minimize total travel time? Please note the journey begins at the first place listed.",
+    "anno": "Match",
+    "agent_answer": "Total travel time: 22 minutes (7 minutes to Harvard University + 15 minutes to Boston Logan International Airport)"
+  },
+  {
+    "task_id": 76,
+    "eval": "Princeton University, Yale University, Harvard University",
+    "question": "Given the following locations, ['Princeton University', 'Yale University', 'Harvard University'], what would be the optimal route to travel through them all in order to minimize total travel time? Please note the journey begins at the first place listed.",
+    "anno": "Not match",
+    "agent_answer": "Total travel time: 5 hours 37 minutes (2:43 + 2:54)"
+  },
+  {
+    "task_id": 77,
+    "eval": "5",
+    "question": "What is the total count of Pending reviews amongst all the reviews?",
+    "anno": "Not match",
+    "agent_answer": "5"
+  },
+  {
+    "task_id": 78,
+    "eval": "346",
+    "question": "What is the total count of Approved reviews amongst all the reviews?",
+    "anno": "Not match",
+    "agent_answer": "[14483"
+  },
+  {
+    "task_id": 79,
+    "eval": "0",
+    "question": "What is the total count of Not Approved reviews amongst all the reviews?",
+    "anno": "Match",
+    "agent_answer": "0"
+  },
+  {
+    "task_id": 80,
+    "eval": "38 min",
+    "question": "What is the duration required to first walk from Carnegie Mellon University to Starbucks on Craig Street, and then drive to Pittsburgh International Airport?",
+    "anno": "Match",
+    "agent_answer": "Total duration: 39 minutes"
+  },
+  {
+    "task_id": 81,
+    "eval": "49 min",
+    "question": "What is the duration required to first walk from Univ of Pittsburgh to starbucks on Craig Street, and then drive to Pittsburgh International Airport?",
+    "anno": "Match",
+    "agent_answer": "Walking: 18 minutes, Driving: 30 minutes, Total: 48 minutes"
+  },
+  {
+    "task_id": 82,
+    "eval": "63 min",
+    "question": "What is the duration required to first walk from Massachusetts Institute of Technology to Harvard University, and then drive to Boston Logan International Airport?",
+    "anno": "Match",
+    "agent_answer": "45 minutes (walking from MIT to Harvard) + 15 minutes (driving from Harvard to Logan Airport) = 60 minutes"
+  },
+  {
+    "task_id": 83,
+    "eval": "22 min",
+    "question": "What is the duration required to first walk from Carnegie Mellon University to apple store shadyside, and then drive to starbucks on craig street?",
+    "anno": "Not match",
+    "agent_answer": "20 minutes"
+  },
+  {
+    "task_id": 84,
+    "eval": "14 minutes",
+    "question": "From my stay at DoubleTree by Hilton New York Downtown, what's the estimated driving time to reach Keens Steakhouse?",
+    "anno": "Match",
+    "agent_answer": "14 minutes"
+  },
+  {
+    "task_id": 85,
+    "eval": "30 minutes",
+    "question": "From my stay at La Quinta Inn near the airport, what's the estimated driving time to reach Carnegie Mellon University?",
+    "anno": "Match",
+    "agent_answer": "0:30"
+  },
+  {
+    "task_id": 86,
+    "eval": "29 minutes",
+    "question": "From my stay at La Quinta Inn near the airport, what's the estimated driving time to reach Upitt?",
+    "anno": "Match",
+    "agent_answer": "31 minutes"
+  },
+  {
+    "task_id": 87,
+    "eval": "20 minutes",
+    "question": "From my stay at red roof inn, what's the estimated driving time to reach Pittsburgh science museum?",
+    "anno": "Not match",
+    "agent_answer": "6h 54min"
+  },
+  {
+    "task_id": 88,
+    "eval": "34 minutes",
+    "question": "From my stay at Homewood Suites Southpointe, what's the estimated driving time to reach PPG Paints Arena?",
+    "anno": "Match",
+    "agent_answer": "34 minutes"
+  },
+  {
+    "task_id": 89,
+    "eval": "Rhode Island, Massachusetts, New York",
+    "question": "Which US states border Connecticut?",
+    "anno": "Match",
+    "agent_answer": "New York, Massachusetts, Rhode Island"
+  },
+  {
+    "task_id": 90,
+    "eval": "Ohio, Maryland, New York, New Jersey, Delaware, West Virginia",
+    "question": "Which US states border Pennsylvania?",
+    "anno": "Match",
+    "agent_answer": "New York, New Jersey, Delaware, Maryland, West Virginia, Ohio"
+  },
+  {
+    "task_id": 91,
+    "eval": "Rhode Island, Connecticut, New York, New Hampshire, Vermont",
+    "question": "Which US states border Massachusetts?",
+    "anno": "Not match",
+    "agent_answer": "Consult an encyclopedia or geography-focused website for direct information on states bordering Massachusetts."
+  },
+  {
+    "task_id": 92,
+    "eval": "New York, New Hampshire, Massachusetts",
+    "question": "Which US states border Vermont?",
+    "anno": "Not match",
+    "agent_answer": " [4] [Navigate to Google or another search engine to search for \"states bordering Vermont.\""
+  },
+  {
+    "task_id": 93,
+    "eval": "Massachusetts, Vermont, Maine",
+    "question": "Which US states border New Hampshire?",
+    "anno": "Not match",
+    "agent_answer": ""
+  },
+  {
+    "task_id": 94,
+    "eval": "$36.39",
+    "question": "Telll me the grand total of invoice 000000001.",
+    "anno": "Match",
+    "agent_answer": "36.39"
+  },
+  {
+    "task_id": 95,
+    "eval": "$39.64",
+    "question": "Telll me the grand total of invoice 000000002.",
+    "anno": "Match",
+    "agent_answer": "39.64"
+  },
+  {
+    "task_id": 96,
+    "eval": "The last order was canceled. It will never arrive.",
+    "question": "Tell me the status of my latest order and when will it arrive",
+    "anno": "Not match",
+    "agent_answer": "The query regarding the expected delivery date of order ID 000000190 has been submitted. A response from customer support should follow soon."
+  },
+  {
+    "task_id": 97,
+    "eval": "914 km",
+    "question": "Tell me the distance to drive from Carnegie Mellon University to the top computer science school in massachusetts",
+    "anno": "Not match",
+    "agent_answer": "Unable to retrieve the driving distance from Carnegie Mellon University to MIT due to persistent issues with the OpenStreetMap 'Go' button not initiating the search."
+  },
+  {
+    "task_id": 98,
+    "eval": "Fuku Tea, 3716, Forbes Avenue, Oakland, Central Oakland, Pittsburgh, Allegheny County, Pennsylvania, 15213, United States\n653m",
+    "question": "Where is the nearest tea cafe to University of Pittsburgh, and what is the walking distance to it?",
+    "anno": "Not match",
+    "agent_answer": ""
+  },
+  {
+    "task_id": 99,
+    "eval": "Five Guys, 117, South Bouquet Street, Oakland, North Oakland, Pittsburgh, Allegheny County, Pennsylvania, 15213, United States\n4.0km",
+    "question": "Where is the nearest Five Guys to 5700 Penn Ave, and what is the walking distance to it?",
+    "anno": "Not match",
+    "agent_answer": "Unable to locate the nearest Five Guys to 5700 Penn Ave using OpenStreetMap. Consider using a more comprehensive local business locator or a different mapping service."
+  },
+  {
+    "task_id": 100,
+    "eval": "Starbucks, 417, South Craig Street, Bellefield, Pittsburgh, Allegheny County, Pennsylvania, 15213, United States\n557m",
+    "question": "Where is the nearest Starbucks to Carnegie Mellon, and what is the walking distance to it?",
+    "anno": "Not match",
+    "agent_answer": "The nearest Starbucks to Carnegie Mellon University is located on Fifth Avenue, approximately 1.5 km away, with an estimated walking time of about 2 minutes."
+  },
+  {
+    "task_id": 101,
+    "eval": "N/A",
+    "question": "Where is the nearest In-N-Out to Upitts, and what is the walking distance to it?",
+    "anno": "Not match",
+    "agent_answer": "Unable to access Google Maps or a suitable map service to determine the nearest In-N-Out to the University of Pittsburgh from the current homepage. Attempts to navigate away have not changed the page access."
+  },
+  {
+    "task_id": 107,
+    "eval": "May: 8 orders June: 13 orders July: 9 orders August: 8 orders Sepetember: 10 orders Octorbor: 4 orders November: 5 orders December: 10 orders  ",
+    "question": "Presents the monthly count of successful orders from May to December 2022 in MM:COUNT format",
+    "anno": "Not match",
+    "agent_answer": "05: 67, 06: 199, 07: 8,786.53, 08: 0.00, 09: 0.00, 10: 0.00, 11: 995.00, 12: 275.37"
+  },
+  {
+    "task_id": 108,
+    "eval": "January: 12 orders Febulary: 7 orders March: 5 orders Apirl: 9 orders May: 5 orders",
+    "question": "Presents the monthly count of successful orders 01/2023-05/2023 in MM:COUNT format",
+    "anno": "Not match",
+    "agent_answer": "01:5, 02:5, 03:5, 04:5, 05:5"
+  },
+  {
+    "task_id": 109,
+    "eval": "January: 11 orders Feburary: 16 orders March: 14 orders April: 7 orders May: 8 orders June: 13 orders July: 9 orders August: 8 orders Sepetember: 10 orders Octorbor: 4 orders November: 5 orders December: 10 orders  ",
+    "question": "Presents the monthly count of successful orders from Jan to December 2022 in MM:COUNT format",
+    "anno": "Not match",
+    "agent_answer": "01:116, 02:349, 03:15,475.46, 04:39.64, 05:39.64, 06:2.64, 07:1,745.00, 08:531.72, 09:0.00, 10:0.00, 11:0.00, 12:0.00"
+  },
+  {
+    "task_id": 110,
+    "eval": "January: 11 orders Feburary: 16 orders March: 14 orders April: 7 orders May: 8 orders June: 13 orders July: 9 orders August: 8 orders Sepetember: 10 orders Octorbor: 4 orders November: 5 orders  ",
+    "question": "Presents the monthly count of successful orders from Jan to Nov 2022 in MM:COUNT format",
+    "anno": "Not match",
+    "agent_answer": "[1728"
+  },
+  {
+    "task_id": 111,
+    "eval": "Feburary: 16 orders March: 14 orders April: 7 orders May: 8 orders June: 13 orders July: 9 orders August: 8 orders Sepetember: 10 orders Octorbor: 4 orders November: 5 orders  ",
+    "question": "Presents the monthly count of successful orders from Feb to Nov 2022 in MM:COUNT format",
+    "anno": "Not match",
+    "agent_answer": "MM:COUNT format not directly visible, further extraction and formatting would be required based on the data in the table."
+  },
+  {
+    "task_id": 112,
+    "eval": "Hannah Lim",
+    "question": "Show me the customers who have expressed dissatisfaction with Circe fleece?",
+    "anno": "Not match",
+    "agent_answer": "Hannah Lim expressed dissatisfaction with the Circe Hooded Ice Fleece on Apr 24, 2023, stating: \"I was really disappointed with the Circe Hooded...\""
+  },
+  {
+    "task_id": 113,
+    "eval": "Emma Lopez, Seam Miller",
+    "question": "Show me the customers who have expressed dissatisfaction with Olivia zip jacket?",
+    "anno": "Not match",
+    "agent_answer": "[4305"
+  },
+  {
+    "task_id": 114,
+    "eval": "Shaunte, Merrie",
+    "question": "Show me the customers who have expressed dissatisfaction with Antonia racer tank?",
+    "anno": "Not match",
+    "agent_answer": "[2287"
+  },
+  {
+    "task_id": 115,
+    "eval": "",
+    "question": "Show me the name of the customers who have expressed dissatisfaction with Chloe tank",
+    "anno": "Match",
+    "agent_answer": "Unable to find specific customer records expressing dissatisfaction with the Chloe tank. Despite multiple search attempts and filtering, no relevant data was located."
+  },
+  {
+    "task_id": 116,
+    "eval": "Alexander, Carma, Dominic, Merrie, Monroe, Scotty, Shaunte, Teofila, Valorie",
+    "question": "Show me the name of the customers who have expressed dissatisfaction with tanks products?",
+    "anno": "Not match",
+    "agent_answer": "Emma Lopez"
+  },
+  {
+    "task_id": 117,
+    "eval": "3/2/22",
+    "question": "What is the date when I made my first purchase on this site?",
+    "anno": "Match",
+    "agent_answer": "3/2/22"
+  },
+  {
+    "task_id": 119,
+    "eval": "Its color and style is good",
+    "question": "Tell me the reasons why customers like Antonia Racer Tank",
+    "anno": "Match",
+    "agent_answer": "Customers have provided feedback on the Antonia Racer Tank, mentioning its suitability for low-impact activities like yoga and its stylish appearance. However, it is noted that the tank does not offer high support for more intense activities."
+  },
+  {
+    "task_id": 120,
+    "eval": "It is comfortable",
+    "question": "Tell me the reasons why customers like Ana Running Short",
+    "anno": "Not match",
+    "agent_answer": "Wore these for a year and they started falling apart. For the price I guess I'll just get another pair cuz I do like them. But I think a shoe should last longer. It's not like I can take my sneakers to a cobbler haha"
+  },
+  {
+    "task_id": 121,
+    "eval": "Warm and comfortable. True to size.",
+    "question": "Tell me the reasons why customers like Circe hooded fleece",
+    "anno": "Match",
+    "agent_answer": "I recently purchased the Circe Hooded Ice Fleece and overall, I'm quite happy with it. The fleece material is incredibly soft and cozy, and I love the addition of the hood for extra warmth. The fit is true to size and the sleeves are long enough, which is often a problem for me. The only reason I'm not giving it a full 5 stars is because I was hoping the color would be a bit more vibrant - it's a bit muted compared to what I was expecting. But overall, I would definitely recommend the Circe Hooded Ice Fleece for anyone in need of a warm and comfortable layer for outdoor activities."
+  },
+  {
+    "task_id": 122,
+    "eval": "Lightweight, comfortable, and stylish. Good design and details.",
+    "question": "Tell me the reasons why customers like Olivia zip jacket",
+    "anno": "Match",
+    "agent_answer": "I recently purchased the Olivia 1/4 Zip Light Jacket and I am extremely satisfied with my purchase! The jacket is incredibly lightweight and comfortable, making it perfect for cool spring mornings or summer evenings. The 1/4 zip feature allows for easy temperature control, and the jacket is versatile enough to be dressed up or down. I also appreciate the attention to detail in the design - the pockets are well-placed and the stitching is sturdy. Overall, I highly recommend the Olivia 1/4 Zip Light Jacket for anyone in need of a comfortable and stylish lightweight jacket!"
+  },
+  {
+    "task_id": 123,
+    "eval": "Warm and comfortable. True to size.",
+    "question": "Tell me the reasons why customers like Circe's products",
+    "anno": "Not match",
+    "agent_answer": "I was really disappointed with the Olivia 1/4 Z..."
+  },
+  {
+    "task_id": 124,
+    "eval": "$0.14 - $745.00",
+    "question": "What is the price range of wireless earphone in the One Stop Market?",
+    "anno": "Not match",
+    "agent_answer": "Price range: $0.01 - $169.99"
+  },
+  {
+    "task_id": 125,
+    "eval": "$1.46 - $85",
+    "question": "What is the price range of teeth grinding mouth guard in the One Stop Market?",
+    "anno": "Not match",
+    "agent_answer": "The price range of teeth grinding mouth guards in the One Stop Market is from $8.99 to $49.99."
+  },
+  {
+    "task_id": 126,
+    "eval": "$2.56 - $649.99",
+    "question": "What is the price range of Canon photo printer in the One Stop Market?",
+    "anno": "Match",
+    "agent_answer": "Price range: $2.56 - $649.99"
+  },
+  {
+    "task_id": 127,
+    "eval": "Hollister, Joust, Antonia",
+    "question": "What brands appear most frequently among the top search terms?",
+    "anno": "Match",
+    "agent_answer": "The brands that appear most frequently among the top search terms are: Hollister (19 times), Joust Bag (4 times), Antonia Racer Tank (2 times), tanks (1 time), and WP10 (1 time)."
+  },
+  {
+    "task_id": 128,
+    "eval": "9",
+    "question": "What's the total number of items sold in the most recent 2 orders?",
+    "anno": "Match",
+    "agent_answer": "9"
+  },
+  {
+    "task_id": 129,
+    "eval": "16",
+    "question": "What's the total number of items sold in the most recent 4 orders?",
+    "anno": "Match",
+    "agent_answer": "16"
+  },
+  {
+    "task_id": 130,
+    "eval": "18",
+    "question": "What's the total number of items sold in the most recent 5 orders?",
+    "anno": "Match",
+    "agent_answer": "18"
+  },
+  {
+    "task_id": 131,
+    "eval": "25",
+    "question": "What's the total number of items sold in the most recent 7 orders?",
+    "anno": "Not match",
+    "agent_answer": "The total number of items sold in the most recent 5 orders is 18. There are only 5 orders listed, not 7."
+  },
+  {
+    "task_id": 132,
+    "eval": "1",
+    "question": "How many commits did kilian make to a11yproject on 3/5/2023?",
+    "anno": "Match",
+    "agent_answer": "1"
+  },
+  {
+    "task_id": 133,
+    "eval": "2",
+    "question": "How many commits did Eric make to a11yproject on 3/2?",
+    "anno": "Match",
+    "agent_answer": "2"
+  },
+  {
+    "task_id": 134,
+    "eval": "0",
+    "question": "How many commits did kilian make to a11yproject on 3/1/2023?",
+    "anno": "Not match",
+    "agent_answer": "1"
+  },
+  {
+    "task_id": 135,
+    "eval": "1",
+    "question": "How many commits did Eric and Kilian make to a11yproject on 1/3/2023?",
+    "anno": "Match",
+    "agent_answer": "Eric: 1, Kilian: 0"
+  },
+  {
+    "task_id": 136,
+    "eval": "5",
+    "question": "How many commits did Steven Woodson make to a11y-webring.club on 2/6/2023?",
+    "anno": "Not match",
+    "agent_answer": "3"
+  },
+  {
+    "task_id": 137,
+    "eval": "5h 47min",
+    "question": "What is the estimated driving time between the city where the Liberty Bell is located and the home city of Pirates?",
+    "anno": "Match",
+    "agent_answer": "5h 47min"
+  },
+  {
+    "task_id": 138,
+    "eval": "1h 58min",
+    "question": "What is the estimated driving time between the big apple and the city with the most authentic Philly cheesesteaks?",
+    "anno": "Match",
+    "agent_answer": "1 hour and 59 minutes"
+  },
+  {
+    "task_id": 139,
+    "eval": "3h 20min",
+    "question": "What is the estimated driving time between the hometown of Joe Biden and Bridgeport?",
+    "anno": "Match",
+    "agent_answer": "3 hours 24 minutes"
+  },
+  {
+    "task_id": 140,
+    "eval": "8h 33min",
+    "question": "What is the estimated driving time between the city of Niagara Falls and the city of Yale University?",
+    "anno": "Not match",
+    "agent_answer": "8 hours and 52 minutes"
+  },
+  {
+    "task_id": 141,
+    "eval": "$47.41",
+    "question": "How much I spent on food-related shopping during March 2023",
+    "anno": "Not match",
+    "agent_answer": "Total spent on food-related shopping in March 2023 is $83.31. This is the sum of $17.99 and $65.32 from the orders found on previous pages."
+  },
+  {
+    "task_id": 142,
+    "eval": "$95.23",
+    "question": "How much I spent on hair care and hair style shopping during Jan 2023",
+    "anno": "Not match",
+    "agent_answer": "572.88"
+  },
+  {
+    "task_id": 143,
+    "eval": "$265.69",
+    "question": "How much I spent on home decoration shopping during 1/29/2023",
+    "anno": "Not match",
+    "agent_answer": "440.64"
+  },
+  {
+    "task_id": 144,
+    "eval": "0",
+    "question": "How much I spent on food shopping during from mid Jan to the end Jan 2023",
+    "anno": "Not match",
+    "agent_answer": "$572.88"
+  },
+  {
+    "task_id": 145,
+    "eval": "$52.35",
+    "question": "How much I spent on cooking and food shopping during March 2022",
+    "anno": "Match",
+    "agent_answer": "Total spent in March 2022: $52.35 (only complete transactions considered)"
+  },
+  {
+    "task_id": 146,
+    "eval": "16x24",
+    "question": "What is the size configuration of the picture frame I bought Sep 2022",
+    "anno": "Match",
+    "agent_answer": "16\"x24\""
+  },
+  {
+    "task_id": 147,
+    "eval": "16x24",
+    "question": "What is the size configuration of the picture frame I bought 2022",
+    "anno": "Not match",
+    "agent_answer": "Unable to locate the size configuration of the picture frame purchased in 2022. Checked all visible orders from 2022 without finding the picture frame."
+  },
+  {
+    "task_id": 148,
+    "eval": "Mist",
+    "question": "What is the color configuration of the picture frame I bought Sep 2022",
+    "anno": "Match",
+    "agent_answer": "Color configuration of the picture frame: Mist 1624"
+  },
+  {
+    "task_id": 149,
+    "eval": "Green-vines",
+    "question": "What is the color configuration of the artifical plants I bought Feb 2023",
+    "anno": "Match",
+    "agent_answer": "Green-vines"
+  },
+  {
+    "task_id": 150,
+    "eval": "260.69",
+    "question": "What is the price configuration of the fake tree I bought Jan 2023",
+    "anno": "Match",
+    "agent_answer": "The fake tree purchased on January 29, 2023, was a 'Bornbridge Artificial Spiral Topiary Tree - Indoor / Outdoor Topiary Trees - Artificial Outdoor Plants (2 Pack, 4' Cypress)'. The price per unit was $260.69, and the total cost for one unit was also $260.69."
+  },
+  {
+    "task_id": 151,
+    "eval": "4min",
+    "question": "What is the minimum travel time by car from CMU to University of Pittsburgh?",
+    "anno": "Match",
+    "agent_answer": "4 minutes"
+  },
+  {
+    "task_id": 152,
+    "eval": "4min",
+    "question": "What is the minimum travel time by car from Schenley park to Upitt?",
+    "anno": "Match",
+    "agent_answer": "4 minutes"
+  },
+  {
+    "task_id": 153,
+    "eval": "7min",
+    "question": "What is the minimum travel time by car from REI to CMU?",
+    "anno": "Not match",
+    "agent_answer": "7h 19min"
+  },
+  {
+    "task_id": 154,
+    "eval": "4min",
+    "question": "What is the minimum travel time by car from CMU gates building to Schenley park?",
+    "anno": "Match",
+    "agent_answer": "0:04"
+  },
+  {
+    "task_id": 155,
+    "eval": "9min",
+    "question": "What is the minimum travel time by car from Animal Rescue League of Pittsburgh to Schenley park?",
+    "anno": "Match",
+    "agent_answer": "9 minutes"
+  },
+  {
+    "task_id": 163,
+    "eval": "I ordered the 16gb but I only got 14 gigs even though I formatted the card. The memory card is kind of slow on games and downloads. No original packaging It's used and the previous owners data has not been erased. The product is a legit sony hardware that have been owned by someone else before The media could not be loaded.  I could not format the card so I wasn\u2019t able to use it for my VITA",
+    "question": "What are the main criticisms of this product? Please extract the relevant sentences.",
+    "anno": "Not match",
+    "agent_answer": "The memory card that came is indeed a real Sony memory card. I ordered the 16gb but I only got 14 gigs even though I formatted the card. The memory card is kind of slow on games and downloads. Though not shown in the picture, this is an actual PS VITA memory card. It's used and the previous owners data has not been erased...This isn't a problem, just reformat it. I could not format the card so I wasn\u2019t able to use it for my VITA."
+  },
+  {
+    "task_id": 164,
+    "eval": "DryUneven color",
+    "question": "What are the main criticisms of this product? Please extract the relevant sentences.",
+    "anno": "Match",
+    "agent_answer": "Those labial never came to me and I would like them again because I paid for them. DryUneven color."
+  },
+  {
+    "task_id": 165,
+    "eval": "The 39 was too small. I am afraid the 40 will be too big. I was very sad when the shoe rubbed up against my baby toe. I had to return them because I knew in time it would tear up my feet. The problem is that the strap is made of some really stiff leather and is painful to my heel. The front is also uncomfortably tight. The Dansko's were similar (not as bad) and loosened up over time.",
+    "question": "What are the main criticisms of this product? Please extract the relevant sentences.",
+    "anno": "Not match",
+    "agent_answer": "The 39 was too small. They are so cute! I am afraid the 40 will be too big. I was very sad when the shoe rubbed up against my baby toe. I had to return them because I knew in time it would tear up my feet. Everything was perfect except the fit. The problem is that the strap is made of some really stiff leather and is painful to my heel. The front is also uncomfortably tight."
+  },
+  {
+    "task_id": 166,
+    "eval": "N/A",
+    "question": "What are the main criticisms of this product? Please extract the relevant sentences.",
+    "anno": "Not match",
+    "agent_answer": "\"Good taste. It remains to be seen whether it's accomplishing the other promises of 'repair and whitening'...\""
+  },
+  {
+    "task_id": 167,
+    "eval": "The wireless connection works on a whim (about 40% of the time I've owned it). It seems to constantly run out of ink. Cartridge prices are less than some printers I've had, but now I understand why. This printer seems to have more reasons NOT to work (none that are findable or correctable) Ex: error boxes saying that it's out of paper when it automatically switches to photo printing for some reason. Scanner is as slow as my first scanner I ever owned in the mid-90's. For the $176 I paid, there isn't even a fax component on it. I guess the \"PLUS\" part of it's name is in reference to the migraines it causes when you can't figure out the new reason why it's not working for the 10th time in the past 2 months.",
+    "question": "What are the main criticisms of this product? Please extract the relevant sentences.",
+    "anno": "Match",
+    "agent_answer": "\"I read Cnet reviews that were worse than mine. The wireless connection works on a whim (about 40% of the time I've owned it). It seems to constantly run out of ink. Cartridge prices are less than some printers I've had, but now I understand why. This printer seems to have more reasons NOT to work (none that are findable or correctable) Ex: error boxes saying that it's out of paper when it automatically switches to photo printing for some reason. Scanner is as slow as my first scanner I ever owned in the mid-90's. For the $176 I paid, there isn't even a fax component on it. I guess the \"PLUS\" part of it's name is in reference to the migraines it causes when you can't figure out the new reason why it's not working for the 10th time in the past 2 months.\""
+  },
+  {
+    "task_id": 168,
+    "eval": "No repo found",
+    "question": "Tell me the full names of the repositories where I made contributions and they got more than 100 stars?",
+    "anno": "Match",
+    "agent_answer": "No repositories found where contributions were made and they have more than 100 stars."
+  },
+  {
+    "task_id": 169,
+    "eval": "a11yproject.com, Primer/design",
+    "question": "Tell me the full names of the repositories where I made contributions and they got the most stars?",
+    "anno": "Match",
+    "agent_answer": "The A11Y Project / a11yproject.com, Primer / design"
+  },
+  {
+    "task_id": 170,
+    "eval": "cloud-to-butt, dotfiles, timeit, solarized-prism-theme,  gimmiethat.space, remove-board-movement-events-from-the-github-issue-timeline",
+    "question": "Tell me the full names of the repositories where I made contributions and they got the least stars?",
+    "anno": "Not match",
+    "agent_answer": "Byte Blaze / a11y-syntax-highlighting, Byte Blaze / a11y-webring.club, The A11Y Project / a11yproject.com, Byte Blaze / accessible-html-content-patterns, Byte Blaze / cloud-to-butt, Primer / design, Byte Blaze / dotfiles, Byte Blaze / ericwbailey.website, Byte Blaze / gimmiethat.space, Byte Blaze / millennials-to-snake-people, Byte Blaze / solarized-prism-theme, Byte Blaze / timeit"
+  },
+  {
+    "task_id": 171,
+    "eval": "a11y-syntax-highlighting, a11y-webring.club, accessible-html-content-patterns, ericwbailey.website, cloud-to-butt, dotfiles, timeit, solarized-prism-theme,  gimmiethat.space, remove-board-movement-events-from-the-github-issue-timeline",
+    "question": "Tell me the full names of the repositories where I made contributions and they got less than 5 stars?",
+    "anno": "Not match",
+    "agent_answer": "Byte Blaze / dotfiles, Byte Blaze / cloud-to-butt, Byte Blaze / gimmiethat.space, Byte Blaze / a11y-syntax-highlighting, Byte Blaze / remove-board-movement-events-from-the-github-issue-timeline, Byte Blaze / accessible-html-content-patterns, Byte Blaze / solarized-prism-theme, Byte Blaze / timeit"
+  },
+  {
+    "task_id": 172,
+    "eval": "cloud-to-butt, dotfiles, timeit, solarized-prism-theme,  gimmiethat.space, remove-board-movement-events-from-the-github-issue-timeline",
+    "question": "Tell me the full names of the repositories where I made contributions and they got no stars?",
+    "anno": "Match",
+    "agent_answer": "Byte Blaze / a11y-syntax-highlighting, Byte Blaze / accessible-html-content-patterns, Byte Blaze / cloud-to-butt, Byte Blaze / dotfiles, Byte Blaze / gimmiethat.space, Byte Blaze / remove-board-movement-events-from-the-github-issue-timeline, Byte Blaze / solarized-prism-theme, Byte Blaze / timeit"
+  },
+  {
+    "task_id": 173,
+    "eval": "Not closed",
+    "question": "Open my latest updated issue that has keyword \"better\" in its title to check if it is closed",
+    "anno": "Not match",
+    "agent_answer": "Open"
+  },
+  {
+    "task_id": 174,
+    "eval": "Not closed",
+    "question": "Open my latest updated issue that has keyword \"feature\" in its title to check if it is closed",
+    "anno": "Not match",
+    "agent_answer": "Open"
+  },
+  {
+    "task_id": 175,
+    "eval": "Not closed",
+    "question": "Open my latest updated issue that has keyword \"dependency\" in its title to check if it is closed",
+    "anno": "Match",
+    "agent_answer": "The issue is open."
+  },
+  {
+    "task_id": 176,
+    "eval": "Not closed",
+    "question": "Open my latest updated issue that has keyword \"theme editor\" in its title to check if it is closed",
+    "anno": "Match",
+    "agent_answer": "The issue is open."
+  },
+  {
+    "task_id": 177,
+    "eval": "closed",
+    "question": "Open my latest updated issue that has keyword \"homepage content\" in its title to check if it is closed",
+    "anno": "Match",
+    "agent_answer": "The issue titled \"Rethink the homepage's content\" is closed."
+  },
+  {
+    "task_id": 178,
+    "eval": "Closed",
+    "question": "Open my latest created issue that has better in its title to check if it is closed",
+    "anno": "Not match",
+    "agent_answer": "Open"
+  },
+  {
+    "task_id": 179,
+    "eval": "Closed",
+    "question": "Open my latest created issue that has feature in its title to check if it is closed",
+    "anno": "Not match",
+    "agent_answer": "Open"
+  },
+  {
+    "task_id": 180,
+    "eval": "Not closed",
+    "question": "Open my latest created issue that has dependency in its title to check if it is closed",
+    "anno": "Match",
+    "agent_answer": "The issue titled \"Outdated dependencies\" is currently open."
+  },
+  {
+    "task_id": 181,
+    "eval": "Not closed",
+    "question": "Open my latest created issue that has theme editor in its title to check if it is closed",
+    "anno": "Match",
+    "agent_answer": "Open"
+  },
+  {
+    "task_id": 182,
+    "eval": "closed",
+    "question": "Open my latest created issue that has homepage content in its title to check if it is closed",
+    "anno": "Not match",
+    "agent_answer": "Issue is open"
+  },
+  {
+    "task_id": 183,
+    "eval": "There is no product that has 10 quantities left.",
+    "question": "Give me the SKU of the products that have 10 units left",
+    "anno": "Match",
+    "agent_answer": "No products have exactly 10 units left."
+  },
+  {
+    "task_id": 184,
+    "eval": "Sinbad Fitness Tank",
+    "question": "Give me the name of the products that have 0 units left",
+    "anno": "Not match",
+    "agent_answer": "Gobi HeatTec Tee, Tristan Endurance Tank, Helios EverCool Tee, Primo Endurance Tank, Rocco Gym Tank, Ryker LumaTech Tee (Crew-neck), Argus All-Weather Tank, Atomic Endurance Running Tee (V-neck), Sinbad Fitness Tank, Atomic Endurance Running Tee (Crew-Neck), Atlas Fitness Tank, Balboa Persistence Tee, Zoltan Gym Tee, Viktor LumaTech Pant, Aero Daily Fitness Tee, Ryker LumaTech Tee (V-neck), Logan HeatTec Tee, Jupiter All-Weather Trainer, Deion Long-Sleeve EverCool Tee, Echo Fit Compression Short, Montana Wind Jacket, Strike Endurance Tee, Ana Running Short, Proteus Fitness Jackshirt, Erikssen CoolTech Fitness Tank, Aether Gym Pant, Meteor Workout Short, Rapha Sports Short, Arcadio Gym Short, Thorpe Track Pant, Augusta Pullover Jacket, Elisa EverCool Tee, Ingrid Running Jacket, Juliana Short-Sleeve Tee, Riona Full Zip Jacket, Minerva LumaTech V-Tee, Inez Full Zip Jacket, Tiffany Fitness Tee, Adrienne Trek Jacket, Karissa V-Neck Tee, Jade Yoga Jacket, Nadia Elements Shell, Neve Studio Dance Jacket, Juno Jacket, Desiree Fitness Tee, Olivia 1/4 Zip Light Jacket, Gabrielle Micro Sleeve Top, Stellar Solar Jacket, Josie Yoga Jacket, Layla Tee, Chaz Kangeroo Hoodie, Beaumont Summit Kit, Aeon Capri, Teton Pullover Hoodie, Hyperion Elements Jacket, Bruno Compete Hoodie, Sylvia Capri, Kenobi Trail Jacket, Frankie Sweatshirt, Hollister Backyard Sweatshirt, Lando Gym Jacket, Stark Fundamental Hoodie, Hero Hoodie, Typhon Performance Fleece-lined Jacket, Abominable Hoodie, Mach Street Sweatshirt, Grayson Crewneck Sweatshirt, Ajax Full-Zip Sweatshirt, Ida Workout Parachute Pant, Set of Sprite Yoga Straps, Marco Lightweight Active Hoodie, Geo Insulated Jogging Pant, Angel Light Running Short, Mimi All-Purpose Short, Hera Pullover Hoodie, Autumn Pullie, Cronus Yoga Pant -33-Blue, Cronus Yoga Pant, Miko Pullover Hoodie, Selene Yoga Hoodie, Torque Power Short, Orestes Fitness Short, Pierce Gym Short, Zeppelin Yoga Pant, Mona Pullover Hoodlie, Diana Tights, Daria Bikram Pant, Emma Leggings, Helios Endurance Tank, Vulcan Weightlifting Tank, Sparta Gym Tank, Tiberius Gym Tank, Cassius Sparring Tank, Supernova Sport Pant, Sybil Running Short, Cobalt CoolTech Fitness Short, Hawkeye Yoga Short, Troy Yoga Short, Livingston All-Purpose Tight, Eos V-Neck Hoodie, Circe Hooded Ice Fleece, Sahara Leggings, Carina Basic Capri, Portia Capri, Fiona Fitness Short, Maxima Drawstring Short, Gwen Drawstring Bike Short, Artemis Running Short, Bess Yoga Short, Karmen Yoga Pant, Erika Running Short, Caesar Warm-Up Pant, Kratos Gym Pant, Ina Compression Short, Orestes Yoga Pant, Apollo Running Short, Daphne Full-Zip Hoodie, Phoebe Zipper Sweatshirt, Cassia Funnel Sweatshirt, Lono Yoga Short, Ariel Roll Sleeve Sweatshirt, Helena Hooded Fleece, Sol Active Short, Mithra Warmup Pant, Prima Compete Bra Top, Bardot Capri, Lucia Cross-Fit Bra, Bella Tank, Deirdre Relaxed-Fit Capri, Zoe Tank, Nora Practice Tank, Nona Fitness Tank, Leah Yoga Top, Chloe Compete Tank, Maya Tunic, Antonia Racer Tank, Electra Bra Top, Breathe-Easy Tank, Erica Evercool Sports Bra, Sprite Yoga Companion Kit, Cora Parachute Pant, Celeste Sports Bra, Minerva LumaTech V-Tee-XS-Blue, Eos V-Neck Hoodie-S-Blue, Troy Yoga Short-36-Black, Iris Workout Top-XS-Red, Tristan Endurance Tank-L-White, Erika Running Short-32-Green, Helios EverCool Tee-S-Black, Primo Endurance Tank-S-Blue, Helios EverCool Tee-M-Blue, Primo Endurance Tank-M-Red, Helios EverCool Tee-L-Purple, Primo Endurance Tank-L-Yellow, Ryker LumaTech Tee (Crew-neck)-S-Black, Helios Endurance Tank-L-Blue, Ryker LumaTech Tee (Crew-neck)-M-Blue, Rocco Gym Tank-S-Blue, Ryker LumaTech Tee (Crew-neck)-L-Red, Vulcan Weightlifting Tank-L-Black, Atomic Endurance Running Tee (V-neck)-S-Blue, Argus All-Weather Tank-S-Gray, Atomic Endurance Running Tee (V-neck)-M-Green, Atomic Endurance Running Tee (V-neck)-L-Yellow, Sparta Gym Tank-L-Green, Sinbad Fitness Tank-S-Blue, Atomic Endurance Running Tee (Crew-Neck)-S-Black, Atomic Endurance Running Tee (Crew-Neck)-M-Blue, Tiberius Gym Tank-L-Yellow, Atomic Endurance Running Tee (Crew-Neck)-L-Red, Atlas Fitness Tank-S-Blue, Balboa Persistence Tee-S-Gray, Cassius Sparring Tank-L-Blue, Balboa Persistence Tee-M-Green, Caesar Warm-Up Pant-32-Gray, Balboa Persistence Tee-L-Orange, Caesar Warm-Up Pant-33-Purple, Caesar Warm-Up Pant-36-Black, Zoltan Gym Tee-S-Blue, Viktor LumaTech Pant-32-Blue, Zoltan Gym Tee-M-Green, Viktor LumaTech Pant-33-Gray, Zoltan Gym Tee-L-Yellow, Viktor LumaTech Pant-34-Red, Aero Daily Fitness Tee-S-Black, Geo Insulated Jogging Pant-33-Blue, Aero Daily Fitness Tee-M-Brown, Geo Insulated Jogging Pant-34-Green, Aero Daily Fitness Tee-L-Yellow, Geo Insulated Jogging Pant-36-Red, Supernova Sport Pant-32-Green, Ryker LumaTech Tee (V-neck)-S-Black"
+  },
+  {
+    "task_id": 185,
+    "eval": "Eos, Minerva",
+    "question": "Give me the brand of the products that have 3 units left",
+    "anno": "Not match",
+    "agent_answer": "Minerva"
+  },
+  {
+    "task_id": 186,
+    "eval": "Eos V-Neck Hoodie: S Minera Luma Tech V-Tee: XS",
+    "question": "Give me the product names and the sizes of the products that have 2-3 units left",
+    "anno": "Not match",
+    "agent_answer": "Minerva LumaTech V-Tee-XS-Blue, Eos V-Neck Hoodie-S-Blue"
+  },
+  {
+    "task_id": 187,
+    "eval": "WH11-S-Blue, WS08-XS-Blue",
+    "question": "Give me the SKU of the products that have 1-3 units left",
+    "anno": "Match",
+    "agent_answer": "WS08-XS-Blue, WH11-S-Blue"
+  },
+  {
+    "task_id": 188,
+    "eval": "365.42",
+    "question": "Tell me the total cost of my latest cancelled order?",
+    "anno": "Match",
+    "agent_answer": "The total cost of your latest cancelled order is $365.42."
+  },
+  {
+    "task_id": 189,
+    "eval": "754.99",
+    "question": "Tell me the total cost of my latest pending order?",
+    "anno": "Match",
+    "agent_answer": "754.99"
+  },
+  {
+    "task_id": 190,
+    "eval": "65.32",
+    "question": "Tell me the total cost of my latest complete order?",
+    "anno": "Match",
+    "agent_answer": "65.32"
+  },
+  {
+    "task_id": 191,
+    "eval": "There is no order of \"processing\" status",
+    "question": "Tell me the total cost of my latest processing order?",
+    "anno": "Not match",
+    "agent_answer": "19.69"
+  },
+  {
+    "task_id": 192,
+    "eval": "754.99",
+    "question": "Tell me the total cost of my latest non-cancelled order?",
+    "anno": "Not match",
+    "agent_answer": "19.69"
+  },
+  {
+    "task_id": 193,
+    "eval": "182.4",
+    "question": "Get the total payment amount of the last 2 completed orders",
+    "anno": "Not match",
+    "agent_answer": "194.40 + 190.00 = 384.40"
+  },
+  {
+    "task_id": 194,
+    "eval": "555.2",
+    "question": "Get the total payment amount of the last 5 completed orders",
+    "anno": "Not match",
+    "agent_answer": "Total payments: Sarah Miller - $194.40, Grace Nguyen - $190.00, Matt Baker - $151.40, Lily Potter - $188.20, Ava Brown - $83.40"
+  },
+  {
+    "task_id": 195,
+    "eval": "885.4",
+    "question": "Get the total payment amount of the last 5 pending orders",
+    "anno": "Not match",
+    "agent_answer": "807.40"
+  },
+  {
+    "task_id": 196,
+    "eval": "194.25",
+    "question": "Compare the payment difference of the last 4 cancelled orders and completed orders",
+    "anno": "Not match",
+    "agent_answer": "Collected payment details for the last four cancelled orders: $29.00, $208.20, Grand Total not recorded for two orders. Collected payment details for the last four completed orders: $93.40, $93.40, Grand Total not recorded for two orders. Some grand totals were not recorded; further checks are needed for accurate comparisons."
+  },
+  {
+    "task_id": 197,
+    "eval": "778.2",
+    "question": "Get the total payment amount of the last 5 non-cancelled orders",
+    "anno": "Not match",
+    "agent_answer": "807.40"
+  },
+  {
+    "task_id": 198,
+    "eval": "Lily Potter",
+    "question": "Get the customer name of the most recent cancelled order",
+    "anno": "Match",
+    "agent_answer": "Lily Potter"
+  },
+  {
+    "task_id": 199,
+    "eval": "299",
+    "question": "Get the order ID of the newest pending order",
+    "anno": "Not match",
+    "agent_answer": "000000301"
+  },
+  {
+    "task_id": 200,
+    "eval": "John Lee",
+    "question": "Get the billing name of the oldest complete order",
+    "anno": "Not match",
+    "agent_answer": "Bob Johnson"
+  },
+  {
+    "task_id": 201,
+    "eval": "N/A",
+    "question": "Get the customer name of the earliest fraud suspect order",
+    "anno": "Not match",
+    "agent_answer": "Brian Smith"
+  },
+  {
+    "task_id": 202,
+    "eval": "May 23, 2023",
+    "question": "Get the date of the most recent canlled order",
+    "anno": "Match",
+    "agent_answer": "May 23, 2023 9:20:01 PM"
+  },
+  {
+    "task_id": 203,
+    "eval": "000000299, May 31, 2023, 2:55:09 AM",
+    "question": "Get the purchase date and order id of the most recent pending order",
+    "anno": "Not match",
+    "agent_answer": "Order ID: 000000301, Purchase Date: April 19, 2023, 7:41:16 PM"
+  },
+  {
+    "task_id": 204,
+    "eval": "Rapha Sports Short: $35 Thorpe Track Pant: $54.4 Mach Street Sweatshirt: $62",
+    "question": "Get the product name and discounted price (low to high) of the most recent completed order",
+    "anno": "Not match",
+    "agent_answer": "Product 1: Proteus Fitness Jackshirt, Discounted Price: $45.00; Product 2: Ida Workout Parachute Pant, Discounted Price: $38.40"
+  },
+  {
+    "task_id": 205,
+    "eval": "1",
+    "question": "How many commits did kilian make on 3/5/2023?",
+    "anno": "Match",
+    "agent_answer": "1"
+  },
+  {
+    "task_id": 206,
+    "eval": "2",
+    "question": "How many commits did Eric make on 3/2?",
+    "anno": "Match",
+    "agent_answer": "2"
+  },
+  {
+    "task_id": 207,
+    "eval": "1",
+    "question": "How many commits did Eric and Kilian make on 1/3/2023 in total?",
+    "anno": "Match",
+    "agent_answer": "1"
+  },
+  {
+    "task_id": 208,
+    "eval": "John Smith, john.smith.xyz@gmail.com",
+    "question": "Find the customer name and email with phone number +1 2058812302",
+    "anno": "Match",
+    "agent_answer": "John Smith, john.smith.xyz@gmail.com"
+  },
+  {
+    "task_id": 209,
+    "eval": "Jennifer White, jennifer.white@yahoo.com",
+    "question": "Find the customer name and email with phone number 2137418080",
+    "anno": "Match",
+    "agent_answer": "Jennifer White, jennifer.white@yahoo.com"
+  },
+  {
+    "task_id": 210,
+    "eval": "Adam Garcia, gamingpro456@gmail.com",
+    "question": "Find the customer name and email with phone number 2065555555",
+    "anno": "Match",
+    "agent_answer": "Adam Garcia, gamingpro456@gmail.com"
+  },
+  {
+    "task_id": 211,
+    "eval": "Sean Miller, sean.miller@gmail.com",
+    "question": "Find the customer name and email with phone number 8015551212",
+    "anno": "Match",
+    "agent_answer": "Sean Miller, sean.miller@gmail.com"
+  },
+  {
+    "task_id": 212,
+    "eval": "Veronica Costello, roni_cost@example.com",
+    "question": "Find the customer name and email with phone number 555-229-3326",
+    "anno": "Match",
+    "agent_answer": "Veronica Costello, roni_cost@example.com"
+  },
+  {
+    "task_id": 213,
+    "eval": "Not suitable for high-impact workouts",
+    "question": "What are the key aspects that the customers don't like about Antonia Racer Tank",
+    "anno": "Not match",
+    "agent_answer": "[73"
+  },
+  {
+    "task_id": 214,
+    "eval": "It is hard to find the right size. Won't last long",
+    "question": "What are the key aspects that the customers don't like about Zing Jump Rope",
+    "anno": "Not match",
+    "agent_answer": "No specific customer dislikes about the Zing Jump Rope identified after extensive review examination."
+  },
+  {
+    "task_id": 215,
+    "eval": "Material quality, fit, insufficient warmth, color",
+    "question": "What are the key aspects that the customers don't like about Circe ice fleece",
+    "anno": "Not match",
+    "agent_answer": "No customer reviews or records found for \"Circe ice fleece\" in the Magento Admin Panel."
+  },
+  {
+    "task_id": 216,
+    "eval": "Not true to size",
+    "question": "What are the key aspects that the customers don't like about Electra Bra Top",
+    "anno": "Not match",
+    "agent_answer": "No customer reviews available for the Electra Bra Top in the checked variants."
+  },
+  {
+    "task_id": 217,
+    "eval": "Insufficient resistance for their workouts.",
+    "question": "What are the key aspects that the customers don't like about Pursuit Tone Band",
+    "anno": "Not match",
+    "agent_answer": "No reviews found for the Pursuit Tone Band"
+  },
+  {
+    "task_id": 218,
+    "eval": "N/A",
+    "question": "Show me the walking distance from nearby hotels to CMU, Pittsburgh that take at most 5 minutes?",
+    "anno": "Match",
+    "agent_answer": "No hotels within a 5-minute walking distance to CMU found. Consider increasing the acceptable walking time."
+  },
+  {
+    "task_id": 219,
+    "eval": "N/A",
+    "question": "Show me the walking distance from nearby hotels to Pittsburgh airport that take at most 3 minutes?",
+    "anno": "Not match",
+    "agent_answer": "No hotels within a 3-minute walking distance to Pittsburgh airport. The closest hotel, Americas Best Value Inn, has a walking time of approximately 3 hours and 42 minutes."
+  },
+  {
+    "task_id": 220,
+    "eval": "Wyndham Pittsburgh University Cente: 375 m\nThe Oaklander Hotel: 338 m",
+    "question": "Show me the walking distance from nearby hotels to Gardner Steel Conference Center, that take at most 5 minutes?",
+    "anno": "Not match",
+    "agent_answer": "The walking distance from Wyndham Pittsburgh University Center to Gardner Steel Conference Center is 375 meters, which takes approximately 5 minutes on foot."
+  },
+  {
+    "task_id": 221,
+    "eval": "Walk: 1 minute to walk and\nDrive: less than 1 minute\nBike: less than 1 minute",
+    "question": "I am at CMU Pittsburgh, how long it takes to the nearest USPS postal office with different transportation methods?",
+    "anno": "Not match",
+    "agent_answer": "Car: 3 minutes, Bicycle: 9 minutes, Walking: 17 minutes"
+  },
+  {
+    "task_id": 222,
+    "eval": "3min",
+    "question": "I am at CMU Pittsburgh, how long it takes to drive to the nearest cold stone ice cream",
+    "anno": "Not match",
+    "agent_answer": "[2448"
+  },
+  {
+    "task_id": 223,
+    "eval": "4min",
+    "question": "I am at CMU Pittsburgh, how long it takes to drive to the nearest Mcdonald's",
+    "anno": "Match",
+    "agent_answer": "4 minutes"
+  },
+  {
+    "task_id": 224,
+    "eval": "3min",
+    "question": "I am at CMU Pittsburgh, how long it takes to drive to the nearest wendys",
+    "anno": "Not match",
+    "agent_answer": "13 hours and 26 minutes"
+  },
+  {
+    "task_id": 225,
+    "eval": "N/A",
+    "question": "What do customers say about brush from sephora",
+    "anno": "Not match",
+    "agent_answer": "Customer reviews for the 'SEPHORA COLLECTION Waterproof Eye Makeup Remover 4.2 oz' vary widely. Positive reviews highlight its effectiveness, especially for removing waterproof mascara, while negative reviews criticize its high price and inefficacy for some users. Overall, opinions are mixed with ratings ranging from very low to very high."
+  },
+  {
+    "task_id": 226,
+    "eval": "$5.49 - $375.19",
+    "question": "What is the price range for products from Amazon basic?",
+    "anno": "Not match",
+    "agent_answer": "The price range for Amazon Basics products starts from $5.49 and goes up to at least $216.32 based on the current page. More products and prices might be available on other pages."
+  },
+  {
+    "task_id": 227,
+    "eval": "$9.99",
+    "question": "What is the price range for products from EYZUTAK?",
+    "anno": "Match",
+    "agent_answer": "The price for the EYZUTAK product listed is $9.99."
+  },
+  {
+    "task_id": 228,
+    "eval": "$18.18 - $94.99",
+    "question": "What is the price range for products from sephora?",
+    "anno": "Not match",
+    "agent_answer": "Price range for Sephora products is from $10.99 to $94.99."
+  },
+  {
+    "task_id": 229,
+    "eval": "$6.99 - $38.99",
+    "question": "What is the price range for products from ugreen?",
+    "anno": "Not match",
+    "agent_answer": "Price range for UGREEN products is from $7.49 to $24.99"
+  },
+  {
+    "task_id": 230,
+    "eval": "$35 - $149",
+    "question": "What is the price range for products from Perricone MD?",
+    "anno": "Match",
+    "agent_answer": "Price range for Perricone MD products is from $35.00 to $149.00"
+  },
+  {
+    "task_id": 231,
+    "eval": "000000170",
+    "question": "Get the order number of my most recent cancelled order ",
+    "anno": "Match",
+    "agent_answer": "000000170"
+  },
+  {
+    "task_id": 232,
+    "eval": "000000189",
+    "question": "Get the order number of my most recent pending order ",
+    "anno": "Match",
+    "agent_answer": "000000189"
+  },
+  {
+    "task_id": 233,
+    "eval": "000000180",
+    "question": "Get the order number of my most recent complete order ",
+    "anno": "Match",
+    "agent_answer": "000000180"
+  },
+  {
+    "task_id": 234,
+    "eval": "N/A",
+    "question": "Get the order number of my most recent on hold order ",
+    "anno": "Match",
+    "agent_answer": "There are no \"On Hold\" orders available in the account."
+  },
+  {
+    "task_id": 235,
+    "eval": "N/A",
+    "question": "Get the order number of my most recent under delivery order ",
+    "anno": "Not match",
+    "agent_answer": "000000190"
+  },
+  {
+    "task_id": 236,
+    "eval": "Schiller's Pharmacy, 811, South Aiken Avenue, Shadyside, Pittsburgh, Allegheny County, 15232, United States",
+    "question": "Where is the nearest pharmacy from Carnegie Mellon I can walk within 20mins",
+    "anno": "Not match",
+    "agent_answer": "University Pharmacy is the nearest pharmacy to Carnegie Mellon University that can be reached within 20 minutes by walking. The total walking distance is 1.4 km and it takes approximately 18 minutes."
+  },
+  {
+    "task_id": 237,
+    "eval": "Sunoco, North Craig Street, North Oakland, Pittsburgh, Allegheny County, 15213, United States",
+    "question": "Where is the nearest gas station from CMU ",
+    "anno": "Not match",
+    "agent_answer": "Sunoco, located at coordinates 40.4494693, -79.9507662, is the nearest gas station to Carnegie Mellon University."
+  },
+  {
+    "task_id": 243,
+    "eval": "hannah.lim@gmail.com",
+    "question": "Show me the email address of the customer who is the most unhappy with Circe fleece",
+    "anno": "Match",
+    "agent_answer": "hannah.lim@gmail.com"
+  },
+  {
+    "task_id": 244,
+    "eval": "emma.lopez@gmail.com",
+    "question": "Show me the email address of the customer who is the most unhappy with Olivia zip jacket",
+    "anno": "Not match",
+    "agent_answer": "olivia.jackson@gmail.com"
+  },
+  {
+    "task_id": 245,
+    "eval": "Shaunte",
+    "question": "Show me the name of the customer who is the most unhappy with Antonia racer tank",
+    "anno": "Match",
+    "agent_answer": "Shaunte"
+  },
+  {
+    "task_id": 246,
+    "eval": "Teofila",
+    "question": "Show me the name of the customer who is the most unhappy with Chloe tank",
+    "anno": "Not match",
+    "agent_answer": "Emma"
+  },
+  {
+    "task_id": 247,
+    "eval": "N/A",
+    "question": "Show me the email address of the customer who is the most unhappy with the style of Zoe products",
+    "anno": "Not match",
+    "agent_answer": "emma.lopez@gmail.com"
+  },
+  {
+    "task_id": 248,
+    "eval": "40.4424191, -79.9397388",
+    "question": "Tell me the coordinates of Carnegie Mellon Caf\u00e9 in DD format",
+    "anno": "Match",
+    "agent_answer": "40.4424191, -79.9397388"
+  },
+  {
+    "task_id": 249,
+    "eval": "40.46076, -79.94666",
+    "question": "Tell me the coordinates of Western Pennsylvania Hospital Heliport in DD format",
+    "anno": "Not match",
+    "agent_answer": "42.896, -75.108"
+  },
+  {
+    "task_id": 250,
+    "eval": "40.4511693, -79.9334241",
+    "question": "Tell me the coordinates of Apple Store near Pitt in DD format",
+    "anno": "Match",
+    "agent_answer": "40.4511693, -79.9334241"
+  },
+  {
+    "task_id": 251,
+    "eval": "40.4443, -79.94889",
+    "question": "Tell me the coordinates of bus stop on the Carnegie art museum side of the street near CMU in DD format",
+    "anno": "Not match",
+    "agent_answer": "40.4447575, -79.9436301"
+  },
+  {
+    "task_id": 252,
+    "eval": "40.45761, -79.92934",
+    "question": "Tell me the coordinates of Tokyo Japanese Food Store in Pittsburgh in DD format",
+    "anno": "Not match",
+    "agent_answer": "[2661"
+  },
+  {
+    "task_id": 253,
+    "eval": "N/A",
+    "question": "What is the phone number of Carnegie Mellon Caf\u00e9",
+    "anno": "Not match",
+    "agent_answer": "9234421950"
+  },
+  {
+    "task_id": 254,
+    "eval": "4125785000",
+    "question": "What is the phone number of Western Pennsylvania Hospital",
+    "anno": "Match",
+    "agent_answer": "1 412 578 5000"
+  },
+  {
+    "task_id": 255,
+    "eval": "Allegheny County Airport Authority",
+    "question": "Who is the operator of PIT airport",
+    "anno": "Match",
+    "agent_answer": "Allegheny County Airport Authority"
+  },
+  {
+    "task_id": 256,
+    "eval": "http://web.cmoa.org/",
+    "question": "What is the website of Carnegie art museum in pittsburgh",
+    "anno": "Match",
+    "agent_answer": "http://web.cmoa.org/"
+  },
+  {
+    "task_id": 257,
+    "eval": "We-Su 10:00-17:00",
+    "question": "What is the hours of operation of Tokyo Japanese Food Store in Pittsburgh",
+    "anno": "Match",
+    "agent_answer": "We-Su 10:00-17:00; Mo-Tu off"
+  },
+  {
+    "task_id": 259,
+    "eval": "TMN_bBn9Z48qVbUFZV45",
+    "question": "Get me my RSS feed token",
+    "anno": "Match",
+    "agent_answer": "TMN_bBn9Z48qVbUFZV45"
+  },
+  {
+    "task_id": 265,
+    "eval": "Acadia National Park\n457km",
+    "question": "What's the closest national park to Boston? How far is it to drive there?",
+    "anno": "Not match",
+    "agent_answer": " [4] [Use Google Maps to find the closest national park to Boston and the driving distance."
+  },
+  {
+    "task_id": 266,
+    "eval": "Acadia National Park",
+    "question": "What's the closest national park to the largest city in Maine?",
+    "anno": "Not match",
+    "agent_answer": "Acadia National Park is the closest national park to Portland, Maine, located about 158 miles away."
+  },
+  {
+    "task_id": 267,
+    "eval": "Acadia National Park\n1h 23min",
+    "question": "What's the closest national park to the hometown of Stephen King? How long it takes to drive there?",
+    "anno": "Match",
+    "agent_answer": "The closest national park to Stephen King's hometown, Bangor, Maine, is Acadia National Park. It takes approximately 1 hour and 23 minutes to drive there."
+  },
+  {
+    "task_id": 268,
+    "eval": "Acadia National Park\n10h 33min",
+    "question": "What's the closest national park to Vinalhaven, ME? How long does it take to bike there?",
+    "anno": "Match",
+    "agent_answer": "The closest national park to Vinalhaven, ME is Acadia National Park. It takes approximately 10 hours and 33 minutes to bike there."
+  },
+  {
+    "task_id": 279,
+    "eval": "These models are avaiable:  SONY WH1000XM3 Bluetooth Wireless Noise Canceling Headphones Silver WH-1000XM3/S (Renewed) Sony WH-CH710N/H Wireless Bluetooth Noise Cancelling Headphones Sony WH-1000XM3B Wireless Bluetooth Noise-Canceling Over-Ear Headphones (Black) Basic Headphone Bundle Kit with Stylus Sony Wireless Headphones WH-CH510: Wireless Bluetooth On-Ear Headset with Mic for Phone-Call, Black Sony WHCH710N Wireless Bluetooth Noise Canceling Over-The-Ear Headphones (Black) with Kratos 18W PD Two-Port Power Adapter and Kratos 6-Feet Nylon Braided USB-C Cable Bundle (3 Items) Sony WI-SP500 Wireless in-Ear Sports Headphones, White (WISP500/W) Sony WI-SP510 Extra BASS Wireless in-Ear Headset/Headphones with mic for Phone Call Sports IPX5 Bluetooth, Black (WISP510/B) Sony MDRAS600BT Active Sports Bluetooth Headset (Black) Sony WH-1000XM4 Wireless Noise Canceling Over-Ear Headphones (Black) with Sony WLA-NS7 Wireless TV Adapter Bundle (2 Items) Sony WI-C300 Wireless In-Ear Headphones, Red (WIC300/R) Sony XB950N1 Extra Bass Wireless Noise Canceling Headphones, Black SONY - H900N Hi-Res Noise Cancelling Wireless Headphone Grayish Black Renewed The price ranges from $18.99 to $406  ",
+    "question": "Provide me with the complete names of Bluetooth headphones from Sony, and also share the price range for the available models",
+    "anno": "Not match",
+    "agent_answer": "SONY WH1000XM3 Bluetooth Wireless Noise Canceling Headphones Silver WH-1000XM3/S (Renewed) - $244.97, Sony WH-CH710N/H Wireless Bluetooth Noise Cancelling Headphones - $159.95, Sony Wireless Headphones WH-CH510: Wireless Bluetooth On-Ear Headset with Mic for Phone-Call, Black - $58.00, Sony WH-1000XM3B Wireless Bluetooth Noise-Canceling Over-Ear Headphones (Black) Basic Headphone Bundle Kit with Stylus - $247.99, Sony WHCH710N Wireless Bluetooth Noise Canceling Over-The-Ear Headphones (Black) with Kratos 18W PD Two-Port Power Adapter and Kratos 6-Feet Nylon Braided USB-C Cable Bundle (3 Items) - $178.00, Sony WI-SP500 Wireless in-Ear Sports Headphones, White (WISP500/W) - $49.50, PPJ 3V AC Adapter for Sony Walkman MZ-N510 Portable Mini Disc Minidisc Player Recorder AC-ES3011K2 ACES3011K2 MD CD Walkman DR-BT22 DR-BT22A Bluetooth Headphones AC-E30A110 ACE30A110 - $11.83, SSSR 3V AC Adapter for Sony Walkman MZ-N510 Portable Mini Disc Minidisc Player Recorder AC-ES3011K2 ACES3011K2 MD CD Walkman DR-BT22 DR-BT22A Bluetooth Headphones AC-E30A110 ACE30A110 - $17.78, Sony WI-SP510 Extra BASS Wireless in-Ear Headset/Headphones with mic for Phone Call Sports IPX5 Bluetooth, Black (WISP510/B) - $33.39, Olixar Wireless Bluetooth Headset Dongle for Sony Playstation 5 - Connect Wireless Headphones Or Earphones to Your PS5 (Instructions Included) - $29.99, Sony WH-1000XM4 Wireless Noise Canceling Over-Ear Headphones (Black) with Sony WLA-NS7 Wireless TV Adapter Bundle (2 Items) - $406.00, Sony XB950N1 Extra Bass Wireless Noise Canceling Headphones, Black - $248.00"
+  },
+  {
+    "task_id": 280,
+    "eval": "These models are availiable: Anker USB C Charger 30W, 711 Charger, Compact Fast Charger (Not Foldable) for MacBook Air/iPhone 13/13 Mini/13 Pro/13 Pro Max/12, Galaxy S21, Note 20, iPad Pro, Pixel, and More Anker USB C Charger 40W, 521 Charger (Nano Pro), PIQ 3.0 Durable Compact Fast Charger (Not Foldable) for iPhone 13/13 Mini/13 Pro/13 Pro Max/12, Galaxy, Pixel 4/3, iPad/iPad Mini (Cable Not Included) Anker PowerCore Speed 20000, 20000mAh Qualcomm Quick Charge 3.0 & PowerIQ Portable Charger, with Quick Charge Recharging, Power Bank for Samsung, iPhone, iPad and More, Black (A1278) 5Ft Micro-USB Charger Cord Cable Fit for Anker-PowerCore 5000 10000 20100 13000 26800 Mini 3350 Fusion II 15000 Redux 20000 Slim 10000 Astro E1 AC Replacement Power Adapter Supply Anker 10W Max Wireless Charger, 313 Wireless Charger (Pad), Qi-Certified Wireless Charging 7.5W for iPhone 12/12 Pro/12 mini/12 Pro Max, 10W for Galaxy S10 S9 S8, S9 Plus, Note 9 (No AC Adapter) Anker Wireless Charger, 313 Wireless Charger (Stand), Qi-Certified for iPhone 12, 12 Pro Max, SE, 11, 11 Pro, 11 Pro Max, XR, XS Max, 10W Fast-Charging Galaxy S20, S10 (No AC Adapter) USB Charger, Anker Elite Dual Port 24W Wall Charger, PowerPort 2 with PowerIQ and Foldable Plug, for iPhone 11/Xs/XS Max/XR/X/8/7/6/Plus, iPad Pro/Air 2/Mini 3/Mini 4, Samsung S4/S5, and More iPhone 12 Charger [GaN Tech], Anker 30W Compact USB-C Wall Charger with Power Delivery, PowerPort Atom for iPhone 12 / Mini/Pro/Pro Max / 11 / X/XS/XR, iPad Pro, MacBook 12'', Pixel, Galaxy USB C Charger, Anker 30W 2 Port Fast Charger with 18W USB C Power Adapter, Foldable PowerPort PD 2 Charger for iPad Pro, iPhone 11/11 Pro / 11 Pro Max/XS/Max/XR/X, Pixel, Galaxy, and More Anker 40W 5-Port USB Wall Charger, PowerPort 5 for iPhone XS / XS Max / XR / X / 8 / 7 / 6 / Plus, iPad Pro / Air 2 / mini, Galaxy S9 / S8 / Edge / Plus, Note 8 / 7, LG, Nexus, HTC and More, Black (AK-A2124111) Anker Quick Charge 3.0 39W Dual USB Wall Charger, PowerPort Speed 2 for Galaxy S10/S9/S8/Edge/Plus, Note 8/7 and PowerIQ for iPhone Xs/XS Max/XR/X/8/Plus, iPad Pro/Air 2/Mini, LG, Nexus, HTC and More USB C Charger, Anker 20W PIQ 3.0 Fast Charger with Foldable Plug, PowerPort III Charger for iPhone 13/13 Mini/13 Pro/13 Pro Max/12/11, iPad/iPad Mini, MagSafe, and More (Cable Not Included) Magnetic Wireless Charger, Anker Wireless Charger with 5ft Built-in USB-C Cable, PowerWave Magnetic Pad, 7.5W Charging for iPhone 13 / 13 Pro / 13 Pro Max / 13 mini / 12 / 12 Pro (No AC Adapter) USB C Super Fast Charger, Anker 25W PD Wall Charger Fast Charging for Samsung Galaxy S21/S21+/S21 Ultra/S20/Z Flip/Note20/20 Ultra/Note10/10+/S9/S8/S10e, iPad Pro 12.9, and More (Cable not Included) The price ranges from $8.99 to $59.99",
+    "question": "Provide me with the full names of chargers from Anker, and also share the price range for the available models",
+    "anno": "Not match",
+    "agent_answer": "Anker USB C Charger 30W, 711 Charger - $35.99, Anker USB C Charger 40W, 521 Charger - $35.99, Anker PowerCore Speed 20000 - $59.99, 5Ft Micro-USB Charger Cord Cable Fit for Anker-PowerCore - Not Priced, Anker 10W Max Wireless Charger, 313 Wireless Charger - Not Priced, Anker Wireless Charger, 313 Wireless Charger - $19.49, Anker 3-Pack Powerline Micro USB (3ft) - Not Priced, Anker iPhone Charger Cable, Powerline II Lightning Cable (10ft) - Not Priced, USB Charger, Anker Elite Dual Port 24W Wall Charger - $13.99, iPhone 12 Charger GaN Tech, Anker 30W Compact USB-C Wall Charger - Not Priced, USB C Charger, Anker 30W 2 Port Fast Charger - Not Priced, Anker 40W 5-Port USB Wall Charger - Not Priced"
+  },
+  {
+    "task_id": 281,
+    "eval": "These models are availiable: Oral-B Kids Extra Soft Replacement Brush Heads featuring STAR WARS, 2 count Kids By Oral-b Stages Power Star Wars Replacement Heads 4 Pack The price ranges from $3.745 to $6.495 ",
+    "question": "Please provide me with the complete product names of Oral B brush heads designed for children, along with their corresponding price range per brush",
+    "anno": "Not match",
+    "agent_answer": "Kids Toothbrush Replacement Heads for Oral B Kids Replaced Brush Heads Soft Precision Bristles Children Professional Care 16 Pack - $18.99, VINFANY 16PCS Kid's Toothbrush Heads for Oral B, Children Replacement Brush Heads for Braun Electric Rechargeable Toothbrush Compatible with Sensitive Clean, Professional Care, Advanced Power, Floss - $11.59, Oral-B Interproximal Clean Brush Head 3ct. - $14.58, Oral B Replacment Brush Head Cover - Keep Dust Germs Away From Your Mouth, Great For Travel! Oral-B Travel Case 2 Pack - N/A, Oral-B Smart 7000 Rechargeable Electric Toothbrush, Bluetooth, 6 Cleaning Modes, Pressure Sensor Lights, Visible 2-Minute Timer, Compatible with Oral-B Brush Heads (7000 SmartSeries, White) - $159.00, Oral-B Kids Electric Rechargeable Power Toothbrush Featuring Disney's Frozen, includes 2 Sensitive Brush Heads, Powered by Braun (Design May Vary) - $56.89, Replacement Toothbrush Heads Compatible for Oral B Braun Electric Toothbrush,10 Pack Professional Precision Brush Heads for Oral b 7000/Pro 1000/9600/ 5000/3000/8000 - $10.59, Oral-B Kids Extra Soft Replacement Brush Heads featuring STAR WARS, 2 count - $12.99, 4 Pcs Cross Toothbrush Heads Compatible With Oral B Electric Toothbrush Heads - 4 Pcs Toothbrush Head Covers Compatible With Oral B Cross Action Toothbrush Heads - $5.99, BrushIt Variety Pack 8 Replacement Heads Compatible with Oral B Replacement Heads for Electric Toothbrush - $10.89, Children's Electric Toothbrush, Baby Kids New Cartoon Soft Bristles Oral Cleaning and Whitening Automatic Toothbrush with 3 Hydrophobic Brush Heads, Cleaning Deep Electric Toothbrushes (B) - $7.78"
+  },
+  {
+    "task_id": 282,
+    "eval": "These models are availiable: Nike Men's Air Max Camden Slide Sandal Nike Men's Benassi JDI Fanny Pack Slides Nike Victori One Mens Comfort Slide Cn9675-003 (Midnight Navy/Midnight Navy/White, Numeric_10) Nike Offcourt Slide Mens Bq4639-002 Size 12 Nike Jordan Men's Break Slide Red AR6374-602 Nike Victori One Slide Mens Style : Dd9559-300 Nike Men's Benassi Solarsoft Slide Athletic Sandal (Black/White, numeric_14) Nike Men's Benassi Solarsoft Slide Athletic Sandal (Midnight Navy/Blue, numeric_8) Nike womens Benassi Just Do It   The price ranges from $27.6 to $90.65",
+    "question": "List the full product names of slide slippers from Nike and tell me the price range of the available products",
+    "anno": "Not match",
+    "agent_answer": "Nike Victori One Mens Comfort Slide Cn9675-003, Nike Men's Air Max Camden Slide Sandal, Nike Men's Benassi JDI Fanny Pack Slides, Nike Men's Pro Heist Dri-FIT Baseball Sliding Shorts 880669, Nike Offcourt Slide Mens Bq4639-002 Size 12, Nike Jordan Men's Break Slide Red AR6374-602, Nike Victori One Slide Mens Style : Dd9559-300, Nike Men's Benassi Solarsoft Slide Athletic Sandal, Nike Men's Benassi Solarsoft Slide Athletic Sandal (Midnight Navy/Blue, numeric_8). Price range: $7.99 - $90.65"
+  },
+  {
+    "task_id": 287,
+    "eval": "5h 47min",
+    "question": "How much time does it take from Pittsburgh to Philadelphia by car?",
+    "anno": "Match",
+    "agent_answer": "5h 47min"
+  },
+  {
+    "task_id": 288,
+    "eval": "Samantha Jones",
+    "question": "Tell me the name of the customer who has the most cancellations in the history",
+    "anno": "Not match",
+    "agent_answer": "N/A"
+  },
+  {
+    "task_id": 289,
+    "eval": "email: coolcat321@hotmail.com name: Samantha Jones phone number: 3055551212",
+    "question": "Tell me the email address, name, phone number of the customer who has the most cancellations in the history",
+    "anno": "Not match",
+    "agent_answer": "[12852"
+  },
+  {
+    "task_id": 290,
+    "eval": "WSH09-29-White,WSH09-28-Green,MSH11-34-Blue,WP09-29-Purple",
+    "question": "Tell me the product SKUs in the most recent cancelled orders of the customer who has the most cancellations in the history",
+    "anno": "Not match",
+    "agent_answer": "[9338"
+  },
+  {
+    "task_id": 291,
+    "eval": "$148",
+    "question": "Tell me the total spend on products in the most recent cancelled orders of the customer who has the most cancellations in the history",
+    "anno": "Not match",
+    "agent_answer": "208.20"
+  },
+  {
+    "task_id": 292,
+    "eval": "9",
+    "question": "Tell me the total number of cancellations of the customer who has the most cancellations in the history",
+    "anno": "Not match",
+    "agent_answer": "Unable to determine the customer with the most cancellations due to repeated memory errors and lack of data in the accessed reports."
+  },
+  {
+    "task_id": 293,
+    "eval": "git clone ssh://git@metis.lti.cs.cmu.edu:2222/convexegg/super_awesome_robot.git",
+    "question": "Show me the command to clone Super_Awesome_Robot with SSH.",
+    "anno": "Not match",
+    "agent_answer": "ssh://git@localhost:2222/convexegg/super_awesome_robot.git"
+  },
+  {
+    "task_id": 294,
+    "eval": "git clone ssh://git@metis.lti.cs.cmu.edu:2222/convexegg/chatgpt.git",
+    "question": "Show me the command to clone ChatGPT with SSH.",
+    "anno": "Not match",
+    "agent_answer": "ssh://git@localhost:2222/convexegg/chatgpt.git"
+  },
+  {
+    "task_id": 295,
+    "eval": "git clone ssh://git@metis.lti.cs.cmu.edu:2222/root/metaseq.git",
+    "question": "Show me the command to clone metaseq with SSH.",
+    "anno": "Not match",
+    "agent_answer": "ssh://git@localhost:2222/root/metaseq.git"
+  },
+  {
+    "task_id": 296,
+    "eval": "ssh://git@metis.lti.cs.cmu.edu:2222/eriklindernoren/PyTorch-GAN.git",
+    "question": "Show me the command to clone the best GAN python implementation with SSH.",
+    "anno": "Not match",
+    "agent_answer": "Unable to navigate to GitHub from GitLab using the provided methods. Manual URL entry in the search box was incorrectly handled by GitLab, preventing the completion of the task."
+  },
+  {
+    "task_id": 297,
+    "eval": "ssh://git@metis.lti.cs.cmu.edu:2222/yjlou/2019-nCov.git",
+    "question": "Show me the command to clone the most stared Covid location tracker with SSH.",
+    "anno": "Not match",
+    "agent_answer": "git clone ssh://git@localhost:2222/covid19india/covid19india-react.git"
+  },
+  {
+    "task_id": 301,
+    "eval": {
+      "fuzzy_match": "N/A"
+    },
+    "question": "Show the most recent processing order",
+    "anno": "Not match",
+    "agent_answer": "Order ID: 000000170, Date: 5/17/23, Ship To: Emma Lopez, Order Total: $365.42, Status: Canceled"
+  },
+  {
+    "task_id": 302,
+    "eval": {
+      "fuzzy_match": "N/A"
+    },
+    "question": "Show the most recent out of delivery order",
+    "anno": "Not match",
+    "agent_answer": "Order ID: 000000189, Status: Pending, Order Date: May 2, 2023, Items: Quoizel TF9404M Grove Park Tiffany Multi-Color Floor Lamp, Total: $754.99"
+  },
+  {
+    "task_id": 303,
+    "eval": "1",
+    "question": "How many commits did Kilian make durning 2023?",
+    "anno": "Match",
+    "agent_answer": "1 commit"
+  },
+  {
+    "task_id": 304,
+    "eval": "14",
+    "question": "How many commits did Eric make between Feb 2023 and May 2023?",
+    "anno": "Not match",
+    "agent_answer": "Eric Bailey made 12 commits between February 2023 and May 2023."
+  },
+  {
+    "task_id": 305,
+    "eval": "0",
+    "question": "How many commits did Philip make in 2023/1?",
+    "anno": "Not match",
+    "agent_answer": "Philip made 2 commits in January 2023."
+  },
+  {
+    "task_id": 306,
+    "eval": "0",
+    "question": "How many commits did Anthony make between 08/2022-09/2022?",
+    "anno": "Match",
+    "agent_answer": "Anthony made 0 commits during the specified period or is not listed as a contributor in the available data."
+  },
+  {
+    "task_id": 307,
+    "eval": "16",
+    "question": "How many commits did Nic make in April 2021?",
+    "anno": "Not match",
+    "agent_answer": "N/A - Unable to isolate commits by Nic for April 2021 using the available search functionality and current page setup."
+  },
+  {
+    "task_id": 308,
+    "eval": "Shawn Allen",
+    "question": "Tell me who has made the most contributions, in terms of number of commits, to the primer/design project",
+    "anno": "Match",
+    "agent_answer": "Shawn Allen with 95 commits"
+  },
+  {
+    "task_id": 309,
+    "eval": "Grayson Wright",
+    "question": "Tell me who has made the most contributions, in terms of number of commits, to the thoughtbot/administrate project",
+    "anno": "Not match",
+    "agent_answer": "The thoughtbot/administrate project is not found on GitLab. Consider checking other platforms such as GitHub."
+  },
+  {
+    "task_id": 310,
+    "eval": "tokudu",
+    "question": "Tell me who has made the most contributions, in terms of number of commits, to the AndroidSlidingUpPanel project",
+    "anno": "Match",
+    "agent_answer": "tokudu has made the most contributions with 150 commits."
+  },
+  {
+    "task_id": 311,
+    "eval": "Erik Linder-Nor\u00e9n",
+    "question": "Tell me who has made the most contributions, in terms of number of commits, to the Pytorch GAN project",
+    "anno": "Match",
+    "agent_answer": "Erik Linder-Nor\u00e9n with 85 commits is the top contributor to the Pytorch GAN project."
+  },
+  {
+    "task_id": 312,
+    "eval": "Christopher Groskopf",
+    "question": "Tell me who has made the most contributions, in terms of number of commits, to the csvkit project",
+    "anno": "Not match",
+    "agent_answer": "James McKinney"
+  },
+  {
+    "task_id": 313,
+    "eval": "N/A",
+    "question": "Which number to call for the customer service?",
+    "anno": "Match",
+    "agent_answer": "Unable to find the customer service phone number after exploring all relevant sections and links on the website."
+  },
+  {
+    "task_id": 314,
+    "eval": "Shawn Allen, Inayaili Le\u00f3n, Aurora Pleguezuelo",
+    "question": "List the name of the top 3 contributors to prime/design repo, ranked by the number of commits?",
+    "anno": "Match",
+    "agent_answer": "Shawn Allen: 95 commits, Inayaili Le\u00f3n: 77 commits, Aurora Pleguezuelo: 66 commits"
+  },
+  {
+    "task_id": 315,
+    "eval": "eriklindernoren@live.se, eriklindernoren@gmail.com, pinnacle.chen@qq.com",
+    "question": "List the email address of the top 3 contributors to Pytorch GAN repo, ranked by the number of commits?",
+    "anno": "Match",
+    "agent_answer": "1. Erik Linder-Nor\u00e9n (eriklindernoren@live.se) - 85 commits, 2. eriklindernoren (eriklindernoren@gmail.com) - 60 commits, 3. pinnacle (pinnacle.chen@qq.com) - 8 commits"
+  },
+  {
+    "task_id": 316,
+    "eval": "Ian Sutherland, Joe Hadda, Dan Abramov",
+    "question": "List the name of the top 3 contributors to facebook's guide on building react apps repo, ranked by the number of commits?",
+    "anno": "Match",
+    "agent_answer": "Dan Abramov (634 commits), Joe Haddad (292 commits), Ian Sutherland (153 commits)"
+  },
+  {
+    "task_id": 317,
+    "eval": "Susan Zhang: 70, Stephen Roller: 51, Peter Albert: 12",
+    "question": "List the name and number of commits of the top 3 contributors to metaseq repo, ranked by the number of commits?",
+    "anno": "Match",
+    "agent_answer": "Susan Zhang: 70 commits, Stephen Roller: 51 commits, Peter Albert: 12 commits"
+  },
+  {
+    "task_id": 318,
+    "eval": "Lo, Chen, Chu",
+    "question": "List the last names of the top 3 contributors to 2019-nCov repo, ranked by the number of commits?",
+    "anno": "Match",
+    "agent_answer": "Lo, Chen, Chu"
+  },
+  {
+    "task_id": 319,
+    "eval": "0",
+    "question": "How much refund I should expect from my order canlled in April 2022, including shipping fee",
+    "anno": "Not match",
+    "agent_answer": "365.42"
+  },
+  {
+    "task_id": 320,
+    "eval": "406.53",
+    "question": "How much refund I should expect from my order canlled in Feb 2023, including shipping fee",
+    "anno": "Not match",
+    "agent_answer": "231.54"
+  },
+  {
+    "task_id": 321,
+    "eval": "3053.97",
+    "question": "How much refund I should expect from my order canlled in 2022, including shipping fee",
+    "anno": "Not match",
+    "agent_answer": "The total refund amount expected for the canceled order, including the shipping fee, is $365.42."
+  },
+  {
+    "task_id": 322,
+    "eval": "350.42",
+    "question": "How much refund I should expect from my order canlled in May 2023 if I cannot get the shipping fee refunded?",
+    "anno": "Match",
+    "agent_answer": "350.42"
+  },
+  {
+    "task_id": 323,
+    "eval": "264.49",
+    "question": "How much refund I should expect from my order canlled in 2022/03? I only kept the AC-DC Adapter and the shop told me that I cannot get the shipping fee back",
+    "anno": "Not match",
+    "agent_answer": "Refund amount calculation based on the provided information. Subtract the cost of the AC-DC Adapter and the shipping fee from the grand total."
+  },
+  {
+    "task_id": 329,
+    "eval": "0",
+    "question": "How much I spend on 4/19/2023 on shopping at One Stop Market?",
+    "anno": "Not match",
+    "agent_answer": "Information regarding the spending on 4/19/2023 at One Stop Market is not available in the orders listed on the accessed pages."
+  },
+  {
+    "task_id": 330,
+    "eval": "81.31",
+    "question": "How much I spend in March 2023 on shopping at One Stop Market?",
+    "anno": "Match",
+    "agent_answer": "Total spending in March 2023 at One Stop Market is $83.31 ($65.32 + $17.99)."
+  },
+  {
+    "task_id": 331,
+    "eval": "40.16",
+    "question": "How much I spend in July 2022 on shopping at One Stop Market?",
+    "anno": "Match",
+    "agent_answer": "40.16"
+  },
+  {
+    "task_id": 332,
+    "eval": "Jan: 572.8\nFeb: 762.18\nMar: 83.31",
+    "question": "How much I spend each month from Jan to the end of March 2023 on shopping at One Stop Market?",
+    "anno": "Not match",
+    "agent_answer": "January 2023: $572.88, February 2023: $947.50, March 2023: $83.31"
+  },
+  {
+    "task_id": 333,
+    "eval": "359.546",
+    "question": "How much did I spend on shopping at One Stop Market on November 2022? They gave me a 20% discount on the total amount for orders exceeding $200 in cash",
+    "anno": "Not match",
+    "agent_answer": "218.17 - (218.17 * 0.20) = $174.54"
+  },
+  {
+    "task_id": 334,
+    "eval": "March 11th 2023",
+    "question": "Tell me when I last ordered my muffin cornbread mix?",
+    "anno": "Match",
+    "agent_answer": "March 11, 2023"
+  },
+  {
+    "task_id": 335,
+    "eval": "January 16th 2023",
+    "question": "Tell me when I last ordered my body butter?",
+    "anno": "Not match",
+    "agent_answer": "[51627"
+  },
+  {
+    "task_id": 336,
+    "eval": "January 16th 2023",
+    "question": "Tell me when I last ordered my conditioner?",
+    "anno": "Not match",
+    "agent_answer": "The last order containing conditioner was not found in the records available, which date back to February 24, 2023."
+  },
+  {
+    "task_id": 337,
+    "eval": "December 12th 2022",
+    "question": "Tell me when I last ordered my bread olive?",
+    "anno": "Not match",
+    "agent_answer": "[51847"
+  },
+  {
+    "task_id": 338,
+    "eval": "December 4th 2022",
+    "question": "Tell me when I last ordered my toothpaste?",
+    "anno": "Not match",
+    "agent_answer": "Toothpaste was not found in the recent orders available for review on the 'One Stop Market' website."
+  },
+  {
+    "task_id": 344,
+    "eval": "351",
+    "question": "How many reviews our shop received by far?",
+    "anno": "Not match",
+    "agent_answer": "records found"
+  },
+  {
+    "task_id": 345,
+    "eval": "351",
+    "question": "How many reviews our shop received in Apr 2023?",
+    "anno": "Not match",
+    "agent_answer": "Total reviews in April 2023: 59"
+  },
+  {
+    "task_id": 346,
+    "eval": "0",
+    "question": "How many reviews our shop received during 2022?",
+    "anno": "Match",
+    "agent_answer": "0"
+  },
+  {
+    "task_id": 347,
+    "eval": "351",
+    "question": "How many reviews our shop received from the beginning of the shop?",
+    "anno": "Not match",
+    "agent_answer": "1"
+  },
+  {
+    "task_id": 348,
+    "eval": "0",
+    "question": "How many reviews our shop received in May 2023?",
+    "anno": "Match",
+    "agent_answer": "0"
+  },
+  {
+    "task_id": 349,
+    "eval": "yjlou",
+    "question": "Who else have access to my repo gimmiethat.space, show me their usernames",
+    "anno": "Not match",
+    "agent_answer": "\"Byte Blaze, yjlou\""
+  },
+  {
+    "task_id": 350,
+    "eval": "Abishek S, abisubramanya27",
+    "question": "Who else have access to my repo prism-theme, show me their usernames",
+    "anno": "Match",
+    "agent_answer": "Abishek S @abisubramanya27, Byte Blaze @byteblaze"
+  },
+  {
+    "task_id": 358,
+    "eval": "Flat Rate - Fixed",
+    "question": "Show me the shipping method for order number 187.",
+    "anno": "Match",
+    "agent_answer": "Flat Rate - Fixed"
+  },
+  {
+    "task_id": 359,
+    "eval": "1/29/2023",
+    "question": "Show me the order date for order number 148.",
+    "anno": "Match",
+    "agent_answer": "1/29/23"
+  },
+  {
+    "task_id": 360,
+    "eval": "Bornbridge Artificial Spiral Topiary Tree - Indoor / Outdoor Topiary Trees - Artificial Outdoor Plants (2 Pack, 4' Cypress), Russound 5B45W 4\" Indoor Outdoor Speakers White",
+    "question": "Show me the product names for order number 148.",
+    "anno": "Match",
+    "agent_answer": "Bornbridge Artificial Spiral Topiary Tree - Indoor / Outdoor Topiary Trees - Artificial Outdoor Plants (2 Pack, 4' Cypress) Color 4' Boxwood Size 2 Pack, Russound 5B45W 4\" Indoor Outdoor Speakers White"
+  },
+  {
+    "task_id": 361,
+    "eval": "170: cancelled, 189: pending",
+    "question": "Show me the order statuses for order number 170 and 189.",
+    "anno": "Match",
+    "agent_answer": "Order 170: Canceled, Order 189: Pending"
+  },
+  {
+    "task_id": 362,
+    "eval": "Emma Lopez, 101 S San Mateo Dr, San Mateo, California, 94010, United States",
+    "question": "Show me the billing address for order number 00178.",
+    "anno": "Match",
+    "agent_answer": "Emma Lopez, 101 S San Mateo Dr, San Mateo, California, 94010, United States, Phone: 6505551212"
+  },
+  {
+    "task_id": 363,
+    "eval": "748m",
+    "question": "Measure distance between Carnegie Mellon University and Carnegie Music Hall by walking",
+    "anno": "Match",
+    "agent_answer": "778 meters, 10 minutes"
+  },
+  {
+    "task_id": 364,
+    "eval": "1.7km",
+    "question": "Measure distance between Carnegie Mellon University and UPMC Shadyside by walking",
+    "anno": "Match",
+    "agent_answer": "1.7km, 22 minutes"
+  },
+  {
+    "task_id": 365,
+    "eval": "2.2km",
+    "question": "Measure distance between Carnegie Music Hall and UPMC Shadyside by walking",
+    "anno": "Match",
+    "agent_answer": "2.2 km"
+  },
+  {
+    "task_id": 366,
+    "eval": "1.2km",
+    "question": "Measure distance between CVS (closet one) and UPMC Shadyside by walking",
+    "anno": "Not match",
+    "agent_answer": "Distance: 964km. Time: 208:50."
+  },
+  {
+    "task_id": 367,
+    "eval": "1.4km",
+    "question": "Measure distance between Carnegie Mellon University and CVS (closet one) by walking",
+    "anno": "Not match",
+    "agent_answer": "Unable to find the walking distance between Carnegie Mellon University and the nearest CVS as the mapping service used (OpenStreetMap) could not locate a nearby CVS and no alternative mapping services are available on the current platform."
+  },
+  {
+    "task_id": 368,
+    "eval": "There is no function to show only discount items.",
+    "question": "find discounted items.",
+    "anno": "Not match",
+    "agent_answer": "The \"Clearance Makeup Set\" is a discounted item, priced at $0.01."
+  },
+  {
+    "task_id": 376,
+    "eval": "N/A",
+    "question": "Summarize customer reviews for Amazon Echo Dot 3rd generation.",
+    "anno": "Match",
+    "agent_answer": "No customer reviews are available for the Amazon Echo Dot 3rd generation on this website."
+  },
+  {
+    "task_id": 382,
+    "eval": "N/A",
+    "question": "I am arriving at Carnegie Mellon University. Find the nearby US Citizenship and Immigration Services and the walking distance to the nearest Social Security Administration from US Citizenship and Immigration Services",
+    "anno": "Not match",
+    "agent_answer": "Unable to locate USCIS near Carnegie Mellon University or calculate the walking distance to SSA using the available resources on WebArena."
+  },
+  {
+    "task_id": 383,
+    "eval": "Hyatt Regency Pittsburgh International Airport Giant Eagle, ALDI",
+    "question": "I am arriving at Pittsburgh Airport. Show me the name of a Hyatt hotel if there is any nearby. Tell me the names of supermarkets that are within 15mins driving from the hotel",
+    "anno": "Not match",
+    "agent_answer": "No Hyatt hotel found near Pittsburgh Airport using OpenStreetMap. Consider using Google Maps or another platform for better results."
+  },
+  {
+    "task_id": 384,
+    "eval": "Lisa Lee, Evelyn Kurver, Amanda, N Randall",
+    "question": "List the customer names who complain about the quality of EYZUTAK phone cases",
+    "anno": "Match",
+    "agent_answer": "Lisa Lee, Diana Alcaraz, Evelyn Kurver, N Randall, Amazon Customer, MH, Misba009, Amanda, Bethany Robertson, Cally"
+  },
+  {
+    "task_id": 385,
+    "eval": "Lisa Lee, MH, Misba009, Amanda, N Randall, Amazon Customer, Cally, Bethany Robertson",
+    "question": "List the customer names who thinks EYZUTAK phone cases are of good looking",
+    "anno": "Match",
+    "agent_answer": "Lisa Lee, MH, Diana Alcaraz, Evelyn Kurver, Misba009, Amanda, N Randall, Amazon Customer, Cally, Bethany Robertson"
+  },
+  {
+    "task_id": 386,
+    "eval": "Around 3.1 stars",
+    "question": "What is the rating of Ugreen lightning to 3.5mm cable. Please round to the nearest whole number",
+    "anno": "Match",
+    "agent_answer": "65"
+  },
+  {
+    "task_id": 387,
+    "eval": "MH, Misba009, Amanda, Amazon Customer, Cally, Bethany Robertson, Bethany Robertson",
+    "question": "Who gave 4 or 5 stars for phone cases from EYZUTAK",
+    "anno": "Not match",
+    "agent_answer": "MH, Amanda, Amazon Customer, Cally, Bethany Robertson"
+  },
+  {
+    "task_id": 388,
+    "eval": "Evelyn Kurver,  N Randall",
+    "question": "Who gave 1 or 2 stars for phone cases from EYZUTAK",
+    "anno": "Match",
+    "agent_answer": "Evelyn Kurver, N Randall"
+  },
+  {
+    "task_id": 491,
+    "eval": {
+      "fuzzy_match": "N/A"
+    },
+    "question": "Notify Sarah Miller in their most recent pending order with message \"the order is ready to be shipped soon!\"",
+    "anno": "Not match",
+    "agent_answer": "The notification email about the order being ready to ship soon has been successfully sent to Sarah Miller."
+  },
+  {
+    "task_id": 723,
+    "eval": "N/A",
+    "question": "Like all submissions created by FTorrez81 in subreddit iphone13",
+    "anno": "Match",
+    "agent_answer": "Unable to locate subreddit \"iphone13\" or user \"FTorrez81\" on Postmill. Consider verifying subreddit existence or user activity on a different platform."
+  },
+  {
+    "task_id": 726,
+    "eval": "N/A",
+    "question": "DisLike all submissions created by jacyanthis in subreddit earthporn",
+    "anno": "Match",
+    "agent_answer": "No submissions by jacyanthis found in subreddit earthporn after multiple search attempts."
+  },
+  {
+    "task_id": 783,
+    "eval": "N/A",
+    "question": "Add the following users to repo kkroening/ffmpeg-python as maintainer: ['yjlou', 'a11yproject']",
+    "anno": "Not match",
+    "agent_answer": "Repository 'kkroening/ffmpeg-python' cannot be found or accessed on GitLab. Ensure the repository name is correct or check if there are any access restrictions."
+  },
+  {
+    "task_id": 784,
+    "eval": "secupwn@users.noreply.github.com",
+    "question": "Tell me the email address of the contributor who has the most commits to branch main",
+    "anno": "Match",
+    "agent_answer": "secupwn@users.noreply.github.com"
+  },
+  {
+    "task_id": 785,
+    "eval": "secupwn@users.noreply.github.com",
+    "question": "Tell me the email address of the contributor who has the most commits to branch gh-page",
+    "anno": "Match",
+    "agent_answer": "secupwn@users.noreply.github.com"
+  },
+  {
+    "task_id": 786,
+    "eval": "412",
+    "question": "Tell me the number of commits of the contributor who has the most commits to branch main",
+    "anno": "Not match",
+    "agent_answer": "414"
+  },
+  {
+    "task_id": 787,
+    "eval": "0",
+    "question": "Tell me the number of followers of the contributor who has the most commits to branch main",
+    "anno": "Not match",
+    "agent_answer": "0"
+  },
+  {
+    "task_id": 788,
+    "eval": "Andrew M. Whalen, amwhalen, Massachusetts, github@amwhalen.com",
+    "question": "Tell me the full name, gitlab account name, location and email address of the contributor who has the most commits to branch php52",
+    "anno": "Not match",
+    "agent_answer": "Full name: Andrew M. Whalen, GitLab account name: andrew.whalen, Email: github@amwhalen.com, Location information is not directly available on this page."
+  },
+  {
+    "task_id": 789,
+    "eval": "N/A",
+    "question": "Create an issue asking about do they have any plan on supporting Webagent in the next quater in huggingface dataset.",
+    "anno": "Not match",
+    "agent_answer": "The issue regarding support for Webagent in the Hugging Face dataset for the upcoming quarter has been successfully created in the \"Byte Blaze / web_agent_index\" project on GitLab."
+  },
+  {
+    "task_id": 790,
+    "eval": "N/A",
+    "question": "Delete all negative reviews for Sybil running short",
+    "anno": "Not match",
+    "agent_answer": "Unable to delete the review titled \"Pic is WAY different then the real thing\" for \"Erika Running Short\". Multiple attempts to use the 'Delete' button did not result in deletion."
+  },
+  {
+    "task_id": 791,
+    "eval": "N/A",
+    "question": "Make a folder named car on the gimmiethat.space repo and include a file called urls.txt that consists of the links to the 5 most recent posts from cars.",
+    "anno": "Not match",
+    "agent_answer": "The folder \"car\" was created and the file \"urls.txt\" containing the required links was successfully added to the \"gimmiethat.space\" repository."
+  },
+  {
+    "task_id": 792,
+    "eval": "N/A",
+    "question": "Buy the highest rated product from the Beauty & Personal Care category within a budget under 20.",
+    "anno": "Not match",
+    "agent_answer": "[31339"
+  },
+  {
+    "task_id": 793,
+    "eval": "N/A",
+    "question": "Buy the highest rated product from the Men clothing category within a budget above 50 but under 129.99.",
+    "anno": "Not match",
+    "agent_answer": "[27288"
+  },
+  {
+    "task_id": 794,
+    "eval": "N/A",
+    "question": "Change the delivery address for my most recent order to 4000 Forbes Ave, Pittsburgh, PA.",
+    "anno": "Not match",
+    "agent_answer": "Address successfully changed to 4000 Forbes Ave, Pittsburgh, PA."
+  },
+  {
+    "task_id": 795,
+    "eval": "N/A",
+    "question": "Change the delivery address for my most recent order to 6726 McPherson Blvd, Pittsburgh, PA.",
+    "anno": "Not match",
+    "agent_answer": "Address changed to 6726 McPherson Blvd, Pittsburgh, PA successfully."
+  },
+  {
+    "task_id": 796,
+    "eval": "N/A",
+    "question": "Change the delivery address for my most recent order to 155 5th Street, San Francisco, CA.",
+    "anno": "Match",
+    "agent_answer": "N/A"
+  },
+  {
+    "task_id": 797,
+    "eval": "N/A",
+    "question": "Change the delivery address for my most recent order to 3 Oxford St, Cambridge, MA.",
+    "anno": "Not match",
+    "agent_answer": "Address successfully updated to 3 Oxford St, Cambridge, MA."
+  },
+  {
+    "task_id": 798,
+    "eval": "N/A",
+    "question": "Change the delivery address for my most recent order to 77 Massachusetts Ave, Cambridge, MA.",
+    "anno": "Not match",
+    "agent_answer": "Address changed to 77 Massachusetts Ave, Cambridge, MA successfully."
+  }
+]
