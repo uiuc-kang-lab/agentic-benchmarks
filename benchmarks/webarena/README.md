@@ -15,7 +15,7 @@ export WIKIPEDIA="<your_wikipedia_domain>:8888/wikipedia_en_all_maxi_2022-05/A/U
 export HOMEPAGE="<your_homepage_domain>:4399" # this is a placeholder
 ```
 
-# download the agent trajectories
+# Download the agent trajectories
 ```bash
 gdown 1yXr8LkFImvDaPW7TnDFI_12ZthVEn4oJ
 ```
@@ -32,6 +32,5 @@ python evaluate.py --agent agent_name --mode customized
 
 # Evaluate the agent result by o1 
 ```bash
-cd agents
-python llm_as_a_judge.py
+python llm_as_a_judge.py --agent agent_name
 ```
