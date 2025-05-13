@@ -1,0 +1,14 @@
+gymnasium
+playwright==1.32.1
+Pillow
+evaluate
+openai==1.78.1
+types-tqdm
+tiktoken
+aiolimiter
+beartype==0.12.0
+flask
+nltk
+text-generation
+transformers==4.33.2
+gdown
