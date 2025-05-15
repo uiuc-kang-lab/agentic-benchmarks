@@ -1,0 +1,32 @@
+{
+  "sites": [
+    "shopping"
+  ],
+  "task_id": 351,
+  "require_login": true,
+  "storage_state": "./.auth/shopping_state.json",
+  "start_url": "<your_shopping_site_domain>:7770",
+  "geolocation": null,
+  "intent_template": "List products from {{product_category}} category by {{order}} price",
+  "instantiation_dict": {
+    "product_category": "PS4 accessories",
+    "order": "ascending"
+  },
+  "intent": "List products from PS4 accessories category by ascending price",
+  "require_reset": false,
+  "eval": {
+    "eval_types": [
+      "url_match"
+    ],
+    "reference_answers": null,
+    "reference_url": "<your_shopping_site_domain>:7770/video-games/playstation-4/accessories.html?product_list_order=price",
+    "program_html": [],
+    "url_note": "GOLD in PRED",
+    "or": [
+      {
+        "reference_url": "<your_shopping_site_domain>:7770/video-games.html?cat=67&product_list_order=price"
+      }
+    ]
+  },
+  "intent_template_id": 137
+}
