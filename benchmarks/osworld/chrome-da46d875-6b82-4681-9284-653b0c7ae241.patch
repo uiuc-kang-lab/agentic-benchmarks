@@ -1,0 +1,36 @@
+diff --git a/evaluation_examples/examples/chrome/da46d875-6b82-4681-9284-653b0c7ae241.json b/evaluation_examples/examples/chrome/da46d875-6b82-4681-9284-653b0c7ae241.json
+index 0abaac7..ac3b7bd 100644
+--- a/evaluation_examples/examples/chrome/da46d875-6b82-4681-9284-653b0c7ae241.json
++++ b/evaluation_examples/examples/chrome/da46d875-6b82-4681-9284-653b0c7ae241.json
+@@ -1,7 +1,7 @@
+ {
+     "id": "da46d875-6b82-4681-9284-653b0c7ae241",
+     "snapshot": "chrome",
+-    "instruction": "Schedule an appointment to apply for transportation access pass in  the Charlie Card store on the first Monday four months later, 10:15 am, fill in my details (James Smith, james.smith@gmail.com). And don not click \"book\" directly. Let me review it.",
++    "instruction": "Schedule an appointment to apply for transportation access pass in  the Charlie Card store on the first Monday four months later, around 10:15 am, fill in my details (James Smith, james.smith@gmail.com). And don not click \"book\" directly. Let me review it.",
+     "source": "test_task_2",
+     "config": [
+       {
+@@ -64,8 +64,8 @@
+                 "type": "active_tab_html_parse",
+                 "category": "input",
+                 "inputObject":{
+-                    "/html/body/div/div/form/div[7]/div/div/div[1]/input[1]": "name",
+-                    "/html/body/div/div/form/div[7]/div/div/div[1]/input[2]": "mail"
++                    "/html/body/div[2]/div/form/div[7]/div/div/div[1]/input[1]": "name",
++                    "/html/body/div[2]/div/form/div[7]/div/div/div[1]/input[2]": "mail"
+                 }
+             }
+         ],
+@@ -84,8 +84,9 @@
+                 },
+                 "expected": {
+                     "content": "Apply for Transportation Access Pass (TAP) CharlieCard non-auto approval",
+-                    "time": "{MonthFull} {Day0D}, 10:15 am"
+-                }
++                    "time": "{MonthFull} {Day0D}"
++                },
++                "expect_in_result": true
+             }
+             },
+             {

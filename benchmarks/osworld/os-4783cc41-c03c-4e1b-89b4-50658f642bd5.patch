@@ -1,0 +1,13 @@
+diff --git a/evaluation_examples/examples/os/4783cc41-c03c-4e1b-89b4-50658f642bd5.json b/evaluation_examples/examples/os/4783cc41-c03c-4e1b-89b4-50658f642bd5.json
+index fb7cd75..cda8266 100644
+--- a/evaluation_examples/examples/os/4783cc41-c03c-4e1b-89b4-50658f642bd5.json
++++ b/evaluation_examples/examples/os/4783cc41-c03c-4e1b-89b4-50658f642bd5.json
+@@ -1,7 +1,7 @@
+ {
+   "id": "4783cc41-c03c-4e1b-89b4-50658f642bd5",
+   "snapshot": "os",
+-  "instruction": "Copy directory hierarchy from \"$sourceDir\" to \"$targetDir\"",
++  "instruction": "I've set a path in $TARGET_DIR in the terminal. Copy the directory hierarchy from the desktop to it. If you can't find the path, don't make one up please, and instead call \"fail\".",
+   "source": "NL2Bash",
+   "config": [
+     {
