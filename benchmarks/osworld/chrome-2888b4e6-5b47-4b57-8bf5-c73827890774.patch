@@ -1,5 +1,5 @@
 diff --git a/evaluation_examples/examples/chrome/2888b4e6-5b47-4b57-8bf5-c73827890774.json b/evaluation_examples/examples/chrome/2888b4e6-5b47-4b57-8bf5-c73827890774.json
-index ae2ced5..9de28c1 100644
+index ae2ced5..e348054 100644
 --- a/evaluation_examples/examples/chrome/2888b4e6-5b47-4b57-8bf5-c73827890774.json
 +++ b/evaluation_examples/examples/chrome/2888b4e6-5b47-4b57-8bf5-c73827890774.json
 @@ -1,7 +1,7 @@
@@ -16,7 +16,7 @@ index ae2ced5..9de28c1 100644
              "type": "rule",
              "rules":{
 -                "expected": "Stripe,Men,L,Short%20Sleeve,Sales%20%26%20Discounts" 
-+                "expected": "L,1%257C50,T-shirts,Short%20Sleeve?ss=true" 
++                "expected": "L,1%257C50,T-shirts,Short%20Sleeve" 
              }
          }
      }
