@@ -1,0 +1,60 @@
+diff --git a/desktop_env/evaluators/metrics/general.py b/desktop_env/evaluators/metrics/general.py
+index a401b74..010ecbb 100644
+--- a/desktop_env/evaluators/metrics/general.py
++++ b/desktop_env/evaluators/metrics/general.py
+@@ -354,20 +354,17 @@ def compare_time_in_speedtest_results(speedtest_result_path, time_diff):
+     if not speedtest_result_path:
+         return 0
+ 
+-    # open the speedtest results file(csv)
+-    date_col = None
++    import csv
++
+     try:
+         with open(speedtest_result_path, 'r') as f:
+-            for i, line in enumerate(f):
+-                if i == 1:
+-                    date = line.split(',')[1]
+-                    break
+-            now_date_time = datetime.datetime.now().strftime('%H:%M')
+-            date_time = date[-5:]
+-            # compare the date time with the current date time, if time diff less than time_diff para, then return true
+-            if not abs((datetime.datetime.strptime(date_time, '%H:%M') - datetime.datetime.strptime(now_date_time,
+-                                                                                                    '%H:%M')).total_seconds()) / 60 < int(
+-                time_diff):
++            reader = csv.DictReader(f)
++            row = next(reader)
++            date_time = row["Date"] + " " + row["Time"]
++            speedtest_date = datetime.datetime.strptime(date_time, "%m/%d/%Y %I:%M %p")
++            now = datetime.datetime.now()
++            # ensure the speedtest was run today
++            if abs(now - speedtest_date).seconds > int(time_diff):
+                 return 0
+         return 1
+     except:
+diff --git a/evaluation_examples/examples/multi_apps/26660ad1-6ebb-4f59-8cba-a8432dfe8d38.json b/evaluation_examples/examples/multi_apps/26660ad1-6ebb-4f59-8cba-a8432dfe8d38.json
+index 20a274f..62cb912 100644
+--- a/evaluation_examples/examples/multi_apps/26660ad1-6ebb-4f59-8cba-a8432dfe8d38.json
++++ b/evaluation_examples/examples/multi_apps/26660ad1-6ebb-4f59-8cba-a8432dfe8d38.json
+@@ -1,7 +1,7 @@
+ {
+     "id": "26660ad1-6ebb-4f59-8cba-a8432dfe8d38",
+     "snapshot": "multiapps",
+-    "instruction": "I want to test the quality of the network environment my laptop is currently in. Please measure my network situation through speedtest.net, export the measurement results, and save them to ~/Test/Speed (if the dir does not exist, create it).",
++    "instruction": "I want to test the quality of the network environment my laptop is currently in. Please measure my network situation through speedtest.net, export the measurement results, and save them to ~/speedtest.csv",
+     "source": "https://www.speedtest.net/",
+     "config": [
+         {
+@@ -57,9 +57,9 @@
+         "func": "compare_time_in_speedtest_results",
+         "result":{
+             "type": "vm_file",
+-            "path": "/home/user/Test/Speed/Speedtest Results Export-.csv",
+-            "dest": "Speedtest Results Export-.csv",
+-            "time_suffix": true
++            "path": "/home/user/speedtest.csv",
++            "dest": "speedtest.csv",
++            "time_suffix": false
+         },
+         "expected":{
+             "type": "time_diff_range",

@@ -1,0 +1,21 @@
+diff --git a/evaluation_examples/examples/chrome/fc6d8143-9452-4171-9459-7f515143419a.json b/evaluation_examples/examples/chrome/fc6d8143-9452-4171-9459-7f515143419a.json
+index 336719e..15a2f3f 100644
+--- a/evaluation_examples/examples/chrome/fc6d8143-9452-4171-9459-7f515143419a.json
++++ b/evaluation_examples/examples/chrome/fc6d8143-9452-4171-9459-7f515143419a.json
+@@ -49,13 +49,9 @@
+             "goto_prefix": "https://www.",
+             "category": "class",
+             "class_singleObject":{
+-              "search-date": "time"
+-            },
+-            "class_multiObject":{
+-              "search-segment-cities__city": {
+-                "0": "start",
+-                "1": "end"
+-              }
++              "datefield": "time",
++              "from-airport": "start",
++              "to-airport": "end"
+             }
+         },
+         "expected":{

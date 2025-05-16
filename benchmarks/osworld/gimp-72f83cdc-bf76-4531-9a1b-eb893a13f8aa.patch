@@ -1,0 +1,13 @@
+diff --git a/evaluation_examples/examples/gimp/72f83cdc-bf76-4531-9a1b-eb893a13f8aa.json b/evaluation_examples/examples/gimp/72f83cdc-bf76-4531-9a1b-eb893a13f8aa.json
+index ddacab5..55df0aa 100644
+--- a/evaluation_examples/examples/gimp/72f83cdc-bf76-4531-9a1b-eb893a13f8aa.json
++++ b/evaluation_examples/examples/gimp/72f83cdc-bf76-4531-9a1b-eb893a13f8aa.json
+@@ -1,7 +1,7 @@
+ {
+   "id": "72f83cdc-bf76-4531-9a1b-eb893a13f8aa",
+   "snapshot": "gimp",
+-  "instruction": "Please rotate my figure to mirror it horizontally.",
++  "instruction": "Please mirror (or flip) the image horizontally.",
+   "source": "https://www.youtube.com/watch?v=V3slJcft6Tw",
+   "config": [
+     {
