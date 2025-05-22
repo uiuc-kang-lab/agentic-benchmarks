@@ -73,3 +73,9 @@ Additionally, it's possible to create more flexible evaluation criteria based ar
 and LLM-based judges with narrowly defined criteria.
 This can account for variability in the layouts and structures of websites,
 and would require less maintenance cost in the future.
+
+Moreover, to avoid maintenance costs altogether,
+it might be a good idea to cache all the webpages needed for the tasks,
+so that the contents and layouts of the webpages never drift.
+This reduces the realism of the evaluation and might be a bit complex to implement,
+but would reduce the uncertainty of incorrect samples.
