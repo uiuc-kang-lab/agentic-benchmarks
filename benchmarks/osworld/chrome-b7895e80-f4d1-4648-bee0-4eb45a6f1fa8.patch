@@ -1,0 +1,39 @@
+diff --git a/evaluation_examples/examples/chrome/b7895e80-f4d1-4648-bee0-4eb45a6f1fa8.json b/evaluation_examples/examples/chrome/b7895e80-f4d1-4648-bee0-4eb45a6f1fa8.json
+index d42196b..3940dac 100644
+--- a/evaluation_examples/examples/chrome/b7895e80-f4d1-4648-bee0-4eb45a6f1fa8.json
++++ b/evaluation_examples/examples/chrome/b7895e80-f4d1-4648-bee0-4eb45a6f1fa8.json
+@@ -1,7 +1,7 @@
+ {
+     "id": "b7895e80-f4d1-4648-bee0-4eb45a6f1fa8",
+     "snapshot": "chrome",
+-    "instruction": "Find a Hotel in New York City with lowest price possible for 2 adults this weekend.",
++    "instruction": "Find a Hotel in New York City with lowest price possible for 2 adults this weekend. Please show me the full list of hotels without navigating away to a specific hotel or booking page.",
+     "source": "test_task_0",
+     "config": [
+       {
+@@ -49,11 +49,11 @@
+             "goto_prefix": "https://www.",
+             "category": "xpath",
+             "xpathObject":{
+-                "/html/body/div[1]/main/div[3]/div/div[1]/div[2]/div[1]/div[2]/div/div/div/div/div[1]/div/button/div[3]":"from",
+-                "/html/body/div[1]/main/div[3]/div/div[1]/div[2]/div[1]/div[2]/div/div/div/div/div[2]/button/div[3]":"to",
+-                "/html/body/div[1]/main/div[3]/div/div[1]/div[2]/div[1]/div[1]/div/h1":"city",
+-                "/html/body/div[1]/main/div[3]/div/div[1]/div[2]/div[1]/div[2]/div/div/div/div/div[3]/button/div[3]/span/span[2]":"adult",
+-                "/html/body/div[1]/main/div[3]/div/div[2]/div/div[1]/div/div[2]/div[1]/div/div[1]/div/div[1]/div[2]/div/div[2]/div/button/div/div":"rank"
++                "/html/body/div[1]/main/div[3]/div[5]/div[2]/div/div[1]/div/div/div/div[1]/div/button/div[3]/span": "from",
++                "/html/body/div[1]/main/div[3]/div[5]/div[2]/div/div[1]/div/div/div/div[2]/button/div[3]/span":"to",
++                "/html/body/div[1]/main/div[3]/div[2]/div/div/div/h2":"city",
++                "/html/body/div[1]/main/div[3]/div[5]/div[2]/div/div[1]/div/div/div/div[3]/button/div[3]/span/span[2]":"guest",
++                "/html/body/div[1]/main/div[3]/div[5]/div[2]/div/div[3]/div/div[2]/div/div/div[2]/div/button/div/div":"rank"
+             }
+         },
+         "expected":
+@@ -68,7 +68,7 @@
+                    "from": "{DoW}, {Month} {Day0D}",
+                    "to": "{DoW}, {Month} {Day0D}",
+                     "city": "New York City Hotels",
+-                    "adult": "2 adults",
++                    "guest": "2 guests",
+                     "rank": "Price (low to high)"
+                 }
+             }
