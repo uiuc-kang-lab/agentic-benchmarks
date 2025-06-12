@@ -481,29 +481,25 @@ Establishing Best Practices for Rigorous Agentic Benchmarks
 </center>
 
 <h2 id="problem">Problem</h2>
-<p>Agentic benchmarks are reshaping how we measure AI progress by evaluating agents 
-on real-world tasks. However, common pitfalls—like inadequate test cases or 
-misclassifying empty responses as successes—can lead to major mispresentation in 
-performance, with errors as high as 40% on popular benchmarks such as 
-SWE-bench-Verified and τ-bench.</p>
-<h2 id="taxonomy">Taxonomy</h2>
-<center>
-<img align="center" src="assets/taxonomy.svg" width="700">
-</center>
+<p>As AI agents move from research demos to real-world assistants, the only way to know what they can (and cannot) do is to test them. Benchmarks have been developed as a way to benchmark the high-level capabilities and shortcomings of various agentic frameworks and base models, and are crucial in steering research, shaping product roadmaps, and helping customers pick the right model.
+ However, these benchmarks often contain flaws that lead to major misrepresentation in performance of up to 40% on popular benchmarks such as SWE-bench-Verified and τ-bench. </p>
+ 
 
-<p>We identify two major threats to the evaluation rigor in agentic benchmarks:</p>
+<p>We identify two major challenges in creating rigorous agentic benchmarks:</p>
 <ol>
-<li>Outcome Validity: the evaluation result (e.g., tests or checks) truly 
-   indicates whether the task has been solve</li>
-<li>Task Validity: a task should be solvable if and only if the agent 
-   possesses the target capability </li>
+  <li>Task Validity: a task should be solvable if and only if the agent 
+    possesses the target capability. </li>
+<li>Outcome Validity: the evaluation method (e.g., tests or checks) should 
+   indicate correctly whether the task has been solved.</li>
 </ol>
 <h2 id="checklist-assessment">Checklist Assessment</h2>
-<p>We develop the <a href="checklist/">Agentic Benchmark Checklist (ABC)</a>, consisting of concrete and
+<p>We develop the <a href="https://drive.google.com/file/d/1Eog24I9wg63F_lDRJ2suz1Zzw07s3H5K/view?usp=sharing">Agentic Benchmark Checklist (ABC)</a>, consisting of concrete and
 actionable guidelines to ensure outcome and task validity. In cases where 
 perfect guarantees of outcome and task validity are particular challenging
-or impossible, such as using program testing techniques, we also provide 
+or impossible, we also provide 
 guidelines to ensure the quality and rigor of benchmark reporting.</p>
+
+
 <p>We apply ABC on ten widely used agentic benchmarks:</p>
 <table>
 <thead>
@@ -588,7 +584,13 @@ guidelines to ensure the quality and rigor of benchmark reporting.</p>
 </tr>
 </tbody>
 </table>
-<h2 id="finding-new-issues">Finding: New Issues</h2>
+Based on our analysis, we suggest the following best practices for benchmark developers:
+<li>Use process-based evaluation metrics alongside outcome-based metrics. </li>
+<li>Benchmark your LLM-as-a-judge in a reproducible manner. Tools such as <a href="https://aligneval.com/">AlignEval</a> can help with evaluating your LLM evaluator.</li>
+<li>If possible, use frozen websites for tasks that require navigation and website reading.</li>
+</ol>
+
+<h2 id="finding-new-issues">Working List of Issues Found in Benchmarks</h2>
 <ol>
 <li><span class="arithmatex">\(\tau\)</span>-bench: Substring grading and trivial states inflate scores by up to 40%.</li>
 <li>SWE-Lancer: An agent can overwrite the test files and earn 100 % without coding.</li>
@@ -596,15 +598,6 @@ guidelines to ensure the quality and rigor of benchmark reporting.</p>
 <li>WebArena: Silent LLM-judge errors overestimate agent performance by 1-5%.</li>
 <li>OSWorld: Unpatched website changes break 28% of its Chrome tasks, dragging agent scores down by an identical 28%.</li>
 </ol>
-
-
-
-
-
-
-
-
-
 
 
 
