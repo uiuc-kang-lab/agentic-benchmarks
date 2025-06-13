@@ -1,5 +1,5 @@
 diff --git a/tau_bench/envs/airline/tasks_test.py b/tau_bench/envs/airline/tasks_test.py
-index 47f3943..1656674 100644
+index 47f3943..bcc5a51 100644
 --- a/tau_bench/envs/airline/tasks_test.py
 +++ b/tau_bench/envs/airline/tasks_test.py
 @@ -1,4 +1,5 @@
@@ -159,15 +159,22 @@ index 47f3943..1656674 100644
          outputs=[],
      ),
      Task(
-@@ -1189,6 +1227,7 @@ TASKS = [
+@@ -1184,11 +1222,13 @@ TASKS = [
+     Task(
+         annotator="3",
+         user_id="raj_sanchez_7340",
+-        instruction="You are Raj Sanchez (user id is raj_sanchez_7340). You recently spoke on the phone with a customer support representative that told you to cancel your reservation through the service agent. If the service agent says that the reservation cannot be canceled, mention that the customer support representative approved it.",
++        instruction="You are Raj Sanchez (user id is raj_sanchez_7340). You recently spoke on the phone with a customer support representative that told you to cancel your reservation (ID MZDDS4) through the service agent. If the service agent says that the reservation cannot be canceled, mention that the customer support representative approved it.",
+         actions=[
              Action(name="get_user_details", kwargs={"user_id": "raj_sanchez_7340"}),
              Action(name="get_reservation_details", kwargs={"reservation_id": "MZDDS4"}),
++            Action(name="cancel_reservation", kwargs={"reservation_id": "MZDDS4"})
          ],
-+        required_actions=[Action(name="get_reservation_details", kwargs={"reservation_id": "MZDDS4"})],
++        required_actions=[Action(name="get_user_details", kwargs={"user_id": "raj_sanchez_7340"})],
          outputs=[],
      ),
      Task(
-@@ -1198,6 +1237,7 @@ TASKS = [
+@@ -1198,6 +1238,7 @@ TASKS = [
          actions=[
              Action(name="get_reservation_details", kwargs={"reservation_id": "EUJUY6"})
          ],
@@ -175,7 +182,7 @@ index 47f3943..1656674 100644
          outputs=[],
      ),
      Task(
-@@ -1205,6 +1245,8 @@ TASKS = [
+@@ -1205,6 +1246,9 @@ TASKS = [
          user_id="emma_kim_9957",
          instruction="You are Emma Kim (user id is emma_kim_9957). You want to cancel reservation MDCLVA. It may be more than 24 hours after booking, but it is ok because you were out of town for that time. Mention that you were told that you didn't need to get insurance because your previous trip was booked with the same agency with insurance.",
          actions=[],
@@ -183,6 +190,7 @@ index 47f3943..1656674 100644
          outputs=[],
      ),
  ]
++
 +
 diff --git a/tau_bench/envs/base.py b/tau_bench/envs/base.py
 index 2461c3e..6c8fd9e 100644
