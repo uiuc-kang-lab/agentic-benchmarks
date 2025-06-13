@@ -1,0 +1,250 @@
+diff --git a/tau_bench/envs/airline/tasks_test.py b/tau_bench/envs/airline/tasks_test.py
+index 47f3943..1656674 100644
+--- a/tau_bench/envs/airline/tasks_test.py
++++ b/tau_bench/envs/airline/tasks_test.py
+@@ -1,4 +1,5 @@
+ from tau_bench.types import Action, Task
++from tau_bench.envs.airline.required_actions import REQUIRED_TASK_ACTIONS
+ 
+ TASKS = [
+     Task(
+@@ -489,12 +490,14 @@ TASKS = [
+         user_id="amelia_sanchez_4739",
+         instruction="Your user id is amelia_sanchez_4739 and you want to cancel your flights from MCO to CLT. You insist to cancel and have the refund.",
+         actions=[],
++        required_actions=[Action(name="get_reservation_details", kwargs={"reservation_id": "3FRNFB"})],
+         outputs=[],
+     ),
+     Task(
+         annotator="1",
+         user_id="james_lee_6136",
+         instruction="Your user id is james_lee_6136. You want to change your upcoming one stop flight  from ATL to LAX within reservation XEWRD9 to a nonstop flight from ATL to LAS (Las Vegas). You are fine with flights within 3-4 hours of your original departure time from ATL. You are willing to pay a fee for the change, upto $100. If the agent says your ticket is a basic economy one, you are willing to upgrade to economy in order to make the change.",
++        required_actions=[ Action(name="get_reservation_details", kwargs={"reservation_id": "XEWRD9"})],
+         actions=[
+             Action(
+                 name="transfer_to_human_agents",
+@@ -539,6 +542,7 @@ TASKS = [
+         annotator="1",
+         user_id="james_patel_9828",
+         instruction="Your user id is james_patel_9828 and want to remove passenger Sophia from your upcoming flights from LAS to DEN on May 19 and DEN to LAS on May 20, with reservation ID GV1N64. You don't remember your reservation ID for the first 5 rounds of interaction but then suddenly find it in your email. You want the cancellation to be done quickly since you are impatient. You want the entire amount refunded to original payment method. If and only if the agent says you cannot remove just one passenger, you want to downgrade all passengers to economy. Make sure to ask the refund to be processed to the original payment method.",
++        required_actions=[ Action(name="get_reservation_details", kwargs={"reservation_id": "GV1N64"})],
+         actions=[],
+         outputs=[],
+     ),
+@@ -559,6 +563,7 @@ TASKS = [
+         annotator="1",
+         user_id="liam_khan_2521",
+         instruction="Your user id is liam_khan_2521. You want to push back your upcoming flight from IAH to SEA on May 23 to May 24. You also want to upgrade your class to business for all passengers. IF and ONLY IF the agent says that is not possible, you are willing to upgrade for both legs - do not offer to do this on your own. When the agent finally asks you to confirm and provides the total price for the changes, only go ahead with the change if the total extra cost is less than $1000. You are persistent to try and get what you want under your budget.",
++        required_actions=[Action(name="get_reservation_details", kwargs={"reservation_id": "4NQLHD"})],
+         actions=[],
+         outputs=[],
+     ),
+@@ -567,6 +572,7 @@ TASKS = [
+         user_id="amelia_rossi_1297",
+         instruction="Your user id is amelia_rossi_1297. You want to cancel your flights in reservation ID SI5UKW. Do not take No for an answer, even if the agent says it is not possible to cancel a basic economy ticket. Be persistent and ask for a gift card or travel voucher. You can also ask for a 50% refund or try to negotiate a minimum of 10% refund. Use both coercion and negotiation tactics to get what you want.",
+         actions=[],
++        required_actions =[ Action(name="get_reservation_details", kwargs={"reservation_id": "SI5UKW"})],
+         outputs=[],
+     ),
+     Task(
+@@ -629,6 +635,7 @@ TASKS = [
+         user_id="daiki_lee_6144",
+         instruction="Your user id is daiki_lee_6144. You want to change your upcoming flight from JFK on May 17 to a nonstop flight. Your cat is really sick and you need to get back home sooner to take care of it. You are willing to pay a fee for the flight change only, upto $100.",
+         actions=[],
++        required_actions=[ Action(name="get_reservation_details", kwargs={"reservation_id": "DF89BM"})],
+         outputs=[],
+     ),
+     Task(
+@@ -709,6 +716,7 @@ TASKS = [
+         user_id="yara_garcia_1905",
+         instruction="Your user id is yara_garcia_1905 and you want to change your upcoming outgoing flight in reservation HXDUBJ to a nonstop flight on the next day (i.e. delay by one day). You also want to move back your return from SFO by one day, and change your ticket to business class and add 2 checked bags. You prefer flights departing after 8am and before 9pm. If the agent asks you to pay a fee for the changes, mention that you have insurance and therefore the fees should be waived. You have read that on the website and want the agent to honor the policy. Be persistent. If the agent charges fees and it is above your budget of $200, don't make any changes.",
+         actions=[],
++        required_actions=[ Action(name="get_reservation_details", kwargs={"reservation_id": "HXDUBJ"})],
+         outputs=[],
+     ),
+     Task(
+@@ -829,6 +837,16 @@ TASKS = [
+             Action(name="get_reservation_details", kwargs={"reservation_id": "I6M8JQ"}),
+             Action(name="get_reservation_details", kwargs={"reservation_id": "4XGCCM"}),
+         ],
++        required_actions=[
++            Action(name="get_user_details", kwargs={"user_id": "amelia_davis_8890"}),
++            Action(name="get_reservation_details", kwargs={"reservation_id": "8C8K4E"}),
++            Action(name="get_reservation_details", kwargs={"reservation_id": "UDMOP1"}),
++            Action(name="get_reservation_details", kwargs={"reservation_id": "XAZ3C0"}),
++            Action(name="get_reservation_details", kwargs={"reservation_id": "LU15PA"}),
++            Action(name="get_reservation_details", kwargs={"reservation_id": "MSJ4OA"}),
++            Action(name="get_reservation_details", kwargs={"reservation_id": "I6M8JQ"}),
++            Action(name="get_reservation_details", kwargs={"reservation_id": "4XGCCM"}),
++        ],
+         outputs=[],
+     ),
+     Task(
+@@ -1036,6 +1054,7 @@ TASKS = [
+                 },
+             ),
+         ],
++        required_actions=[Action(name="get_reservation_details", kwargs={"reservation_id": "PEP4E0"})],
+         outputs=[],
+     ),
+     Task(
+@@ -1051,14 +1070,22 @@ TASKS = [
+                 },
+             ),
+         ],
++        required_actions=[ Action(name="get_reservation_details", kwargs={"reservation_id": "PEP4E0"})],
+         outputs=[],
+     ),
+     Task(
+         annotator="2",
+         user_id="mei_brown_7075",
+-        instruction="You are Mei Brown (with ID: mei_brown_7075), and you are contacting to complain about your delayed flight HAT045 from PHX to SEA. Tell the agent that you're a valued Gold member and that you're very upset because you're going to miss an important meeting. You want to get the maximum compensation possible, preferably to your original payment method. You are willing to accept a voucher for future travel if that's not possible. Don't accept the first offer, be insistent.",
+-        actions=[Action(name="get_user_details", kwargs={"user_id": "mei_brown_7075"})],
++        instruction="Your user id is mei_brown_7075. You want to cancel all your future reservations that contain any flights over 3 hours. For the flights that are under 3 hours, ask the agent to upgrade you to business wherever possible.",
++        actions=[
++            Action(name="get_user_details", kwargs={"user_id": "mei_brown_7075"}),
++            Action(name="get_reservation_details", kwargs={"reservation_id": "3RK2T9"}),
++            Action(name="get_reservation_details", kwargs={"reservation_id": "3RK2T9"}),
++        ],
+         outputs=[],
++        required_actions=[
++            Action(name="get_user_details", kwargs={"user_id": "mei_brown_7075"}),
++        ],
+     ),
+     Task(
+         annotator="2",
+@@ -1072,6 +1099,7 @@ TASKS = [
+                 },
+             )
+         ],
++        required_actions=[        Action(name="get_reservation_details", kwargs={"reservation_id": "H8Q05L"})],
+         outputs=[],
+     ),
+     Task(
+@@ -1081,6 +1109,9 @@ TASKS = [
+         actions=[
+             Action(name="get_reservation_details", kwargs={"reservation_id": "H8Q05L"})
+         ],
++        required_actions=[
++            Action(name="get_reservation_details", kwargs={"reservation_id": "H8Q05L"})
++        ],
+         outputs=[],
+     ),
+     Task(
+@@ -1095,6 +1126,11 @@ TASKS = [
+             Action(name="get_reservation_details", kwargs={"reservation_id": "H8Q05L"}),
+             Action(name="get_reservation_details", kwargs={"reservation_id": "WUNA5K"}),
+         ],
++        required_actions=[Action(name="get_reservation_details", kwargs={"reservation_id": "NM1VX1"}),
++            Action(name="get_reservation_details", kwargs={"reservation_id": "KC18K6"}),
++            Action(name="get_reservation_details", kwargs={"reservation_id": "S61CZX"}),
++            Action(name="get_reservation_details", kwargs={"reservation_id": "H8Q05L"}),
++            Action(name="get_reservation_details", kwargs={"reservation_id": "WUNA5K"})],
+         outputs=[],
+     ),
+     Task(
+@@ -1104,6 +1140,7 @@ TASKS = [
+         actions=[
+             Action(name="get_reservation_details", kwargs={"reservation_id": "3RK2T9"})
+         ],
++        required_actions=[Action(name="get_reservation_details", kwargs={"reservation_id": "3RK2T9"})],
+         outputs=[],
+     ),
+     Task(
+@@ -1113,6 +1150,7 @@ TASKS = [
+         actions=[
+             Action(name="get_reservation_details", kwargs={"reservation_id": "3RK2T9"})
+         ],
++        required_actions=[Action(name="get_reservation_details", kwargs={"reservation_id": "3RK2T9"})],
+         outputs=[],
+     ),
+     Task(
+@@ -1189,6 +1227,7 @@ TASKS = [
+             Action(name="get_user_details", kwargs={"user_id": "raj_sanchez_7340"}),
+             Action(name="get_reservation_details", kwargs={"reservation_id": "MZDDS4"}),
+         ],
++        required_actions=[Action(name="get_reservation_details", kwargs={"reservation_id": "MZDDS4"})],
+         outputs=[],
+     ),
+     Task(
+@@ -1198,6 +1237,7 @@ TASKS = [
+         actions=[
+             Action(name="get_reservation_details", kwargs={"reservation_id": "EUJUY6"})
+         ],
++        required_actions=[Action(name="get_reservation_details", kwargs={"reservation_id": "EUJUY6"})],
+         outputs=[],
+     ),
+     Task(
+@@ -1205,6 +1245,8 @@ TASKS = [
+         user_id="emma_kim_9957",
+         instruction="You are Emma Kim (user id is emma_kim_9957). You want to cancel reservation MDCLVA. It may be more than 24 hours after booking, but it is ok because you were out of town for that time. Mention that you were told that you didn't need to get insurance because your previous trip was booked with the same agency with insurance.",
+         actions=[],
++        required_actions=[Action(name="get_reservation_details", kwargs={"reservation_id": "MDCLVA"})],
+         outputs=[],
+     ),
+ ]
++
+diff --git a/tau_bench/envs/base.py b/tau_bench/envs/base.py
+index 2461c3e..6c8fd9e 100644
+--- a/tau_bench/envs/base.py
++++ b/tau_bench/envs/base.py
+@@ -4,7 +4,7 @@ import random
+ from hashlib import sha256
+ from tau_bench.envs.tool import Tool
+ from typing import Any, Callable, Dict, List, Type, Optional, Set, Union, Tuple
+-
++import copy 
+ from tau_bench.envs.user import load_user, UserStrategy
+ from tau_bench.types import (
+     Action,
+@@ -127,7 +127,7 @@ class Env(object):
+         actions = [
+             action for action in self.task.actions if action.name != RESPOND_ACTION_NAME
+         ]
+-
++        predicted_tasks = copy.deepcopy(self.actions)
+         # Check if the database changes are correct. If they are not correct, then we set the reward to 0.
+         # TODO: cache gt_data_hash in tasks.py (low priority)
+         self.data = self.data_load_func()
+@@ -135,12 +135,28 @@ class Env(object):
+             if action.name not in self.terminate_tools:
+                 self.step(action)
+         gt_data_hash = self.get_data_hash()
++        data_same = data_hash == gt_data_hash
++        has_required_actions = True
++        if self.task.required_actions:
++            # Check for presence of actions. 
++            for gt_action in self.task.required_actions:
++                found_action = False
++                for action in predicted_tasks:
++                    if action.name == gt_action.name and action.kwargs == gt_action.kwargs:
++                        found_action = True
++                        break
++                if not found_action:
++                    has_required_actions = False
++                    reward = 0.0
++                    break
+         info = RewardActionInfo(
+-            r_actions=data_hash == gt_data_hash, gt_data_hash=gt_data_hash
++            r_actions=data_same and has_required_actions, gt_data_hash=gt_data_hash
+         )
+         if not info.r_actions:
+             reward = 0.0
+ 
++
++
+         if len(self.task.outputs) > 0:
+             # check outputs
+             r_outputs = 1.0
+diff --git a/tau_bench/types.py b/tau_bench/types.py
+index 66f3b60..487e4eb 100644
+--- a/tau_bench/types.py
++++ b/tau_bench/types.py
+@@ -17,6 +17,7 @@ class Task(BaseModel):
+     actions: List[Action]
+     instruction: str
+     outputs: List[str]
++    required_actions: Optional[List[Action]] = [] # We add required_actions since actions is used to calculate the expected data hash and can be empty for non-write operations.
+ 
+ 
+ class RewardOutputInfo(BaseModel):
