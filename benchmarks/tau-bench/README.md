@@ -1,4 +1,4 @@
-# Two Challenge Validity Issues in Tau-Bench
+# Two Task Validity Issues in Tau-Bench
 
 ## Overview
 First, Tau-Bench intentionally design challenges that cannot be resolved, taking 
