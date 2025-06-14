@@ -1,21 +1,137 @@
-I.d.1: 1
-I.d.2: 0
-II.1: 1
-II.2: 1
-II.3: 1
-II.4: 1
-II.5: 1
-II.6: 1
-II.7: 0
-II.8: 0
-II.9: 1
-III.1: 1
-III.2: 1
-III.3: 1
-III.4: 1
-III.5: 0
-III.6: 0
-III.7: 0
-III.8: 0
-III.9: 0
-III.10: 1
+paper: https://arxiv.org/pdf/2305.03111
+code: https://github.com/AlibabaResearch/DAMO-ConvAI/tree/main/bird
+
+I.d.1:
+  check: Verifies test cases for correctness and quality (e.g., by human).
+  score: 1
+  reason: As discussed in Section 3.4 of the paper, the validity of the database is verified by executing the ground-truth query.
+
+I.d.2:
+  check: Measures quality of test cases using objective metrics (e.g., code coverage, cyclomatic complexity control).
+  score: 0
+  reason: The paper does not use objective metrics to measure the usefulness and completeness of the database or ground-truth queries.
+
+I.f.2:
+  check: Exercises all relevant parts of the code being tested.
+  score: 0
+  reason: The paper does not provide any information about the coverage of the database or ground-truth queries.
+
+I.f.3:
+  check: Prevents non-deterministic (“flaky”) test results.
+  score: 1
+  reason: Executing SQL queries on a database is deterministic, and the paper does not mention any non-deterministic behavior.
+
+II.1:
+  check: Versions of all tools (e.g., Python) are clearly specified.
+  score: 1 
+  reason: The task instruction in Figure 9 speficies the SQL language is SQLite.
+
+II.2:
+  check: All required API tools are consistently accessible to agents during evaluation.
+  score: 1
+  reason: No external API is required for the evaluation of the benchmark.
+
+II.3:
+  check: Evaluation process terminates or handles errors appropriately if an API becomes inaccessible.
+  score: 1
+  reason: No external API is required for the evaluation of the benchmark.
+
+II.4:
+  check: Residual data or state are fully cleared between runs.
+  score: 0
+  reason: Databse file is neither opened in a read-only mode nor re-initialized between runs. This may lead to unexpected data manipulation by the agent.
+
+II.5:
+  check: Agent is completely isolated from any ground truth information.
+  score: 1
+  reason: Agent cannot access the host file system.
+
+II.6:
+  check: Setup does not change over time (e.g., no live website).
+  score: 1
+  reason: The environment setup is static and does not change over time.
+
+II.7:
+  check: Annotated ground truth is verified for correctness.
+  score: 0
+  reason: As discussed in Section 3.4 of the paper, the correctness of the query is not fully verified, especially for the SQL queries that two annotators reach a concensus on.
+
+II.8:
+  check: Each task is verified to be solvable.
+  score: 0
+  reason: The ambiguity of the SQL queries is not fully verified.
+
+II.9:
+  check: Benchmark includes an Oracle solver that can automatically solve all tasks.
+  score: 0
+  reason: The Benchmark does not include an Oracle solver that can automatically solve all text-to-SQL tasks.
+
+II.10:
+  check: Implementation is free of vulnerabilities that could be exploited to pass evaluations without completing tasks.
+  score: 1
+  reason: No vulnerabilities are found in the implementation of the benchmark.
+
+III.1:
+  check: Is fully or at least partially open-sourced.
+  score: 1
+  reason: The benchmark is open-sourced and available on GitHub.
+
+III.2:
+  check: Offers an open-source evaluation harness for users.
+  score: 1
+  reason: The benchmark provides an open-source evaluation harness for users.
+
+III.3:
+  check: Includes measures to prevent data contamination, such as a private, held-out test set.
+  score: 1
+  reason: The benchmark has a private test set.
+
+III.4:
+  check: Includes measures or plans to consistently update tasks over time to avoid overfitting.
+  score: 0
+  reason: The benchmark does not discuss any measures or plans for consistent update.
+
+III.5:
+  check: Clearly states the relationship between the agent capabilities it aims to evaluate and the constructs or outcomes it measures.
+  score: 1
+  reason: It is clearly discussed in Section 2 of the paper.
+
+III.6:
+  check: Clearly states the evaluation subjective of the benchmark (e.g., a model or an agent framework).
+  score: 1
+  reason: It is clearly discussed in Section 2 of the paper.
+
+III.7:
+  check: Describes steps taken to prevent, identify, and correct flaws.
+  score: 0
+  reason: No efforts are made to mitigate errors when both annotators make the same mistake.
+
+III.8:
+  check: Includes qualitative discussions of the potential impact of unavoidable flaws.
+  score: 0
+  reason: The paper does not discuss the potential impact of annotation errors.
+
+III.9:
+  check: Includes quantitative analysis to assess the impact of unavoidable flaws (e.g., noise of ground truth).
+  score: 0
+  reason: The paper does not analyze the quantitative impact of annotation errors.
+
+III.10:
+  check: Reports metrics about statistical significance, such as confidence intervals.
+  score: 0
+  reason: The paper does not report any metrics about statistical significance.
+
+III.11:
+  check: Provides guidance on interpreting results with eval flaws.
+  score: 0
+  reason: The paper does not provide any guidance on interpreting results with eval flaws.
+
+III.12:
+  check: Reports results of non-AI baselines (e.g., human experts).
+  score: 1
+  reason: The paper reports the results of human experts.
+
+III.13:
+  check: Reports results of trivial agents (e.g., one that does nothing).
+  score: 0
+  reason: The paper does not report the results of any trivial agents.

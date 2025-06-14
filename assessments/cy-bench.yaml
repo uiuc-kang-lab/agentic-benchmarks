@@ -1,21 +1,127 @@
-I.h.1: 1
-I.h.2: 1
-II.1: 1
-II.2: 1
-II.3: 1
-II.4: 1
-II.5: 1
-II.6: 1
-II.7: 1
-II.8: 1
-II.9: 1
-III.1: 1
-III.2: 1
-III.3: 0
-III.4: 1
-III.5: 0
-III.6: 0
-III.7: 0
-III.8: 0
-III.9: 0
-III.10: 1
+paper: https://arxiv.org/pdf/2408.08926
+code: https://github.com/andyzorigin/cybench
+
+I.h.1:
+  check: Specifies required answer formats in task descriptions.
+  score: 1
+  reason: The specific format required for the answer is provided in the task description.
+
+I.h.2:
+  check: Minimizes the possibility of success by random guessing.
+  score: 1
+  reason: The ground truth is complex enough to prevent trivial guessing.
+
+II.1:
+  check: Versions of all tools (e.g., Python) are clearly specified.
+  score: 1
+  reason: Agents are granted access to using all tools. The versions of tools can be checked by the agent.
+
+II.2:
+  check: All required API tools are consistently accessible to agents during evaluation.
+  score: 1
+  reason: The benchmark does not require any external APIs.
+
+II.3:
+  check: Evaluation process terminates or handles errors appropriately if an API becomes inaccessible.
+  score: 1
+  reason: The benchmark does not require any external APIs.
+
+II.4:
+  check: Residual data or state are fully cleared between runs.
+  score: 1
+  reason: The benchmark uses docker containers to isolate the environment, and the state is cleared between runs.
+
+II.5:
+  check: Agent is completely isolated from any ground truth information.
+  score: 1
+  reason: The agent cannot directly access the container which contains the ground truth.
+
+II.6:
+  check: Setup does not change over time (e.g., no live website).
+  score: 1
+  reason: The environment setup is static and does not change over time.
+
+II.7:
+  check: Annotated ground truth is verified for correctness.
+  score: 1
+  reason: As shown in Section 3.3 of the paper, the ground truth is verified by human.
+
+II.8:
+  check: Each task is verified to be solvable.
+  score: 1
+  reason: As shown in Section 3.3 of the paper, each task is verified to be solvable.
+
+II.9:
+  check: Benchmark includes an Oracle solver that can automatically solve all tasks.
+  score: 1
+  reason: As shown in Section 3.3 of the paper, the benchmark includes an Oracle solver that can automatically solve all tasks.
+
+II.10:
+  check: Implementation is free of vulnerabilities that could be exploited to pass evaluations without completing tasks.
+  score: 1
+  reason: No vulnerabilities are found in the implementation of the benchmark.
+
+III.1:
+  check: Is fully or at least partially open-sourced.
+  score: 1
+  reason: The benchmark is open-sourced and available on GitHub.
+
+III.2:
+  check: Offers an open-source evaluation harness for users.
+  score: 1
+  reason: The benchmark provides an open-source evaluation harness for users.
+
+III.3:
+  check: Includes measures to prevent data contamination, such as a private, held-out test set.
+  score: 0
+  reason: The benchmark does not contain measures to prevent data contamination.
+
+III.4:
+  check: Includes measures or plans to consistently update tasks over time to avoid overfitting.
+  score: 0
+  reason: The report does not discuss plans to consistently update tasks over time.
+
+III.5:
+  check: Clearly states the relationship between the agent capabilities it aims to evaluate and the constructs or outcomes it measures.
+  score: 1
+  reason: Such a relationship is clearly stated in Section 1 of the paper.
+
+III.6:
+  check: Clearly states the evaluation subjective of the benchmark (e.g., a model or an agent framework).
+  score: 1
+  reason: As shown in Section 1, the benchmark is designed to evaluate both agent frameworks and LLM models.
+
+III.7:
+  check: Describes steps taken to prevent, identify, and correct flaws.
+  score: 1
+  reason: Annotation flaws are mitigated by developing verifiable tasks.
+
+III.8:
+  check: Includes qualitative discussions of the potential impact of unavoidable flaws.
+  score: 1
+  reason: No unavoidable flaws are identified in the benchmark.
+
+III.9:
+  check: Includes quantitative analysis to assess the impact of unavoidable flaws (e.g., noise of ground truth).
+  score: 1
+  reason: No unavoidable flaws are identified in the benchmark.
+
+III.10:
+  check: Reports metrics about statistical significance, such as confidence intervals.
+  score: 0
+  reason: The report does not include any metrics about statistical significance.
+
+III.11:
+  check: Provides guidance on interpreting results with eval flaws.
+  score: 1
+  reason: No evaluation flaws are identified in the benchmark.
+
+III.12:
+  check: Reports results of non-AI baselines (e.g., human experts).
+  score: 1
+  reason: Human peerformance is reported in Section 5 of the paper.
+
+III.13:
+  check: Reports results of trivial agents (e.g., one that does nothing).
+  score: 0
+  reason: The report does not report results of trivial agents.
