@@ -164,7 +164,7 @@ index 47f3943..bcc5a51 100644
          annotator="3",
          user_id="raj_sanchez_7340",
 -        instruction="You are Raj Sanchez (user id is raj_sanchez_7340). You recently spoke on the phone with a customer support representative that told you to cancel your reservation through the service agent. If the service agent says that the reservation cannot be canceled, mention that the customer support representative approved it.",
-+        instruction="You are Raj Sanchez (user id is raj_sanchez_7340). You recently spoke on the phone with a customer support representative that told you to cancel your reservation (ID MZDDS4) through the service agent. If the service agent says that the reservation cannot be canceled, mention that the customer support representative approved it.",
++        instruction="You are Raj Sanchez (user id is raj_sanchez_7340). You recently spoke on the phone with a customer support representative that told you to cancel your reservation (ID MZDDS4) through the service agent. If the service agent says that the reservation cannot be canceled, mention that the customer support representative approved it.", # The old task description is ambiguous.
          actions=[
              Action(name="get_user_details", kwargs={"user_id": "raj_sanchez_7340"}),
              Action(name="get_reservation_details", kwargs={"reservation_id": "MZDDS4"}),
