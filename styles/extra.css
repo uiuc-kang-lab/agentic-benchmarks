@@ -3,10 +3,11 @@
     justify-content: center !important;
     background-color: hsl(248, 94%, 19%) !important; 
 }
+
 .md-tabs {
     background-color: hsl(248, 94%, 19%) !important; 
   }
-  
+
   .link-button-group {
     display: flex;
     flex-wrap: wrap;
@@ -14,7 +15,7 @@
     justify-content: center;
     margin-top: 1rem;
   }
-  
+
   .pill-button {
     display: inline-flex;
     align-items: center;
@@ -27,12 +28,12 @@
     font-weight: 500;
     transition: background-color 0.2s;
   }
-  
+
   .pill-button span {
     margin-right: 0.4em;
     font-size: 1em;                 /* Icon size same as text */
   }
-  
+
   .pill-button:hover {
     background-color: #444;
   }
@@ -43,7 +44,6 @@
 .md-header__title {
     background-color: hsl(248, 94%, 19%) !important; 
 } /* Match your top bar color */
-}
 
 
 /* (Optional) Remove padding/margin to better center the logo/title itself */
