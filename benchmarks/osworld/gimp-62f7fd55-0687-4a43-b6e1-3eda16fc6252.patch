@@ -1,0 +1,13 @@
+diff --git a/evaluation_examples/examples/gimp/62f7fd55-0687-4a43-b6e1-3eda16fc6252.json b/evaluation_examples/examples/gimp/62f7fd55-0687-4a43-b6e1-3eda16fc6252.json
+index e3f1c08..c61584c 100644
+--- a/evaluation_examples/examples/gimp/62f7fd55-0687-4a43-b6e1-3eda16fc6252.json
++++ b/evaluation_examples/examples/gimp/62f7fd55-0687-4a43-b6e1-3eda16fc6252.json
+@@ -1,7 +1,7 @@
+ {
+   "id": "62f7fd55-0687-4a43-b6e1-3eda16fc6252",
+   "snapshot": "gimp",
+-  "instruction": "Could you help me convert the image located at \"/home/user/logo.png\" to \".svg\" format?",
++  "instruction": "Using GIMP, could you help me convert the image located at \"/home/user/logo.png\" to \".svg\" format? Please don't install any plugins or additional software. Please don't manually trace the image with the To Path tool.",
+   "source": "",
+   "config": [
+     {

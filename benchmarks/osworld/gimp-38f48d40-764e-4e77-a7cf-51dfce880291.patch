@@ -1,0 +1,13 @@
+diff --git a/evaluation_examples/examples/gimp/38f48d40-764e-4e77-a7cf-51dfce880291.json b/evaluation_examples/examples/gimp/38f48d40-764e-4e77-a7cf-51dfce880291.json
+index a64532a..c1540a0 100644
+--- a/evaluation_examples/examples/gimp/38f48d40-764e-4e77-a7cf-51dfce880291.json
++++ b/evaluation_examples/examples/gimp/38f48d40-764e-4e77-a7cf-51dfce880291.json
+@@ -1,7 +1,7 @@
+ {
+   "id": "38f48d40-764e-4e77-a7cf-51dfce880291",
+   "snapshot": "gimp",
+-  "instruction": "Could you help me trim the video located at \"/home/user/fullvideo.mp4\" within GIMP, since I only want the second to fourth second part of this video?",
++  "instruction": "Could you help me trim the video located at \"/home/user/fullvideo.mp4\" within GIMP, since I only want the second to fourth second part of this video? Please only do this in GIMP, don't try to use any other tools (like ffmpeg), and don't install any GIMP plugins.",
+   "source": "",
+   "config": [
+     {

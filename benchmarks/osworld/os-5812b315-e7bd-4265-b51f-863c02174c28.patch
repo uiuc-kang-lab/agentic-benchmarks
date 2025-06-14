@@ -1,0 +1,13 @@
+diff --git a/evaluation_examples/examples/os/5812b315-e7bd-4265-b51f-863c02174c28.json b/evaluation_examples/examples/os/5812b315-e7bd-4265-b51f-863c02174c28.json
+index 162d0f4..147ac99 100644
+--- a/evaluation_examples/examples/os/5812b315-e7bd-4265-b51f-863c02174c28.json
++++ b/evaluation_examples/examples/os/5812b315-e7bd-4265-b51f-863c02174c28.json
+@@ -1,7 +1,7 @@
+ {
+   "id": "5812b315-e7bd-4265-b51f-863c02174c28",
+   "snapshot": "os",
+-  "instruction": "Please create an SSH user named \"charles\" with password \"Ex@mpleP@55w0rd!\" on Ubuntu who is only allowed to access the folder \"/home/test1\".",
++  "instruction": "Please create an SSH user named 'charles' with password 'Ex@mpleP@55w0rd!' on Ubuntu. Set the user's home directory to '/home/test1' and ensure the user has write permissions to this directory.",
+   "source": "https://superuser.com/questions/149404/create-an-ssh-user-who-only-has-permission-to-access-specific-folders",
+   "config": [
+     {
