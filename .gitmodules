@@ -1,0 +1,3 @@
+[submodule "benchmarks/swe-bench/utboost"]
+	path = benchmarks/swe-bench/utboost
+	url = https://github.com/CUHK-Shenzhen-SE/UTBoost
