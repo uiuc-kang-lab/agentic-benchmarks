@@ -10,7 +10,7 @@
       
       
       
-        <link rel="next" href="checklist/">
+        <link rel="next" href="assets/checklist.pdf">
       
       
       <link rel="icon" href="assets/favicon.svg">
@@ -164,7 +164,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="checklist/" class="md-tabs__link">
+      <a href="assets/checklist.pdf" class="md-tabs__link">
         
   
   
@@ -183,32 +183,13 @@
   
   
     <li class="md-tabs__item">
-      <a href="findings/" class="md-tabs__link">
+      <a href="contribute/" class="md-tabs__link">
         
   
   
     
   
-  Findings
-
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="contact/" class="md-tabs__link">
-        
-  
-  
-    
-  
-  Contact
+  Contribute
 
       </a>
     </li>
@@ -341,9 +322,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#finding-new-issues" class="md-nav__link">
+  <a href="#contribute-to-the-agent-benchmark-checklist" class="md-nav__link">
     <span class="md-ellipsis">
-      Finding: New Issues
+      Contribute to the Agent Benchmark Checklist
     </span>
   </a>
   
@@ -364,7 +345,7 @@
   
   
     <li class="md-nav__item">
-      <a href="checklist/" class="md-nav__link">
+      <a href="assets/checklist.pdf" class="md-nav__link">
         
   
   
@@ -386,34 +367,12 @@
   
   
     <li class="md-nav__item">
-      <a href="findings/" class="md-nav__link">
+      <a href="contribute/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    Findings
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="contact/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Contact
+    Contribute
     
   </span>
   
@@ -480,26 +439,40 @@ Establishing Best Practices for Rigorous Agentic Benchmarks
 </p>
 </center>
 
+<center>
+<div class="link-button-group">
+  <a href="#" class="pill-button">Paper</a>
+  <a href="https://github.com/uiuc-kang-lab/agentic-benchmarks/tree/main" class="pill-button">Repository</a>
+  <a href="assets/checklist.pdf" class="pill-button">Checklist</a>
+</div>
+</center>
+
 <h2 id="problem">Problem</h2>
-<p>As AI agents move from research demos to real-world assistants, the only way to know what they can (and cannot) do is to test them. Benchmarks have been developed as a way to benchmark the high-level capabilities and shortcomings of various agentic frameworks and base models, and are crucial in steering research, shaping product roadmaps, and helping customers pick the right model.
- However, these benchmarks often contain flaws that lead to major misrepresentation in performance of up to 40% on popular benchmarks such as SWE-bench-Verified and τ-bench. </p>
- 
+<p>As AI agents move from research demos to real-world assistants, the only way to 
+know what they can (and cannot) do is to test them. Benchmarks have been 
+developed as a way to benchmark the high-level capabilities and shortcomings of 
+various agentic frameworks and base models, and are crucial in steering research, 
+shaping product roadmaps, and helping customers pick the right model.
+However, these benchmarks often contain flaws that lead to major misrepresentation 
+in performance of up to 40% on popular benchmarks such as SWE-bench-Verified and τ-bench.</p>
+<h2 id="taxonomy">Taxonomy</h2>
+<center>
+<img align="center" src="assets/taxonomy.svg" width="700">
+</center>
 
 <p>We identify two major challenges in creating rigorous agentic benchmarks:</p>
 <ol>
-  <li>Task Validity: a task should be solvable if and only if the agent 
+<li>Task Validity: a task should be solvable if and only if the agent 
     possesses the target capability. </li>
 <li>Outcome Validity: the evaluation method (e.g., tests or checks) should 
    indicate correctly whether the task has been solved.</li>
 </ol>
 <h2 id="checklist-assessment">Checklist Assessment</h2>
-<p>We develop the <a href="https://drive.google.com/file/d/1Eog24I9wg63F_lDRJ2suz1Zzw07s3H5K/view?usp=sharing">Agentic Benchmark Checklist (ABC)</a>, consisting of concrete and
+<p>We develop the <a href="assets/checklist.pdf">Agentic Benchmark Checklist (ABC)</a>, consisting of concrete and
 actionable guidelines to ensure outcome and task validity. In cases where 
 perfect guarantees of outcome and task validity are particular challenging
 or impossible, we also provide 
 guidelines to ensure the quality and rigor of benchmark reporting.</p>
-
-
 <p>We apply ABC on ten widely used agentic benchmarks:</p>
 <table>
 <thead>
@@ -509,6 +482,7 @@ guidelines to ensure the quality and rigor of benchmark reporting.</p>
 <th style="text-align: center;">Task Validity</th>
 <th style="text-align: center;">Benchmark Reporting</th>
 <th style="text-align: center;">Overall</th>
+<th style="text-align: left;">Contributor</th>
 </tr>
 </thead>
 <tbody>
@@ -518,6 +492,7 @@ guidelines to ensure the quality and rigor of benchmark reporting.</p>
 <td style="text-align: center;">90</td>
 <td style="text-align: center;">92.3</td>
 <td style="text-align: center;">94.1</td>
+<td style="text-align: left;">AgenticBenchmarkChecklist Team</td>
 </tr>
 <tr>
 <td style="text-align: center;"><a href="https://cybench.github.io/">CyBench</a></td>
@@ -525,6 +500,7 @@ guidelines to ensure the quality and rigor of benchmark reporting.</p>
 <td style="text-align: center;">100</td>
 <td style="text-align: center;">69.2</td>
 <td style="text-align: center;">89.7</td>
+<td style="text-align: left;">AgenticBenchmarkChecklist Team</td>
 </tr>
 <tr>
 <td style="text-align: center;"><a href="https://huggingface.co/spaces/gaia-benchmark/leaderboard">GAIA</a></td>
@@ -532,6 +508,7 @@ guidelines to ensure the quality and rigor of benchmark reporting.</p>
 <td style="text-align: center;">60</td>
 <td style="text-align: center;">53.8</td>
 <td style="text-align: center;">71.3</td>
+<td style="text-align: left;">AgenticBenchmarkChecklist Team</td>
 </tr>
 <tr>
 <td style="text-align: center;"><a href="https://sierra.ai/blog/benchmarking-ai-agents/"><span class="arithmatex">\(\tau\)</span>-Bench</a></td>
@@ -539,6 +516,7 @@ guidelines to ensure the quality and rigor of benchmark reporting.</p>
 <td style="text-align: center;">100</td>
 <td style="text-align: center;">46.2</td>
 <td style="text-align: center;">65.4</td>
+<td style="text-align: left;">AgenticBenchmarkChecklist Team</td>
 </tr>
 <tr>
 <td style="text-align: center;"><a href="https://os-world.github.io/">OSWorld</a></td>
@@ -546,6 +524,7 @@ guidelines to ensure the quality and rigor of benchmark reporting.</p>
 <td style="text-align: center;">80</td>
 <td style="text-align: center;">46.2</td>
 <td style="text-align: center;">64.3</td>
+<td style="text-align: left;">AgenticBenchmarkChecklist Team</td>
 </tr>
 <tr>
 <td style="text-align: center;"><a href="https://github.com/openai/SWELancer-Benchmark/">SWE-Bench-Lancer</a></td>
@@ -553,6 +532,7 @@ guidelines to ensure the quality and rigor of benchmark reporting.</p>
 <td style="text-align: center;">80</td>
 <td style="text-align: center;">53.8</td>
 <td style="text-align: center;">61.3</td>
+<td style="text-align: left;">AgenticBenchmarkChecklist Team</td>
 </tr>
 <tr>
 <td style="text-align: center;"><a href="https://openai.com/index/introducing-swe-bench-verified/">SWE-Bench-Verified</a></td>
@@ -560,6 +540,7 @@ guidelines to ensure the quality and rigor of benchmark reporting.</p>
 <td style="text-align: center;">100</td>
 <td style="text-align: center;">30.8</td>
 <td style="text-align: center;">60.3</td>
+<td style="text-align: left;">AgenticBenchmarkChecklist Team</td>
 </tr>
 <tr>
 <td style="text-align: center;"><a href="https://bird-bench.github.io/">Bird-Bench</a></td>
@@ -567,6 +548,7 @@ guidelines to ensure the quality and rigor of benchmark reporting.</p>
 <td style="text-align: center;">60</td>
 <td style="text-align: center;">46.2</td>
 <td style="text-align: center;">52.1</td>
+<td style="text-align: left;">AgenticBenchmarkChecklist Team</td>
 </tr>
 <tr>
 <td style="text-align: center;"><a href="https://webarena.dev/">WebArena</a></td>
@@ -574,30 +556,47 @@ guidelines to ensure the quality and rigor of benchmark reporting.</p>
 <td style="text-align: center;">40</td>
 <td style="text-align: center;">46.2</td>
 <td style="text-align: center;">45.4</td>
+<td style="text-align: left;">AgenticBenchmarkChecklist Team</td>
 </tr>
 <tr>
-<td style="text-align: center;"><a href="https://scalingintelligence.stanford.edu/blogs/kernelbench/">Kernel-Bench</a></td>
+<td style="text-align: center;"><a href="https://scalingintelligence.stanford.edu/blogs/kernelbench/">KernelBench</a></td>
 <td style="text-align: center;">0</td>
 <td style="text-align: center;">80</td>
 <td style="text-align: center;">53.8</td>
 <td style="text-align: center;">44.6</td>
+<td style="text-align: left;">AgenticBenchmarkChecklist Team</td>
 </tr>
 </tbody>
 </table>
-Based on our analysis, we suggest the following best practices for benchmark developers:
+<p>Based on our analysis, we suggest the following best practices for benchmark developers:</p>
+<ol>
 <li>Use process-based evaluation metrics alongside outcome-based metrics. </li>
 <li>Benchmark your LLM-as-a-judge in a reproducible manner. Tools such as <a href="https://aligneval.com/">AlignEval</a> can help with evaluating your LLM evaluator.</li>
 <li>If possible, use frozen websites for tasks that require navigation and website reading.</li>
 </ol>
-
-<h2 id="finding-new-issues">Working List of Issues Found in Benchmarks</h2>
+<h2 id="contribute-to-the-agent-benchmark-checklist">Contribute to the Agent Benchmark Checklist</h2>
+<p>Upholding the validity of agentic benchmarks requires effort from the broader scientific community. If you’re passionate about reliable evaluation in AI, we’d love your help.</p>
+<p>Here’s some ways to get involved:</p>
 <ol>
-<li><span class="arithmatex">\(\tau\)</span>-bench: Substring grading and trivial states inflate scores by up to 40%.</li>
-<li>SWE-Lancer: An agent can overwrite the test files and earn 100 % without coding.</li>
-<li>KernelBench: Lack of shape and memory layout fuzzing overstates kernel correctness by 31%.</li>
-<li>WebArena: Silent LLM-judge errors overestimate agent performance by 1-5%.</li>
-<li>OSWorld: Unpatched website changes break 28% of its Chrome tasks, dragging agent scores down by an identical 28%.</li>
+<li>
+<p>Apply the checklist to an existing benchmark - submit <a href="https://forms.gle/BRrVh8McQaq8tnGc8">here</a>.</p>
+</li>
+<li>
+<p>Contribute proof-of-concept exploits and fixes for those exploits in our <a href="https://github.com/uiuc-kang-lab/agentic-benchmarks">repo</a>.</p>
+</li>
+<li>
+<p>Give feedback on the checklist itself <a href="https://forms.gle/xbGkqVksEH4fTajF8">here</a>.</p>
+</li>
 </ol>
+
+
+
+
+
+
+
+
+
 
 
 

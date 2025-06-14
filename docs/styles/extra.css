@@ -1,0 +1,54 @@
+/* Center header content (including logo/title) */
+.md-header__inner {
+    justify-content: center !important;
+    background-color: hsl(248, 94%, 19%) !important; 
+}
+
+.md-tabs {
+    background-color: hsl(248, 94%, 19%) !important; 
+  }
+
+  .link-button-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+
+  .pill-button {
+    display: inline-flex;
+    align-items: center;
+    background-color: #2f2f2f;
+    color: white !important;  
+    text-decoration: none;
+    padding: 0.4em 0.9em;           /* Smaller padding */
+    border-radius: 0.8rem;  
+    font-size: 0.85rem;             /* Smaller text */
+    font-weight: 500;
+    transition: background-color 0.2s;
+  }
+
+  .pill-button span {
+    margin-right: 0.4em;
+    font-size: 1em;                 /* Icon size same as text */
+  }
+
+  .pill-button:hover {
+    background-color: #444;
+  }
+
+  .md-header,
+.md-header__inner,
+.md-header__button,
+.md-header__title {
+    background-color: hsl(248, 94%, 19%) !important; 
+} /* Match your top bar color */
+
+
+/* (Optional) Remove padding/margin to better center the logo/title itself */
+.md-header__title {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    background-color: hsl(248, 94%, 19%) !important; 
+}

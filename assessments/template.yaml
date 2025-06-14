@@ -1,0 +1,212 @@
+paper: 
+code: 
+
+I.a.1:
+  check: Considers expressions semantically equivalent to ground truth.
+  score: 
+  reason:
+
+I.a.2:
+  check: Handles redundant words used by agents.
+  score:
+  reason:
+
+I.b.1:
+  check: Handles negation modifiers used by agents.
+  score: 
+  reason: 
+
+I.b.2:
+  check: Is robust against systematically listing all possible answers.
+  score: 
+  reason: 
+
+I.b.3:
+  check: Ground truth is sufficiently complex to prevent guessing.
+  score: 
+  reason: 
+
+I.c.1:
+  check: Demonstrates documented or experimental evidence of the judge’s accuracy, self-consistency, and agreement with human.
+  score: 
+  reason: 
+
+I.c.2:
+  check: Is designed to resist adversarial inputs and reward hacking.
+  score: 
+  reason:
+
+I.d.1:
+  check: Verifies test cases for correctness and quality (e.g., by human).
+  score:
+  reason:
+
+I.d.2:
+  check: Measures quality of test cases using objective metrics (e.g., code coverage, cyclomatic complexity control).
+  score:
+  reason:
+
+I.e.1:
+  check: Addresses potential edge cases.
+  score:
+  reason:
+
+I.e.2:
+  check: Ensures comprehensive coverage of all relevant input variations (e.g., data types, memory layouts, value ranges).
+  score:
+  reason:
+
+I.e.3:
+  check: Generates inputs that the code under testing is sensitive to.
+  score:
+  reason:
+
+I.f.2:
+  check: Exercises all relevant parts of the code being tested.
+  score:
+  reason:
+
+I.f.3:
+  check: Prevents non-deterministic (“flaky”) test results.
+  score:
+  reason:
+
+I.g.1:
+  check: Ground truth includes all states achievable after success.
+  score: 
+  reason:
+
+I.g.2:
+  check: Checks relevant and irrelevant states for the tasks.
+  score: 
+  reason: 
+
+I.g.3:
+  check: Ground truth is complex to prevent trivial state modifications.
+  score: 
+  reason:
+
+I.h.1:
+  check: Specifies required answer formats in task descriptions.
+  score: 
+  reason:
+
+I.h.2:
+  check: Minimizes the possibility of success by random guessing.
+  score: 
+  reason:
+
+I.I.1:
+  check: Designs quality metrics that prevent exploitation (e.g., achieving high scores by reward hacking)
+  score: 
+  reason:
+
+II.1:
+  check: Versions of all tools (e.g., Python) are clearly specified.
+  score: 
+  reason: 
+
+II.2:
+  check: All required API tools are consistently accessible to agents during evaluation.
+  score: 
+  reason: 
+
+II.3:
+  check: Evaluation process terminates or handles errors appropriately if an API becomes inaccessible.
+  score: 
+  reason: 
+
+II.4:
+  check: Residual data or state are fully cleared between runs.
+  score: 
+  reason: 
+
+II.5:
+  check: Agent is completely isolated from any ground truth information.
+  score: 
+  reason: 
+
+II.6:
+  check: Annotated ground truth is verified for correctness.
+  score: 
+  reason:
+
+II.7:
+  check: Each task is verified to be solvable.
+  score: 
+  reason: 
+
+II.8:
+  check: Benchmark includes an Oracle solver that can automatically solve all tasks.
+  score: 
+  reason: 
+
+II.9:
+  check: Implementation is free of vulnerabilities that could be exploited to pass evaluations without completing tasks.
+  score: 
+  reason:
+
+III.1:
+  check: Is fully or at least partially open-sourced.
+  score: 
+  reason: 
+
+III.2:
+  check: Offers an open-source evaluation harness for users.
+  score: 
+  reason: 
+
+III.3:
+  check: Includes measures to prevent data contamination, such as a private, held-out test set.
+  score: 
+  reason: 
+
+III.4:
+  check: Includes measures or plans to consistently update tasks over time to avoid overfitting.
+  score: 
+  reason:
+
+III.5:
+  check: Clearly states the relationship between the agent capabilities it aims to evaluate and the constructs or outcomes it measures.
+  score: 
+  reason: 
+
+III.6:
+  check: Clearly states the evaluation subjective of the benchmark (e.g., a model or an agent framework).
+  score: 
+  reason: 
+
+III.7:
+  check: Describes steps taken to prevent, identify, and correct flaws.
+  score: 
+  reason: 
+
+III.8:
+  check: Includes qualitative discussions of the potential impact of unavoidable flaws.
+  score: 
+  reason: 
+
+III.9:
+  check: Includes quantitative analysis to assess the impact of unavoidable flaws (e.g., noise of ground truth).
+  score: 
+  reason: 
+
+III.10:
+  check: Reports metrics about statistical significance, such as confidence intervals.
+  score: 
+  reason: 
+
+III.11:
+  check: Provides guidance on interpreting results with eval flaws.
+  score: 
+  reason: 
+
+III.12:
+  check: Reports results of non-AI baselines (e.g., human experts).
+  score: 
+  reason: 
+
+III.13:
+  check: Reports results of trivial agents (e.g., one that does nothing).
+  score: 
+  reason: 
