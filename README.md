@@ -1,12 +1,12 @@
 # Assessing Agentic Benchmarks for Rigorous Evaluation
 
-## News
+## 📰 News
 - [2024-06-14] We have released a [patch](https://github.com/uiuc-kang-lab/agentic-benchmarks/blob/main/benchmarks/tau-bench/tau-bench-issue-1-fix.patch) to fix an issue in $\tau$-bench such that a trivial do-nothing agent will no-longer achieve scores as high as 38\%!
 - [2024-06-14] We have released a [case study](https://github.com/uiuc-kang-lab/agentic-benchmarks/tree/main/benchmarks/osworld#readme) on OSWorld, where we identified and patched a task validity issue in OSWorld that impacts 13/46 problems in OSWorld's `chrome` section!
 - [2024-05-15] [UTBoost](https://www.arxiv.org/abs/2506.09289) is accepted to ACL 2025! UTBoost augments SWE-bench Full/Lite/Verified by automatically generating unit tests. Feel free to check our [code](https://github.com/uiuc-kang-lab/agentic-benchmarks/tree/main/benchmarks/swe-bench)!
 - [2024-05-14] We released a [website](https://uiuc-kang-lab.github.io/agentic-benchmarks/) for ABC!
 
-## Overview
+## 🗺️ Overview
 
 This repository contains a checklist for assessing agentic benchmarks, results 
 from assessing existing agentic benchmarks, and experimental scripts for 
@@ -27,7 +27,7 @@ agentic-benchmarks/
 ```
 
 
-## Agentic Benchmark Checklist (ABC)
+## 🔍 Agentic Benchmark Checklist (ABC)
 
 ABC is composed of three sections:
 1. Outcome Validity: the success signal (e.g., tests or checks) truly indicates 
@@ -41,7 +41,7 @@ ABC is composed of three sections:
 
 We provide all items of ABC in `ABC.md`. 
 
-## Newly Identified Issues
+## 🚀 Newly Identified Issues
 
 For each identified outcome or task validity issues, we demonstrate and
 reproduce them with experiments. We present experimental design using either patch
