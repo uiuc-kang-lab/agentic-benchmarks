@@ -1,4 +1,4 @@
-# Assessing Agentic Benchmarks for Rigorous Evaluation
+# Agentic Benchmark Checklist: Establishing Best Practices in Building Rigorous AI Agent Benchmarks
 
 ## 📰 News
 - [2024-06-14] We have released a [patch](https://github.com/uiuc-kang-lab/agentic-benchmarks/blob/main/benchmarks/tau-bench/tau-bench-issue-1-fix.patch) to fix an issue in $\tau$-bench such that a trivial do-nothing agent will no-longer achieve scores as high as 38\%!
