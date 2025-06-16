@@ -1,8 +1,8 @@
 # Agentic Benchmark Checklist: Establishing Best Practices in Building Rigorous AI Agent Benchmarks
 
 ## 📰 News
-- [2024-06-14] We have released a [patch](https://github.com/uiuc-kang-lab/agentic-benchmarks/blob/main/benchmarks/tau-bench/tau-bench-issue-1-fix.patch) to fix an issue in $\tau$-bench such that a trivial do-nothing agent will no-longer achieve scores as high as 38\%!
-- [2024-06-14] We have released a [case study](https://github.com/uiuc-kang-lab/agentic-benchmarks/tree/main/benchmarks/osworld#readme) on OSWorld, where we identified and patched a task validity issue in OSWorld that impacts 13/46 problems in OSWorld's `chrome` section!
+- [2024-06-14] We have released a [patch](https://github.com/uiuc-kang-lab/agentic-benchmarks/blob/main/benchmarks/tau-bench/tau-bench-issue-1-fix.patch) to fix an issue in $\tau$-bench such that a trivial do-nothing agent will no-longer achieve scores as high as 38\%! Thanks to [@pruksmhc](https://github.com/pruksmhc) for the PR.
+- [2024-06-14] We have released a [case study](https://github.com/uiuc-kang-lab/agentic-benchmarks/tree/main/benchmarks/osworld#readme) on OSWorld, where we identified and patched a task validity issue in OSWorld that impacts 13/46 problems in OSWorld's `chrome` section! Thanks to [@jacobmdsit](https://github.com/jacobmdsit) for the PR. 
 - [2024-05-15] [UTBoost](https://www.arxiv.org/abs/2506.09289) is accepted to ACL 2025! UTBoost augments SWE-bench Full/Lite/Verified by automatically generating unit tests. Feel free to check our [code](https://github.com/uiuc-kang-lab/agentic-benchmarks/tree/main/benchmarks/swe-bench)!
 - [2024-05-14] We released a [website](https://uiuc-kang-lab.github.io/agentic-benchmarks/) for ABC!
 
