@@ -96,11 +96,13 @@ index 47f3943..26e8b8c 100644
 -        actions=[Action(name="get_user_details", kwargs={"user_id": "mei_brown_7075"})],
 +        instruction="Your user id is mei_brown_7075. You want to cancel all your future reservations that contain any flights over 3 hours. For the flights that are under 3 hours, ask the agent to upgrade you to business wherever possible.",
 +        actions=[
-+            Action(name="get_user_details", kwargs={"user_id": "mei_brown_7075"})
++            Action(name="get_user_details", kwargs={"user_id": "mei_brown_7075"}),
++            Action(name="get_reservation_details", kwargs={"reservation_id": "3JA7XV"}) 
 +        ],
          outputs=[],
 +        required_actions=[
 +            Action(name="get_user_details", kwargs={"user_id": "mei_brown_7075"}),
++            Action(name="get_reservation_details", kwargs={"reservation_id": "3JA7XV"}) # Adding this action to make sure we actually check the flight.
 +        ],
      ),
      Task(
