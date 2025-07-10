@@ -114,7 +114,7 @@ R.11:
 R.12:
   check: Reports results of non-AI baselines (e.g., human experts).
   score: 1
-  reason: The benchmark directly compares the performance of agents with human experts in the Kaggel challenge submissions.
+  reason: The benchmark directly compares the performance of agents with human experts in the Kaggle challenge submissions.
 
 R.13:
   check: Reports results of trivial agents (e.g., one that does nothing).

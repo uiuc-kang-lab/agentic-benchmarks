@@ -9,7 +9,7 @@ O.e.1:
 O.e.2:
   check: Ensures comprehensive coverage of all relevant input variations (e.g., data types, memory layouts, value ranges).
   score: 0
-  reason: Although the data type is specified, the fuzzer does not test different memory layouts, such as tensors with incontiguous memory layouts.
+  reason: Although the data type is specified, the fuzzer does not test different memory layouts, such as tensors with non-contiguous memory layouts.
 
 O.e.3:
   check: Generates inputs that the code under testing is sensitive to.
@@ -39,7 +39,7 @@ T.4:
 T.5:
   check: Agent is completely isolated from any ground truth information.
   score: 0
-  reason: The ground-truth kernle is executed first and in the same process as the agent. This may lead to the agent accessing the ground-truth results by accessing out-of-bound memory.
+  reason: The ground-truth kernel is executed first and in the same process as the agent. This may lead to the agent accessing the ground-truth results by accessing out-of-bound memory.
 
 T.6:
   check: Setup does not change over time (e.g., no live website).

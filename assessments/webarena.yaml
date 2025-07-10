@@ -14,7 +14,7 @@ O.a.2:
 O.b.1:
   check: Handles negation modifiers used by agents.
   score: 0
-  reason: The benchmark does not handel negation modifiers, which may lead to incorrect evaluations.
+  reason: The benchmark does not handle negation modifiers, which may lead to incorrect evaluations.
 
 O.b.2:
   check: Is robust against systematically listing all possible answers.
@@ -34,7 +34,7 @@ O.c.1:
 O.c.2:
   check: Is designed to resist adversarial inputs and reward hacking.
   score: 0
-  reason: The benchmark does not handel adversarial inputs and reward hacking in LLM-as-a-Judge, which may lead to incorrect evaluations.
+  reason: The benchmark does not handle adversarial inputs and reward hacking in LLM-as-a-Judge, which may lead to incorrect evaluations.
 
 O.g.1:
   check: Ground truth includes all states achievable after success.
@@ -44,7 +44,7 @@ O.g.1:
 O.g.2:
   check: Checks relevant and irrelevant states for the tasks.
   score: 0
-  reason: The state check only considers relevant states (e.g., acheived by using a locator as discussed in Section 3.2), which may lead to incorrect evaluations.
+  reason: The state check only considers relevant states (e.g., achieved by using a locator as discussed in Section 3.2), which may lead to incorrect evaluations.
 
 O.g.3:
   check: Ground truth is complex to prevent trivial state modifications.
@@ -129,7 +129,7 @@ R.5:
 R.6:
   check: Clearly states the evaluation subjective of the benchmark (e.g., a model or an agent framework).
   score: 1
-  reason: As shownin Setion 5, the benchmark is designed to evaluate LLM models.
+  reason: As shown in Section 5, the benchmark is designed to evaluate LLM models.
 
 R.7:
   check: Describes steps taken to prevent, identify, and correct flaws.

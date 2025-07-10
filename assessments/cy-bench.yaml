@@ -119,7 +119,7 @@ R.11:
 R.12:
   check: Reports results of non-AI baselines (e.g., human experts).
   score: 1
-  reason: Human peerformance is reported in Section 5 of the paper.
+  reason: Human performance is reported in Section 5 of the paper.
 
 R.13:
   check: Reports results of trivial agents (e.g., one that does nothing).

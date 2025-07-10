@@ -24,7 +24,7 @@ O.f.3:
 T.1:
   check: Versions of all tools (e.g., Python) are clearly specified.
   score: 1 
-  reason: The task instruction in Figure 9 speficies the SQL language is SQLite.
+  reason: The task instruction in Figure 9 specifies the SQL language is SQLite.
 
 T.2:
   check: All required API tools are consistently accessible to agents during evaluation.
@@ -39,7 +39,7 @@ T.3:
 T.4:
   check: Residual data or state are fully cleared between runs.
   score: 0
-  reason: Databse file is neither opened in a read-only mode nor re-initialized between runs. This may lead to unexpected data manipulation by the agent.
+  reason: Database file is neither opened in a read-only mode nor re-initialized between runs. This may lead to unexpected data manipulation by the agent.
 
 T.5:
   check: Agent is completely isolated from any ground truth information.
@@ -54,7 +54,7 @@ T.6:
 T.7:
   check: Annotated ground truth is verified for correctness.
   score: 0
-  reason: As discussed in Section 3.4 of the paper, the correctness of the query is not fully verified, especially for the SQL queries that two annotators reach a concensus on.
+  reason: As discussed in Section 3.4 of the paper, the correctness of the query is not fully verified, especially for the SQL queries that two annotators reach a consensus on.
 
 T.8:
   check: Each task is verified to be solvable.

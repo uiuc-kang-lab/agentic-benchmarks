@@ -21,117 +21,117 @@ O.f.3:
   score: 0
   reason: The test cases use hard-coded timeouts, which may lead to non-deterministic results if the system is slow or unresponsive.
 
-R.1:
+T.1:
   check: Versions of all tools (e.g., Python) are clearly specified.
   score: 1
   reason: The package dependencies are specified in the repository of each task.
 
-R.2:
+T.2:
   check: All required API tools are consistently accessible to agents during evaluation.
   score: 1
   reason: The benchmark does not require any external APIs.
 
-R.3:
+T.3:
   check: Evaluation process terminates or handles errors appropriately if an API becomes inaccessible.
   score: 1
   reason: The benchmark does not require any external APIs.
 
-R.4:
+T.4:
   check: Residual data or state are fully cleared between runs.
   score: 1
   reason: The benchmark uses docker containers to isolate the environment, and the state is cleared between runs.
 
-R.5:
+T.5:
   check: Agent is completely isolated from any ground truth information.
   score: 0
   reason: The agent can access the file system where the test cases are stored, which may lead to the agent accessing the ground truth information.
 
-R.6:
+T.6:
   check: Setup does not change over time (e.g., no live website).
   score: 1
   reason: The environment setup is static and does not change over time.
 
-R.7:
+T.7:
   check: Annotated ground truth is verified for correctness.
   score: 1
   reason: The ground-truth test cases are taken from GitHub repositories, which are verified by expert developers.
 
-R.8:
+T.8:
   check: Each task is verified to be solvable.
   score: 1
   reason: Each task represents a real-world software issue with a corresponding patch, which are solvable by the agent.
 
-R.9:
+T.9:
   check: Benchmark includes an Oracle solver that can automatically solve all tasks.
   score: 1
   reason: The benchmark uses existing patches as ground truth, which can be considered as an Oracle solver.
 
-R.10:
+T.10:
   check: Implementation is free of vulnerabilities that could be exploited to pass evaluations without completing tasks.
   score: 0
   reason: The benchmark does not handle the isolation between the agent and test cases properly. The test cases are stored not only in a file system that the agent can access, but also in a ZIP file that agent can read the directory structure and update files.
 
-O.1:
+R.1:
   check: Is fully or at least partially open-sourced.
   score: 1
   reason: The benchmark is open-sourced and available on GitHub.
 
-O.2:
+R.2:
   check: Offers an open-source evaluation harness for users.
   score: 1
   reason: The benchmark provides an open-source evaluation harness for users.
 
-O.3:
+R.3:
   check: Includes measures to prevent data contamination, such as a private, held-out test set.
   score: 1
   reason: The benchmark maintains a private test set.
 
-O.4:
+R.4:
   check: Includes measures or plans to consistently update tasks over time to avoid overfitting.
   score: 0
   reason: The report does not discuss any measures or plans for consistent update.
 
-O.5:
+R.5:
   check: Clearly states the relationship between the agent capabilities it aims to evaluate and the constructs or outcomes it measures.
   score: 1
   reason: Such a relationship is clearly stated in Section 2 of the paper.
 
-O.6:
+R.6:
   check: Clearly states the evaluation subjective of the benchmark (e.g., a model or an agent framework).
   score: 1
   reason: As shown in Section 3, the benchmark is designed to evaluate the LLM model.
 
-O.7:
+R.7:
   check: Describes steps taken to prevent, identify, and correct flaws.
   score: 1
   reason: The benchmark uses end-to-end testing to mitigate grader hacking.
 
-O.8:
+R.8:
   check: Includes qualitative discussions of the potential impact of unavoidable flaws.
   score: 1
   reason: The benchmark discusses the potential impact of grader hacking in Section 1 and Appendix A.7.
 
-O.9:
+R.9:
   check: Includes quantitative analysis to assess the impact of unavoidable flaws (e.g., noise of ground truth).
   score: 0
   reason: The benchmark does not include any quantitative analysis to assess the impact of grader hacking.
 
-O.10:
+R.10:
   check: Reports metrics about statistical significance, such as confidence intervals.
   score: 0
   reason: The benchmark does not report any metrics about statistical significance.
 
-O.11:
+R.11:
   check: Provides guidance on interpreting results with eval flaws.
   score: 0
   reason: The benchmark does not provide any guidance on interpreting results with eval flaws.
 
-O.12:
+R.12:
   check: Reports results of non-AI baselines (e.g., human experts).
   score: 0
   reason: The benchmark does not report results of non-AI baselines.
 
-O.13:
+R.13:
   check: Reports results of trivial agents (e.g., one that does nothing).
   score: 0
   reason: The benchmark does not report results of trivial agents.
