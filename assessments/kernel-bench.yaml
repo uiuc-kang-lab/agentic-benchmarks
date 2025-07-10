@@ -1,132 +1,132 @@
 paper: https://arxiv.org/pdf/2502.10517
 code: https://github.com/ScalingIntelligence/KernelBench/tree/main
 
-I.e.1:
+O.e.1:
   check: Addresses potential edge cases.
   score: 0
   reason: The fuzzer does not address potential edge cases, such as empty inputs.
 
-I.e.2:
+O.e.2:
   check: Ensures comprehensive coverage of all relevant input variations (e.g., data types, memory layouts, value ranges).
   score: 0
   reason: Although the data type is specified, the fuzzer does not test different memory layouts, such as tensors with incontiguous memory layouts.
 
-I.e.3:
+O.e.3:
   check: Generates inputs that the code under testing is sensitive to.
   score: 0
   reason: The fuzzer uses uniform sampling to generate inputs, which may not be sensitive to the code under testing. For example, the fuzzer may not generate positive inputs that trigger the `relu` function in the `torch` library.
 
-II.1:
+T.1:
   check: Versions of all tools (e.g., Python) are clearly specified.
   score: 0
   reason: The CUDA version is not specified in the default prompt.
 
-II.2:
+T.2:
   check: All required API tools are consistently accessible to agents during evaluation.
   score: 1
   reason: External APIs are not required for the evaluation of the benchmark.
 
-II.3:
+T.3:
   check: Evaluation process terminates or handles errors appropriately if an API becomes inaccessible.
   score: 1 
   reason: External APIs are not required for the evaluation of the benchmark.
 
-II.4:
+T.4:
   check: Residual data or state are fully cleared between runs.
   score: 1
   reason: Kernels are evaluated in separate processes, and the state is cleared between runs.
 
-II.5:
+T.5:
   check: Agent is completely isolated from any ground truth information.
   score: 0
   reason: The ground-truth kernle is executed first and in the same process as the agent. This may lead to the agent accessing the ground-truth results by accessing out-of-bound memory.
 
-II.6:
+T.6:
   check: Setup does not change over time (e.g., no live website).
   score: 1
   reason: The environment setup is static and does not change over time.
 
-II.7:
+T.7:
   check: Annotated ground truth is verified for correctness.
   score: 1
   reason: The ground-truth kernel is provided by PyTorch, which is a widely used library for deep learning. 
 
-II.8:
+T.8:
   check: Each task is verified to be solvable.
   score: 1
   reason: The implementation from PyTorch is a proof of concept.
 
-II.9:
+T.9:
   check: Benchmark includes an Oracle solver that can automatically solve all tasks.
   score: 1
   reason: The Oracle solver is PyTorch implementation.
 
-II.10:
+T.10:
   check: Implementation is free of vulnerabilities that could be exploited to pass evaluations without completing tasks.
   score: 1
   reason: No vulnerabilities are found in the implementation of the benchmark.
 
-III.1:
+R.1:
   check: Is fully or at least partially open-sourced.
   score: 1
   reason: The benchmark is open-sourced and available on GitHub.
 
-III.2:
+R.2:
   check: Offers an open-source evaluation harness for users.
   score: 1
   reason: The benchmark provides an open-source evaluation harness for users.
 
-III.3:
+R.3:
   check: Includes measures to prevent data contamination, such as a private, held-out test set.
   score: 0
   reason: The benchmark does not discuss measures to prevent data contamination.
 
-III.4:
+R.4:
   check: Includes measures or plans to consistently update tasks over time to avoid overfitting.
   score: 0
   reason: The benchmark does not discuss plans to consistently update tasks over time.
 
-III.5:
+R.5:
   check: Clearly states the relationship between the agent capabilities it aims to evaluate and the constructs or outcomes it measures.
   score: 1
   reason: Section 3 clearly states such a relationship.
 
-III.6:
+R.6:
   check: Clearly states the evaluation subjective of the benchmark (e.g., a model or an agent framework).
   score: 1
   reason: Section 5 clearly states that the evaluation subjective of the benchmark is LLM models.
 
-III.7:
+R.7:
   check: Describes steps taken to prevent, identify, and correct flaws.
   score: 1
   reason: Appendix B.2 describes the efforts taken to prevent, identify, and correct flaws, although these efforts are not sufficient.
 
-III.8:
+R.8:
   check: Includes qualitative discussions of the potential impact of unavoidable flaws.
   score: 1
   reason: Appendix B.2 includes qualitative discussions of the potential impact of unavoidable flaws, although these discussions are not sufficient.
 
-III.9:
+R.9:
   check: Includes quantitative analysis to assess the impact of unavoidable flaws (e.g., noise of ground truth).
   score: 1
   reason: Appendix B.2 includes quantitative analysis to assess the impact of unavoidable flaws, although these analyses are not sufficient.
 
-III.10:
+R.10:
   check: Reports metrics about statistical significance, such as confidence intervals.
   score: 0
   reason: The benchmark does not report any metrics about statistical significance.
 
-III.11:
+R.11:
   check: Provides guidance on interpreting results with eval flaws.
   score: 0
   reason: The benchmark does not provide any guidance on interpreting results with eval flaws.
 
-III.12:
+R.12:
   check: Reports results of non-AI baselines (e.g., human experts).
   score: 0
   reason: The benchmark does not report results of non-AI baselines.
 
-III.13:
+R.13:
   check: Reports results of trivial agents (e.g., one that does nothing).
   score: 0
   reason: The benchmark does not report results of trivial agents.

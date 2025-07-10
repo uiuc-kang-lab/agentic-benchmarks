@@ -1,122 +1,122 @@
 paper: https://arxiv.org/pdf/2410.07095
 code: https://github.com/openai/mle-bench/tree/main
 
-I.I.1:
+O.I.1:
   check: Designs quality metrics that prevent exploitation (e.g., achieving high scores by reward hacking)
   score: 1
   reason: As described in Section 2.2, the benchmark uses leaderboard positions as a metric, which is not easily exploitable.
 
-II.1:
+T.1:
   check: Versions of all tools (e.g., Python) are clearly specified.
   score: 0
   reason: The prompt does not specify the versions of important tools, such as Python and Pytorch.
 
-II.2:
+T.2:
   check: All required API tools are consistently accessible to agents during evaluation.
   score: 1
   reason: The benchmark does not require any external APIs, and all required tools are accessible to the agent.
 
-II.3:
+T.3:
   check: Evaluation process terminates or handles errors appropriately if an API becomes inaccessible.
   score: 1
   reason: The benchmark does not require any external APIs, and the evaluation process does not depend on any external resources.
 
-II.4:
+T.4:
   check: Residual data or state are fully cleared between runs.
   score: 1
   reason: There are no residual data or state between runs, as the evaluation is performed in a clean environment.
 
-II.5:
+T.5:
   check: Agent is completely isolated from any ground truth information.
   score: 1
   reason: The submission process is isolated from the agent's environment, and the agent cannot access any ground truth information.
 
-II.6:
+T.6:
   check: Setup does not change over time (e.g., no live website).
   score: 1
   reason: The environment setup is static and does not change over time.
 
-II.7:
+T.7:
   check: Annotated ground truth is verified for correctness.
   score: 1
   reason: The benchmark uses ground truth data from Kaggle, which is a widely used and reliable source for benchmark datasets.
 
-II.8:
+T.8:
   check: Each task is verified to be solvable.
   score: 1
   reason: The benchmark uses previous challenges from Kaggle, which are proven to be solvable with ML algorithms.
 
-II.9:
+T.9:
   check: Benchmark includes an Oracle solver that can automatically solve all tasks.
   score: 1
   reason: Any solution on Kaggle can be considered an Oracle solver.
 
-II.10:
+T.10:
   check: Implementation is free of vulnerabilities that could be exploited to pass evaluations without completing tasks.
   score: 1
   reason: No vulnerabilities are found in the implementation of the benchmark, and the evaluation process is secure.
 
-III.1:
+R.1:
   check: Is fully or at least partially open-sourced.
   score: 1
   reason: The benchmark is open-sourced and available on GitHub.
 
-III.2:
+R.2:
   check: Offers an open-source evaluation harness for users.
   score: 1
   reason: The benchmark provides an open-source evaluation harness for users.
 
-III.3:
+R.3:
   check: Includes measures to prevent data contamination, such as a private, held-out test set.
   score: 1
   reason: The benchmark design experiments to measure data contamination and agent plagiarism.
 
-III.4:
+R.4:
   check: Includes measures or plans to consistently update tasks over time to avoid overfitting.
   score: 1
   reason: Future plan on regularly update the benchmark with new Kaggle challenges is discussed in Section 6
 
-III.5:
+R.5:
   check: Clearly states the relationship between the agent capabilities it aims to evaluate and the constructs or outcomes it measures.
   score: 1
   reason: Such a relationship is clearly stated in Section 2.
 
-III.6:
+R.6:
   check: Clearly states the evaluation subjective of the benchmark (e.g., a model or an agent framework).
   score: 1
   reason: As shown in Section 3, the benchmark is designed to evaluate both the model and the agent framework.
 
-III.7:
+R.7:
   check: Describes steps taken to prevent, identify, and correct flaws.
   score: 1
   reason: The paper discusses the efforts taken to detect cheating in Appendix A.5.
 
-III.8:
+R.8:
   check: Includes qualitative discussions of the potential impact of unavoidable flaws.
   score: 1
   reason: The paper discusses the potential impact of unavoidable flaws in Section 4.
 
-III.9:
+R.9:
   check: Includes quantitative analysis to assess the impact of unavoidable flaws (e.g., noise of ground truth).
   score: 1
   reason: The paper includes quantitative analysis to assess the impact of unavoidable flaws in Appendix A.5.
 
-III.10:
+R.10:
   check: Reports metrics about statistical significance, such as confidence intervals.
   score: 1
   reason: The paper reports metrics about statistical significance in Section 3.3.
 
-III.11:
+R.11:
   check: Provides guidance on interpreting results with eval flaws.
   score: 1
   reason: No significant flaws are found in the evaluation process.
 
-III.12:
+R.12:
   check: Reports results of non-AI baselines (e.g., human experts).
   score: 1
   reason: The benchmark directly compares the performance of agents with human experts in the Kaggel challenge submissions.
 
-III.13:
+R.13:
   check: Reports results of trivial agents (e.g., one that does nothing).
   score: 0
   reason: The benchmark does not report results of trivial agents.
