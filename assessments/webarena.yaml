@@ -1,52 +1,52 @@
 paper: https://arxiv.org/pdf/2307.13854
 code: https://github.com/web-arena-x/webarena
 
-I.a.1:
+O.a.1:
   check: Considers expressions semantically equivalent to ground truth.
   score: 1
   reason: As discussed in Section 3.2 of the paper, the benchmark expects the response to follow a standardized format, which is robust to variations in the input.
 
-I.a.2:
+O.a.2:
   check: Handles redundant words used by agents.
   score: 1
   reason: As discussed in Section 3.2 of the paper, the benchmark expects the response to follow a standardized format, which is robust to redundant words in the input.
 
-I.b.1:
+O.b.1:
   check: Handles negation modifiers used by agents.
   score: 0
   reason: The benchmark does not handel negation modifiers, which may lead to incorrect evaluations.
 
-I.b.2:
+O.b.2:
   check: Is robust against systematically listing all possible answers.
   score: 0
   reason: The benchmark does not specify how it handles systematic listing of all possible answers, which may lead to incorrect evaluations.
 
-I.b.3:
+O.b.3:
   check: Ground truth is sufficiently complex to prevent guessing.
   score: 0
   reason: The ground truth is NULL for a part of tasks, which may lead to guessing.
 
-I.c.1:
+O.c.1:
   check: Demonstrates documented or experimental evidence of the judge’s accuracy, self-consistency, and agreement with human.
   score: 1
   reason: The accuracy of the judge is quantitatively evaluated in Appendix A.8 of the paper.
 
-I.c.2:
+O.c.2:
   check: Is designed to resist adversarial inputs and reward hacking.
   score: 0
   reason: The benchmark does not handel adversarial inputs and reward hacking in LLM-as-a-Judge, which may lead to incorrect evaluations.
 
-I.g.1:
+O.g.1:
   check: Ground truth includes all states achievable after success.
   score: 1
   reason: The ground truth includes all states achievable after success, as discussed in Section 3.2 of the paper.
 
-I.g.2:
+O.g.2:
   check: Checks relevant and irrelevant states for the tasks.
   score: 0
-  reason: The state check only considers relevant states (i.e., acheived by using a locator as discussed in Section 3.2), which may lead to incorrect evaluations.
+  reason: The state check only considers relevant states (e.g., acheived by using a locator as discussed in Section 3.2), which may lead to incorrect evaluations.
 
-I.g.3:
+O.g.3:
   check: Ground truth is complex to prevent trivial state modifications.
   score: 1
   reason: As demonstrated in Section 3.2 of the paper, the ground truth is a modification of the underlying database, which is complex enough to prevent trivial state modifications.
@@ -59,7 +59,7 @@ T.1:
 T.2:
   check: All required API tools are consistently accessible to agents during evaluation.
   score: 0
-  reason: The benchmark requires an external API (i.e., OpenAI API) that is not can be inaccessible to agents during evaluation due to rate limit.
+  reason: The benchmark requires an external API (e.g., a clone of Reddit website) that is not can be inaccessible to agents during evaluation due to rate limit.
 
 T.3:
   check: Evaluation process terminates or handles errors appropriately if an API becomes inaccessible.
