@@ -105,6 +105,8 @@ completed the task.
 To fix the issue, revise the evaluation scripts according to the updated external websites.
 See [benchmarks/osworld/README.md](benchmarks/osworld/README.md)
 
+---
+
 ## Contributing
 Contributions are welcome! If you want to submit new assessment results, request
 an assessment correction, or send feedback or questions, please submit a pull 
