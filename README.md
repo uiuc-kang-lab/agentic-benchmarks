@@ -86,6 +86,25 @@ See [benchmarks/swe-lancer/README.md](benchmarks/swe-lancer/README.md) for detai
 
 ---
 
+### 4. WebArena
+WebArena evaluates agents' ability to interact with websites. We highlight outcome
+validity issues where agent pass the string-matching or LLM-as-a-Judge evaluation
+without resolving users' requests.
+
+### Reproducing the Issues
+Follow the steps in [benchmarks/webarena/README.md](benchmarks/webarena/README.md) to reproduce and analyze the issues.
+
+---
+
+### 5. OSWorld
+OSWorld evaluates agents' ability to interact with a computer. We highlight a task
+validity issue where an agent cannot pass the evaluation even though it has correctly
+completed the task.
+
+### Reproducing and Fixing the Issue
+To fix the issue, revise the evaluation scripts according to the updated external websites.
+See [benchmarks/osworld/README.md](benchmarks/osworld/README.md)
+
 ## Contributing
 Contributions are welcome! If you want to submit new assessment results, request
 an assessment correction, or send feedback or questions, please submit a pull 
